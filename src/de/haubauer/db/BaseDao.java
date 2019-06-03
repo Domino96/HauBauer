@@ -1,4 +1,4 @@
-package HauBauer.db;
+package src.de.haubauer.db;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
