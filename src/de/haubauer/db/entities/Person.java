@@ -1,16 +1,17 @@
 import javax.persistence.*;
 
 @Entity
-@Table(name = "User")
-public class User extends DatedEntity{
+@Table(name = "Person")
+public class Person extends DatedEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int userId;
+    int personId;
 
-    String userName;
-    String hash;
+    String title;
     String fistName;
     String lastName;
+    String telefon;
     String phone;
     String email;
+    String role;
 }
