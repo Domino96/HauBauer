@@ -1,6 +1,6 @@
 package src.de.haubauer;
 
 public class main {
-    public void main(String[] args) {
+    public static void main(String[] args) {
     }
 }

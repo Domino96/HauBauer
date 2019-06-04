@@ -2,14 +2,12 @@ package src.de.haubauer.ui.controllers.tenants;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,7 +15,7 @@ import java.util.ResourceBundle;
 public class TenantsController implements Initializable {
 
     @FXML
-    private TableColumn<TableInit, String> anrede;
+    private TableColumn<TableInit, String> titleColumn;
 
     @FXML
     private TableColumn<TableInit, String> vorname;
@@ -52,7 +50,7 @@ public class TenantsController implements Initializable {
         list.add(new TableInit("Frau", "Elizabeth", "Muller", "Am Hackenbruch 51", "0174422124", "haubau@gmail.com", "DE0156165165732132437313"));
 
         this.tableView.setItems(list);
-        this.anrede.setCellValueFactory(new PropertyValueFactory<>("anrede"));
+        this.titleColumn.setCellValueFactory(new PropertyValueFactory<>("titleColumn"));
         this.vorname.setCellValueFactory(new PropertyValueFactory<>("vorname"));
         this.nachname.setCellValueFactory(new PropertyValueFactory<>("nachname"));
         this.anschrift.setCellValueFactory(new PropertyValueFactory<>("anschrift"));
@@ -61,17 +59,11 @@ public class TenantsController implements Initializable {
         this.kontoverbindung.setCellValueFactory(new PropertyValueFactory<>("kontoverbindung"));
 
         // selecting multiple table view items with SHIFT or STRG
-        tableView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-            }
-        });
+        tableView.setOnMouseClicked(event -> tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE));
     }
 
     public void deleteItems() {
-        ObservableList<TableInit> list = tableView.getSelectionModel().getSelectedItems();
-        tableView.getItems().removeAll(list);
-
+        final ObservableList<TableInit> itemsToDelete = tableView.getSelectionModel().getSelectedItems();
+        tableView.getItems().removeAll(itemsToDelete);
     }
 }
