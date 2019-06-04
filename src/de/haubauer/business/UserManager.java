@@ -1,6 +1,7 @@
 package src.de.haubauer.business;
 
 import src.de.haubauer.db.entities.User;
+import src.de.haubauer.helpers.Singleton;
 
 public class UserManager extends Singleton {
     private User loggedInUser;
