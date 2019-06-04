@@ -1,4 +1,4 @@
-package src.de.haubauer.ui.controllers.Stammdaten;
+package src.de.haubauer.ui.controllers.tenants;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,11 +11,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class StammdatenController implements Initializable {
+public class TenantsController implements Initializable {
 
     @FXML
     private TableColumn<TableInit, String> anrede;
@@ -43,8 +42,6 @@ public class StammdatenController implements Initializable {
 
     ObservableList<TableInit> list = FXCollections.observableArrayList();
 
-
-    @Override
     public void initialize(URL location, ResourceBundle resources) {
         list.add(new TableInit("Herr", "Christian", "Mustermann", "Am Hackenbruch 51", "0174422124", "haubau@gmail.com", "DE0156165165732132437313"));
         list.add(new TableInit("Herr", "Christian", "Mustermann", "Am Hackenbruch 51", "0174422124", "haubau@gmail.com", "DE0156165165732132437313"));
