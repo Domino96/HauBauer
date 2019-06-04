@@ -1,4 +1,4 @@
-package src.de.haubauer.ui.controllers.Mietobjekte;
+package src.de.haubauer.ui.controllers.rentalproperties;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MietobjekteController implements Initializable {
+public class RentalPropertiesController implements Initializable {
 
     @FXML
     private TableColumn<TableInit, String> nummer;

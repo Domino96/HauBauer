@@ -1,4 +1,4 @@
-package src.de.haubauer.ui.controllers.Stammdaten;
+package src.de.haubauer.ui.controllers.tenants;
 
 public class TableInit {
 
