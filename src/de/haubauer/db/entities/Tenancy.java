@@ -2,6 +2,7 @@ package src.de.haubauer.db.entities;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Table(name = "Tenancy")
 public class Tenancy extends DatedEntity{
@@ -9,7 +10,7 @@ public class Tenancy extends DatedEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int tenancyId;
 
-    Tenant tenant;
+    Person tenant;
     Date startDate;
     Date endDate;
     List<Payment> payments;
