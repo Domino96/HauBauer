@@ -1,7 +1,8 @@
+package src.de.haubauer.db.entities;
+
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
 @Table(name = "Tenancy")
 public class Tenancy extends DatedEntity{
     @Id
