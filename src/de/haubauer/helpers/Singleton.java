@@ -1,4 +1,4 @@
-package src.de.haubauer.business;
+package src.de.haubauer.helpers;
 
 public abstract class Singleton {
     private Singleton instance;
