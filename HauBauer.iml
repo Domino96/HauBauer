@@ -7,8 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="lib" level="application" />
-    <orderEntry type="library" name="org.hibernate:hibernate-agroal:5.4.3.Final" level="project" />
-    <orderEntry type="library" name="com.googlecode.jmapper-framework:jmapper-core:1.6.1.CR2" level="project" />
+    <orderEntry type="library" exported="" name="org.hibernate:hibernate-agroal:5.4.3.Final" level="project" />
+    <orderEntry type="library" exported="" name="com.googlecode.jmapper-framework:jmapper-core:1.6.1.CR2" level="project" />
   </component>
 </module>
