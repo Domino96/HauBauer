@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="633.0" style="-fx-background-color: #d3d3d3;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ToolBar prefHeight="60.0" prefWidth="633.0">
+        <items>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" text="Dashboard" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" text="Mietobjekt" />
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" style="-fx-background-color: #B5B5B5;" text="Mieterstammdaten" />
+        </items>
+      </ToolBar>
+      <Button layoutX="14.0" layoutY="64.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="57.0">
+         <font>
+            <Font size="26.0" />
+         </font></Button>
+      <Button layoutX="77.0" layoutY="64.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="57.0" style="-fx-background-image: url('mockUps/src/sample/edit.png');" />
+      <Button layoutX="141.0" layoutY="64.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="57.0" style="-fx-background-color: #b5b5b5;" />
+      <ScrollBar layoutX="618.0" layoutY="145.0" orientation="VERTICAL" prefHeight="253.0" prefWidth="14.0" />
+      <ScrollBar layoutX="2.0" layoutY="386.0" prefHeight="14.0" prefWidth="615.0" />
+      <Button layoutX="375.0" layoutY="67.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" text="Zahlungseingänge" />
+    <Button layoutX="504.0" layoutY="67.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" text="Reports generieren" />
+      <SVGPath content="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" layoutX="94.0" layoutY="80.0" />
+      <SVGPath content="M15 16h4v2h-4zm0-8h7v2h-7zm0 4h6v2h-6zM3 18c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V8H3v10zM14 5h-3l-1-1H6L5 5H2v2h12z" layoutX="158.0" layoutY="80.0" />
+      <SVGPath content="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" layoutX="31.0" layoutY="80.0" />
+      <Separator layoutX="-5.0" layoutY="123.0" prefHeight="7.0" prefWidth="637.0" />
+      <TableView layoutX="5.0" layoutY="123.0" prefHeight="260.0" prefWidth="615.0">
+        <columns>
+          <TableColumn prefWidth="52.000000953674316" text="Typ" />
+          <TableColumn prefWidth="63.999996185302734" text="Objekt-Nr" />
+            <TableColumn prefWidth="56.0" text="Nutzung" />
+            <TableColumn prefWidth="49.600006103515625" text="Strasse" />
+            <TableColumn prefWidth="30.400039672851562" text="PLZ" />
+            <TableColumn prefWidth="44.800048828125" text="Ort" />
+            <TableColumn prefWidth="76.800048828125" text="Wohnfläche" />
+            <TableColumn minWidth="0.0" prefWidth="94.4000244140625" text="QM-Preis" />
+            <TableColumn prefWidth="164.7999267578125" text="Nebenkosten" />
+            <TableColumn prefWidth="187.199951171875" text="Notizen" />
+        </columns>
+      </TableView>
+   </children>
+</Pane>
