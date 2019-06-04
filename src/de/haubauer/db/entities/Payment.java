@@ -1,8 +1,9 @@
+package src.de.haubauer.db.entities;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Entity
 @Table(name = "Payment")
 public class Payment extends DatedEntity{
     @Id
