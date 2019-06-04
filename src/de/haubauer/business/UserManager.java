@@ -2,7 +2,7 @@ package src.de.haubauer.business;
 
 import src.de.haubauer.db.entities.User;
 
-public class UserManager {
+public class UserManager extends Singleton {
     private User loggedInUser;
 
     /**
