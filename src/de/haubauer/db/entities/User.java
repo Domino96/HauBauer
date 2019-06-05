@@ -1,7 +1,6 @@
 package src.de.haubauer.db.entities;
 
 import javax.persistence.*;
-
 @Entity
 @Table(name = "User")
 public class User extends DatedEntity{

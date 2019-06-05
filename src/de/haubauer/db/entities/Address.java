@@ -2,6 +2,7 @@ package src.de.haubauer.db.entities;
 
 import javax.persistence.*;
 
+@Entity
 @Table(name = "Address")
 public class Address extends DatedEntity{
     @Id
