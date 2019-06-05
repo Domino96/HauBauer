@@ -1,5 +1,8 @@
 package src.de.haubauer.db.entities;
 
+import src.de.haubauer.enums.RentalType;
+import src.de.haubauer.enums.UsageType;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;

@@ -4,10 +4,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import src.de.haubauer.helpers.Singleton;
 
 import java.util.List;
 
-public class BaseDao<T> {
+public class BaseDao<T> extends Singleton {
     private final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
     private Session session;
     private Class<T> clazz;
@@ -82,6 +83,14 @@ public class BaseDao<T> {
                 .setFirstResult(start)
                 .setMaxResults(limit)
                 .list();
+    }
+
+    /**
+     * Erstellt einen QueryBuilder aus der Entity.
+     * @return Ein neuer QueryBuilder.
+     */
+    public final QueryBuilder queryBuilder() {
+        return new QueryBuilder<>(session, this.getEntityClass());
     }
 
     public void dispose() {
