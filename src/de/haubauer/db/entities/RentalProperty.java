@@ -5,6 +5,7 @@ import src.de.haubauer.enums.UsageType;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,26 +13,35 @@ import java.util.List;
 public class RentalProperty extends DatedEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    int rentalPropertyId;
 
 
     RentalType type = RentalType.Private;
     String description;
-    String address;
     int zipCode;
     String town;
     double area;
     BigDecimal squareMeterPriceCold;
     BigDecimal sideCostsMonth;
     String note;
-    Tenancy currentTenancy;
-    List<Tenancy> pastTenancy;
-    List<RentalProperty> children;
+    @OneToMany
+    @JoinColumn(name = "parent")
+    List<RentalProperty> children = new ArrayList<RentalProperty>();
     @ManyToOne
-    @JoinColumn(referencedColumnName = "children")
     RentalProperty parent;
     UsageType usageType;
     int floor;
+
+    @ManyToOne
+    @JoinColumn(name = "adressId")
+    Address address;
+
+    @ManyToMany(mappedBy = "rentalPropertys")
+    List<Person> persons;
+
+    @OneToMany
+    @JoinColumn(name = "tenancyId")
+    List<Tenancy> tenancy;
 }
 
 

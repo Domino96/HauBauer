@@ -8,13 +8,16 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/HausBauerDB?zeroDateTimeBehavior=convertToNull&amp;createDatabaseIfNotExist=true&amp;serverTimezone=CET</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.show_sql">true</property>
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
 
         <!-- Mapping files here -->
         <mapping class="src.de.haubauer.db.entities.User"/>
         <mapping class="src.de.haubauer.db.entities.Person"/>
-
-
+        <mapping class="src.de.haubauer.db.entities.RentalProperty"/>
+        <mapping class="src.de.haubauer.db.entities.Payment"/>
+        <mapping class="src.de.haubauer.db.entities.Tenancy"/>
+        <mapping class="src.de.haubauer.db.entities.Address"/>
+        <mapping class="src.de.haubauer.db.entities.BankAccount"/>
 
     </session-factory>
 </hibernate-configuration>
