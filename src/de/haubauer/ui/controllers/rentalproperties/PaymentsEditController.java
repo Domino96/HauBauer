@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class PaymentsEditController implements Initializable {
+
     //Buttons
     @FXML
     private Button payESaveButton;
@@ -48,12 +49,13 @@ public class PaymentsEditController implements Initializable {
     @FXML
     private Label payEIdLabel;
 
-    ObservableList<PaymentType> list = FXCollections.observableArrayList();
+    private ObservableList<PaymentType> list = FXCollections.observableArrayList();
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         list.add(PaymentType.Payment);
+        list.add(PaymentType.SideCostStatement);
 
         payEPaymentTypeComboBox.setItems(list);
     }
