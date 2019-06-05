@@ -39,7 +39,7 @@
                 <Button fx:id="payESaveButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="141.0" text="Speichern" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <ComboBox fx:id="payEPaymentTypeComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label prefHeight="164.0" prefWidth="398.0" text="ID" />
-            <Label prefHeight="148.0" prefWidth="565.0" GridPane.columnIndex="1" />
+            <Label fx:id="payEIdLabel" prefHeight="148.0" prefWidth="565.0" GridPane.columnIndex="1" />
             </children>
         </GridPane>
         <Label layoutX="100.0" layoutY="24.0" text="Zahlung bearbeiten">
