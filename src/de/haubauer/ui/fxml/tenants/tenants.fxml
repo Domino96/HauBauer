@@ -31,12 +31,12 @@
       <TableView fx:id="tableView" editable="true" layoutX="-1.0" layoutY="127.0" prefHeight="272.0" prefWidth="633.0">
         <columns>
           <TableColumn fx:id="titleColumn" prefWidth="59.0" text="Anrede" />
-            <TableColumn fx:id="vorname" prefWidth="93.0" text="Vorname" />
-            <TableColumn fx:id="nachname" prefWidth="95.0" text="Nachname" />
-            <TableColumn fx:id="anschrift" prefWidth="87.0" text="Anschrift" />
-            <TableColumn fx:id="telefonnummer" prefWidth="110.0" text="Telefonnummer" />
-            <TableColumn fx:id="email" prefWidth="78.0" text="E-Mail" />
-            <TableColumn fx:id="kontoverbindung" prefWidth="110.0" text="Kontoverbindung" />
+            <TableColumn fx:id="firstNameColumn" prefWidth="93.0" text="Vorname" />
+            <TableColumn fx:id="lastNameColumn" prefWidth="95.0" text="Nachname" />
+            <TableColumn fx:id="addressColumn" prefWidth="87.0" text="Anschrift" />
+            <TableColumn fx:id="landlineColumn" prefWidth="110.0" text="Telefonnummer" />
+            <TableColumn fx:id="emailColumn" prefWidth="78.0" text="E-Mail" />
+            <TableColumn fx:id="bankAccountColumn" prefWidth="110.0" text="Kontoverbindung" />
         </columns>
       </TableView>
       <Button layoutX="498.0" layoutY="67.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" text="Reports generieren" />
