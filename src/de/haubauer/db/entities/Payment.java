@@ -17,7 +17,7 @@ public class Payment extends DatedEntity{
     Tenancy tenancy;
     BigDecimal value;
     BigDecimal billed;
-    PaymentType type;
+    PaymentType type = PaymentType.Payment;
     String comment;
 
 }

@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
-    private static final String startFxml = "ui/fxml/dashboard.fxml";
+    private static final String startFxml = "ui/fxml/tenants/tenants.fxml";
 
     public static void main(String[] args) {
         launch(args);

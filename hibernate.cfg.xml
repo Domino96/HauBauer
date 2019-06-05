@@ -12,6 +12,7 @@
 
         <!-- Mapping files here -->
         <mapping class="src.de.haubauer.db.entities.User"/>
+        <mapping class="src.de.haubauer.db.entities.Person"/>
 
 
 

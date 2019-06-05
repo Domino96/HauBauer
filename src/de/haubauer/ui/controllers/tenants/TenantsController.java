@@ -1,72 +1,70 @@
 package src.de.haubauer.ui.controllers.tenants;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import src.de.haubauer.business.models.Person;
+import src.de.haubauer.business.services.PersonService;
+import src.de.haubauer.ui.viewmodels.TenantsViewModel;
 
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class TenantsController implements Initializable {
+    private TenantsViewModel viewModel = new TenantsViewModel();
+    private PersonService service = new PersonService();
 
     @FXML
-    private TableColumn<TableInit, String> titleColumn;
+    private TableColumn<Person, String> titleColumn;
 
     @FXML
-    private TableColumn<TableInit, String> vorname;
+    private TableColumn<Person, String> firstNameColumn;
 
     @FXML
-    private TableColumn<TableInit, String> nachname;
+    private TableColumn<Person, String> lastNameColumn;
 
     @FXML
-    private TableColumn<TableInit, String> anschrift;
+    private TableColumn<Person, String> addressColumn;
 
     @FXML
-    private TableColumn<TableInit, String> telefonnummer;
+    private TableColumn<Person, String> landlineColumn;
 
     @FXML
-    private TableColumn<TableInit, String> email;
+    private TableColumn<Person, String> mobileColumn;
 
     @FXML
-    private TableColumn<TableInit, String> kontoverbindung;
+    private TableColumn<Person, String> emailColumn;
 
     @FXML
-    private TableView<TableInit> tableView;
+    private TableColumn<Person, String> bankAccountColumn;
 
-    ObservableList<TableInit> list = FXCollections.observableArrayList();
+    @FXML
+    private TableView<Person> tableView;
 
     public void initialize(URL location, ResourceBundle resources) {
-        list.add(new TableInit("Herr", "Christian", "Mustermann", "Am Hackenbruch 51", "0174422124", "haubau@gmail.com", "DE0156165165732132437313"));
-        list.add(new TableInit("Herr", "Christian", "Mustermann", "Am Hackenbruch 51", "0174422124", "haubau@gmail.com", "DE0156165165732132437313"));
-        list.add(new TableInit("Herr", "Christian", "Mustermann", "Am Hackenbruch 51", "0174422124", "haubau@gmail.com", "DE0156165165732132437313"));
-        list.add(new TableInit("Frau", "Elizabeth", "Muller", "Am Hackenbruch 51", "0174422124", "haubau@gmail.com", "DE0156165165732132437313"));
-        list.add(new TableInit("Frau", "Elizabeth", "Muller", "Am Hackenbruch 51", "0174422124", "haubau@gmail.com", "DE0156165165732132437313"));
-        list.add(new TableInit("Frau", "Elizabeth", "Muller", "Am Hackenbruch 51", "0174422124", "haubau@gmail.com", "DE0156165165732132437313"));
-        list.add(new TableInit("Frau", "Elizabeth", "Muller", "Am Hackenbruch 51", "0174422124", "haubau@gmail.com", "DE0156165165732132437313"));
+        this.service.getAllTenants().forEach(p -> this.viewModel.getTenants().add(p));
 
-        this.tableView.setItems(list);
-        this.titleColumn.setCellValueFactory(new PropertyValueFactory<>("titleColumn"));
-        this.vorname.setCellValueFactory(new PropertyValueFactory<>("vorname"));
-        this.nachname.setCellValueFactory(new PropertyValueFactory<>("nachname"));
-        this.anschrift.setCellValueFactory(new PropertyValueFactory<>("anschrift"));
-        this.telefonnummer.setCellValueFactory(new PropertyValueFactory<>("telefonnummer"));
-        this.email.setCellValueFactory(new PropertyValueFactory<>("email"));
-        this.kontoverbindung.setCellValueFactory(new PropertyValueFactory<>("kontoverbindung"));
+        this.tableView.setItems(this.viewModel.getTenants());
+        this.titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        this.firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        this.lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        this.landlineColumn.setCellValueFactory(new PropertyValueFactory<>("landline"));
+        this.emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+        // this.bankAccountColumn.setCellValueFactory(new PropertyValueFactory<>("bankAccount"));
 
         // selecting multiple table view items with SHIFT or STRG
         tableView.setOnMouseClicked(event -> tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE));
     }
 
     public void deleteItems() {
-        final ObservableList<TableInit> itemsToDelete = tableView.getSelectionModel().getSelectedItems();
+        final ObservableList<Person> itemsToDelete = tableView.getSelectionModel().getSelectedItems();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation Dialog");
-        alert.setHeaderText("Delete");
-        alert.setContentText("Are you sure you want to delete these from the list?");
+        alert.setTitle("Sind Sie sicher?");
+        alert.setHeaderText("Löschen");
+        alert.setContentText("Sind Sie sicher, dass sie die ausgewählten Mieter unwiderruflich löschen möchen?");
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
