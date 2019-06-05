@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 @Table(name = "Tenancy")
 public class Tenancy extends DatedEntity{
     @Id
