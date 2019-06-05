@@ -26,7 +26,7 @@
       <Separator layoutX="-5.0" layoutY="123.0" prefHeight="7.0" prefWidth="637.0" />
       <TableView layoutX="5.0" layoutY="123.0" prefHeight="260.0" prefWidth="615.0">
         <columns>
-          <TableColumn prefWidth="104.8000168800354" text="Mieter Name/ID?" />
+          <TableColumn prefWidth="104.8000168800354" text="Mieter Name" />
             <TableColumn prefWidth="77.59998321533203" text="Datum" />
             <TableColumn prefWidth="100.79998779296875" text="Soll" />
             <TableColumn prefWidth="100.79998779296875" text="Haben" />

@@ -1,5 +1,7 @@
 package src.de.haubauer.db.entities;
 
+import src.de.haubauer.enums.PaymentType;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;

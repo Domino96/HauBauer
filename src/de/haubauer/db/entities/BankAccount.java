@@ -14,6 +14,7 @@ public class BankAccount extends DatedEntity{
     String AccountOwner;
     String bank;
     @OneToOne
+    @JoinColumn(name = "personId")
     Person person;
 }
 

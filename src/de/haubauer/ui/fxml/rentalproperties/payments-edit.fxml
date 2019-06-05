@@ -27,16 +27,18 @@
             <children>
                 <Label text="Mieter" />
                 <Label text="Datum" GridPane.rowIndex="1" />
-                <Label text="Zahlungen" GridPane.rowIndex="2" />
-                <Label text="Hinweis" GridPane.rowIndex="3" />
-                <TextField text="Christan Müller" GridPane.columnIndex="1" />
-                <TextField text="09.07.2019" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <TextField text="1400 €" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <TextField text="Nothing" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label text="Betrag" GridPane.rowIndex="2" />
+            <Label text="Zahlungstyp" GridPane.rowIndex="3" />
+                <Label text="Hinweis" GridPane.rowIndex="4" />
+                <TextField GridPane.columnIndex="1" />
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
                 <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="141.0" text="Speichern" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             </children>
         </GridPane>
-        <Label layoutX="100.0" layoutY="24.0" text="Zahlung Bearbeiten">
+        <Label layoutX="100.0" layoutY="24.0" text="Zahlung bearbeiten">
             <font>
                 <Font size="22.0" />
             </font>

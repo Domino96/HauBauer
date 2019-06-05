@@ -4,12 +4,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class TenantsController implements Initializable {
@@ -64,6 +63,14 @@ public class TenantsController implements Initializable {
 
     public void deleteItems() {
         final ObservableList<TableInit> itemsToDelete = tableView.getSelectionModel().getSelectedItems();
-        tableView.getItems().removeAll(itemsToDelete);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Delete");
+        alert.setContentText("Are you sure you want to delete these from the list?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            tableView.getItems().removeAll(itemsToDelete);
+        }
     }
 }
