@@ -15,8 +15,11 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import src.de.haubauer.db.entities.Payment;
+import src.de.haubauer.enums.PaymentType;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class PaymentsEditController implements Initializable {
@@ -39,20 +42,18 @@ public class PaymentsEditController implements Initializable {
 
     //ComboBox
     @FXML
-    private ComboBox<String> payEPaymentTypeComboBox;
+    private ComboBox<PaymentType> payEPaymentTypeComboBox;
 
     //Label
     @FXML
     private Label payEIdLabel;
 
-    ObservableList<String> list = FXCollections.observableArrayList();
+    ObservableList<PaymentType> list = FXCollections.observableArrayList();
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        list.add("Hello");
-        list.add("New");
-        list.add("World");
+        list.add(PaymentType.Payment);
 
         payEPaymentTypeComboBox.setItems(list);
     }
