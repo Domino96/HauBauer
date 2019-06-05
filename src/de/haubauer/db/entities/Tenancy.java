@@ -11,11 +11,20 @@ public class Tenancy extends DatedEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int tenancyId;
 
-    Person tenant;
     Date startDate;
     Date endDate;
-    List<Payment> payments;
-    RentalProperty rental;
     int status;
+
+    @ManyToOne
+    @JoinColumn(name = "personId")
+    Person person;
+
+    @OneToMany
+    @JoinColumn(name = "paymentId")
+    List<Payment> payment;
+
+    @ManyToOne
+    @JoinColumn(name = "rentalPropertyId")
+    RentalProperty rentalProperty;
 
 }

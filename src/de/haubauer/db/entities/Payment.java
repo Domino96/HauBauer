@@ -11,13 +11,15 @@ import java.util.Date;
 public class Payment extends DatedEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    int paymentId;
 
     Date date;
-    Tenancy tenancy;
     BigDecimal value;
     BigDecimal billed;
     PaymentType type;
     String comment;
 
+    @ManyToOne
+    @JoinColumn(name = "tenancyId")
+    Tenancy tenancy;
 }
