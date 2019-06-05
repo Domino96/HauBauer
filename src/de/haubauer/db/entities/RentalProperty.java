@@ -1,3 +1,5 @@
+package src.de.haubauer.db.entities;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;

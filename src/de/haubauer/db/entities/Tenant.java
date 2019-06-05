@@ -3,8 +3,8 @@ package src.de.haubauer.db.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Address")
-public class Address extends DatedEntity{
+@Table(name = "Tenant")
+public class Tenant extends DatedEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int addressId;
@@ -17,6 +17,3 @@ public class Address extends DatedEntity{
     int status;
 
 }
-
-
-

@@ -1,3 +1,5 @@
+package src.de.haubauer.db.entities;
+
 import javax.persistence.*;
 
 @Entity

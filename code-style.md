@@ -26,3 +26,11 @@
 * Methoden immer als private, public, protected, oder nichts (d.h. package-private) festlegen
 * Wenn Methoden nicht überschrieben werden sollen oder Felder nicht verändert werden sollen, immer als *final* deklarieren
 * Zwei oder mehr aufeinander folgende Annotationen immer in separaten Zeilen
+
+## Klammern
+
+* Klammern immer am Methoden-/Klassenende und in einer letzten Neuzeile
+```
+public void test() {
+}
+```
