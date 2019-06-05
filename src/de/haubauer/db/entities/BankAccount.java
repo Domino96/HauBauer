@@ -13,6 +13,7 @@ public class BankAccount extends DatedEntity{
     String bic;
     String AccountOwner;
     String bank;
+    Person person;
 }
 
 
