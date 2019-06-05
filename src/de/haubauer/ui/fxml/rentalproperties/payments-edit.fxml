@@ -31,12 +31,12 @@
                 <Label text="Betrag" GridPane.rowIndex="2" />
             <Label text="Zahlungstyp" GridPane.rowIndex="3" />
                 <Label text="Hinweis" GridPane.rowIndex="4" />
-                <TextField GridPane.columnIndex="1" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="141.0" text="Speichern" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField fx:id="payETenantTextField" GridPane.columnIndex="1" />
+                <TextField fx:id="payEDateTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextField fx:id="payEAmountTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="payENoteTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <Button fx:id="payESaveButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="141.0" text="Speichern" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ComboBox fx:id="payEPaymentTypeComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             </children>
         </GridPane>
         <Label layoutX="100.0" layoutY="24.0" text="Zahlung bearbeiten">
