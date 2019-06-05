@@ -1,7 +1,7 @@
 package src.de.haubauer.business;
 
 
-import src.de.haubauer.db.entities.PaymentType;
+import src.de.haubauer.enums.PaymentType;
 import src.de.haubauer.db.entities.Tenancy;
 
 import java.math.BigDecimal;

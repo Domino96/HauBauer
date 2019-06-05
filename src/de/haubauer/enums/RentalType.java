@@ -1,4 +1,4 @@
-package src.de.haubauer.db.entities;
+package src.de.haubauer.enums;
 
 public enum RentalType {
     Private,
