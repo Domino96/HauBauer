@@ -2,6 +2,7 @@ package src.de.haubauer.business;
 
 
 import src.de.haubauer.db.entities.PaymentType;
+import src.de.haubauer.db.entities.Tenancy;
 
 import java.math.BigDecimal;
 import java.util.Date;
