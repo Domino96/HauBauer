@@ -17,7 +17,9 @@ public class RentalType extends DatedEntity{
     @JoinColumn(name = "rentalPropertyId")
     List<RentalProperty> RentalProperty;
 
-
+    public int getRentalTypeId() {
+        return rentalTypeId;
+    }
 
     public String getRentalTypeName() {
         return rentalTypeName;

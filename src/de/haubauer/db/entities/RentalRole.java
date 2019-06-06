@@ -15,4 +15,32 @@ public class RentalRole extends DatedEntity {
     @OneToMany
     @JoinColumn(name = "rentalPropertyId")
     List<RentalProperty> rentalProperties;
+
+    public int getRentalRoleId() {
+        return rentalRoleId;
+    }
+
+    public String getRentalRoleName() {
+        return rentalRoleName;
+    }
+
+    public void setRentalRoleName(String rentalRoleName) {
+        this.rentalRoleName = rentalRoleName;
+    }
+
+    public String getRentalRoleDescription() {
+        return rentalRoleDescription;
+    }
+
+    public void setRentalRoleDescription(String rentalRoleDescription) {
+        this.rentalRoleDescription = rentalRoleDescription;
+    }
+
+    public List<RentalProperty> getRentalProperties() {
+        return rentalProperties;
+    }
+
+    public void setRentalProperties(List<RentalProperty> rentalProperties) {
+        this.rentalProperties = rentalProperties;
+    }
 }

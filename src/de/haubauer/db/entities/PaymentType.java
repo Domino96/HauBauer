@@ -17,4 +17,31 @@ public class PaymentType extends DatedEntity {
     @JoinColumn(name = "paymentId")
     List<Payment> Payments;
 
+    public int getPaymentTypeId() {
+        return paymentTypeId;
+    }
+
+    public String getPaymentTypeName() {
+        return paymentTypeName;
+    }
+
+    public void setPaymentTypeName(String paymentTypeName) {
+        this.paymentTypeName = paymentTypeName;
+    }
+
+    public String getPaymentTypeDescription() {
+        return PaymentTypeDescription;
+    }
+
+    public void setPaymentTypeDescription(String paymentTypeDescription) {
+        PaymentTypeDescription = paymentTypeDescription;
+    }
+
+    public List<Payment> getPayments() {
+        return Payments;
+    }
+
+    public void setPayments(List<Payment> payments) {
+        Payments = payments;
+    }
 }
