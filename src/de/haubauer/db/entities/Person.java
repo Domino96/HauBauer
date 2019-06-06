@@ -1,5 +1,7 @@
 package src.de.haubauer.db.entities;
 
+import src.de.haubauer.enums.Role;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,12 +13,12 @@ public class Person extends DatedEntity{
     int personId;
 
     String title;
-    String fistName;
+    String firstName;
     String lastName;
-    String telefon;
-    String phone;
+    String landline;
+    String mobile;
     String email;
-    String role;
+    Role role;
 
     @ManyToMany
     @JoinTable(name = "AddressPerson",

@@ -10,6 +10,10 @@ public class PersonDao extends BaseDao<Person> {
     }
 
     public List<Person> getAllTenants() {
-        return this.queryBuilder().where("role", "= Mieter").build().list();
+        return this.queryBuilder()
+                .where("role", "= :role")
+                .setParameter("role", "Mieter")
+                .build()
+                .list();
     }
 }

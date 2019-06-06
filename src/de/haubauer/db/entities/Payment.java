@@ -16,7 +16,7 @@ public class Payment extends DatedEntity{
     Date date;
     BigDecimal value;
     BigDecimal billed;
-    PaymentType type;
+    PaymentType type = PaymentType.Payment;
     String comment;
 
     @ManyToOne
