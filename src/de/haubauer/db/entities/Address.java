@@ -1,5 +1,7 @@
 package src.de.haubauer.db.entities;
 
+import src.de.haubauer.enums.AddressStatus;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,21 +10,20 @@ import java.util.List;
 public class Address extends DatedEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int addressId;
+    private int addressId;
 
-    String street;
-    int number;
-    int zip_code;
-    String town;
-    String telefon;
-    int status;
+    private String street;
+    private int number;
+    private int zipCode;
+    private String town;
+    private AddressStatus status;
 
     @OneToMany
     @JoinColumn(name = "rentalPropertyId")
-    List<RentalProperty> rentalProperty;
+    private List<RentalProperty> rentalProperties;
 
     @ManyToMany(mappedBy = "addresses")
-    List<Person> Persons;
+    private List<Person> people;
 }
 
 

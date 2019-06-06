@@ -7,15 +7,15 @@ import javax.persistence.*;
 public class BankAccount extends DatedEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int bankAccountid;
+    private int bankAccountId;
 
-    String iban;
-    String bic;
-    String AccountOwner;
-    String bank;
+    private String iban;
+    private String bic;
+    private String owner;
+    private String bank;
     @OneToOne
     @JoinColumn(name = "personId")
-    Person person;
+    private Person person;
 }
 
 

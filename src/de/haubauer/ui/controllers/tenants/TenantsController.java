@@ -48,8 +48,8 @@ public class TenantsController implements Initializable {
         this.service.getAllTenants().forEach(p -> this.viewModel.getTenants().add(p));
 
         this.tableView.setItems(this.viewModel.getTenants());
-        /* this.titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-        this.firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        //this.titleColumn.setCellValueFactory();
+        /* this.firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         this.lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         this.landlineColumn.setCellValueFactory(new PropertyValueFactory<>("landline"));
         this.mobileColumn.setCellValueFactory(new PropertyValueFactory<>("mobile"));

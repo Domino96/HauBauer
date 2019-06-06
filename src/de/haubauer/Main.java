@@ -20,7 +20,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource(startFxml));
         primaryStage.setTitle("HausBauer");
 
-        primaryStage.setScene(new Scene(root, 600, 480));
+        primaryStage.setScene(new Scene(root, 1000, 800));
         primaryStage.show();
     }
 }

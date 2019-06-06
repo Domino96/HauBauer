@@ -30,11 +30,11 @@ public class Person extends DatedEntity{
     @JoinTable(name = "RentalPropertyPerson",
             joinColumns = {@JoinColumn(name = "personId")},
             inverseJoinColumns = {@JoinColumn(name = "RentalPropertyId")})
-    List<RentalProperty> rentalPropertys;
+    List<RentalProperty> rentalProperties;
 
     @OneToMany
     @JoinColumn(name = "tenancyId")
-    List<Tenancy> tenancy;
+    List<Tenancy> tenancies;
 
     @OneToOne
     @JoinColumn(name = "bankAccountId")

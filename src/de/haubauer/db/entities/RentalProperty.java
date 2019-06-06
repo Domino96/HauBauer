@@ -33,10 +33,10 @@ public class RentalProperty extends DatedEntity{
     int floor;
 
     @ManyToOne
-    @JoinColumn(name = "adressId")
+    @JoinColumn(name = "addressId")
     Address address;
 
-    @ManyToMany(mappedBy = "rentalPropertys")
+    @ManyToMany(mappedBy = "rentalProperties")
     List<Person> persons;
 
     @OneToMany
