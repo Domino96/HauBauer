@@ -14,8 +14,6 @@ public class RentalProperty extends DatedEntity{
     int rentalPropertyId;
 
     String description;
-    int zipCode;
-    String town;
     double area;
     BigDecimal squareMeterPriceCold;
     BigDecimal sideCostsMonth;
@@ -61,22 +59,6 @@ public class RentalProperty extends DatedEntity{
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public String getTown() {
-        return town;
-    }
-
-    public void setTown(String town) {
-        this.town = town;
     }
 
     public double getArea() {

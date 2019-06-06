@@ -12,7 +12,7 @@ public class User extends DatedEntity{
 
     String userName;
     String hash;
-    String fistName;
+    String firstName;
     String lastName;
     String phone;
     String email;
@@ -41,12 +41,12 @@ public class User extends DatedEntity{
         this.hash = hash;
     }
 
-    public String getFistName() {
-        return fistName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFistName(String fistName) {
-        this.fistName = fistName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {

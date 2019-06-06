@@ -1,6 +1,5 @@
 package src.de.haubauer.db.entities;
 
-import src.de.haubauer.enums.Role;
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,7 +17,6 @@ public class Person extends DatedEntity{
     String landline;
     String mobile;
     String email;
-    Role role;
 
     @ManyToMany
     @JoinTable(name = "AddressPerson",
@@ -40,6 +38,10 @@ public class Person extends DatedEntity{
     @JoinColumn(name = "bankAccountId")
     BankAccount bankAccount;
 
+    @ManyToOne
+    @JoinColumn(name = "userRoleId")
+    List<UserRole> userRoles;
+
     public int getPersonId() {
         return personId;
     }
@@ -52,12 +54,12 @@ public class Person extends DatedEntity{
         this.title = title;
     }
 
-    public String getFistName() {
-        return fistName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFistName(String fistName) {
-        this.fistName = fistName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -68,20 +70,20 @@ public class Person extends DatedEntity{
         this.lastName = lastName;
     }
 
-    public String getTelefon() {
-        return telefon;
+    public String getLandline() {
+        return landline;
     }
 
-    public void setTelefon(String telefon) {
-        this.telefon = telefon;
+    public void setLandline(String landline) {
+        this.landline = landline;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public String getEmail() {
@@ -92,13 +94,6 @@ public class Person extends DatedEntity{
         this.email = email;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
 
     public List<Address> getAddresses() {
         return addresses;
@@ -130,5 +125,13 @@ public class Person extends DatedEntity{
 
     public void setBankAccount(BankAccount bankAccount) {
         this.bankAccount = bankAccount;
+    }
+
+    public List<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(List<UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 }
