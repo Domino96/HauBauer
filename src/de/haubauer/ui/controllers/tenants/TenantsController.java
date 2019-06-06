@@ -48,11 +48,13 @@ public class TenantsController implements Initializable {
         this.service.getAllTenants().forEach(p -> this.viewModel.getTenants().add(p));
 
         this.tableView.setItems(this.viewModel.getTenants());
-        this.titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        /* this.titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         this.firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         this.lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         this.landlineColumn.setCellValueFactory(new PropertyValueFactory<>("landline"));
-        this.emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+        this.mobileColumn.setCellValueFactory(new PropertyValueFactory<>("mobile"));
+        this.bankAccountColumn.setCellValueFactory(new PropertyValueFactory<>());
+        this.emailColumn.setCellValueFactory(new PropertyValueFactory<>("email")); */
         // this.bankAccountColumn.setCellValueFactory(new PropertyValueFactory<>("bankAccount"));
 
         // selecting multiple table view items with SHIFT or STRG
