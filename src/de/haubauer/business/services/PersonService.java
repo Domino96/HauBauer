@@ -6,6 +6,7 @@ import src.de.haubauer.business.models.Person;
 import src.de.haubauer.db.PersonDao;
 import src.de.haubauer.enums.AddressStatus;
 import src.de.haubauer.enums.Role;
+import src.de.haubauer.helpers.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,14 @@ public class PersonService {
         }
 
         return tenants;
+    }
+
+    public void saveTenant(Person tenant) {
+        this.personDao.save(Mapper.map(tenant, src.de.haubauer.db.entities.Person.class));
+    }
+
+    public void updateTenant(Person tenant) {
+        this.personDao.update(Mapper.map(tenant, src.de.haubauer.db.entities.Person.class));
     }
 
     private Person generatePerson() {
