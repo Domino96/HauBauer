@@ -1,113 +1,164 @@
 package src.de.haubauer.business.models;
 
-import src.de.haubauer.db.entities.BankAccount;
+import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import src.de.haubauer.db.entities.RentalProperty;
 import src.de.haubauer.db.entities.Tenancy;
+import src.de.haubauer.enums.AddressStatus;
 import src.de.haubauer.enums.Role;
 
-import java.util.List;
+import java.util.Optional;
 
 public class Person {
     private int id;
-    private String title;
-    private String firstName;
-    private String lastName;
-    private String landline;
-    private String mobile;
-    private String email;
-    private Role role;
-    private List<Address> addresses;
-    private List<RentalProperty> rentalProperties;
-    private List<Tenancy> tenancies;
-    private BankAccount bankAccount;
-
-
+    private StringProperty title = new SimpleStringProperty("");
+    private StringProperty firstName = new SimpleStringProperty("");
+    private StringProperty lastName = new SimpleStringProperty("");
+    private StringProperty landline = new SimpleStringProperty("");
+    private StringProperty mobile = new SimpleStringProperty("");
+    private StringProperty email = new SimpleStringProperty("");
+    private ObjectProperty<Role> role = new SimpleObjectProperty<>(Role.Tenant);
+    private ObservableList<Address> addresses = FXCollections.observableArrayList();
+    private ObservableList<RentalProperty> rentalProperties = FXCollections.observableArrayList();
+    private ObservableList<Tenancy> tenancies = FXCollections.observableArrayList();
+    private ObjectProperty<BankAccount> bankAccount = new SimpleObjectProperty<>();
 
     public String getTitle() {
+        return title.get();
+    }
+
+    public StringProperty titleProperty() {
         return title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title.set(title);
     }
 
     public String getFirstName() {
+        return firstName.get();
+    }
+
+    public StringProperty firstNameProperty() {
         return firstName;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstName.set(firstName);
     }
 
     public String getLastName() {
+        return lastName.get();
+    }
+
+    public StringProperty lastNameProperty() {
         return lastName;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastName.set(lastName);
     }
 
     public String getLandline() {
+        return landline.get();
+    }
+
+    public StringProperty landlineProperty() {
         return landline;
     }
 
     public void setLandline(String landline) {
-        this.landline = landline;
+        this.landline.set(landline);
     }
 
     public String getMobile() {
+        return mobile.get();
+    }
+
+    public StringProperty mobileProperty() {
         return mobile;
     }
 
     public void setMobile(String mobile) {
-        this.mobile = mobile;
+        this.mobile.set(mobile);
     }
 
     public String getEmail() {
+        return email.get();
+    }
+
+    public StringProperty emailProperty() {
         return email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email.set(email);
     }
 
     public Role getRole() {
+        return role.get();
+    }
+
+    public Property<Role> roleProperty() {
         return role;
     }
 
     public void setRole(Role role) {
-        this.role = role;
+        this.role.set(role);
     }
 
-    public List<Address> getAddresses() {
+    public String getAddressString() {
+        Optional<Address> address = this.getAddresses().filtered(x -> x.getStatus() == AddressStatus.Primary).stream().findFirst();
+
+        if (address.isPresent()) {
+            return address.get().getReadableAddress();
+        }
+
+        return "";
+    }
+
+    public ObservableList<Address> getAddresses() {
         return addresses;
     }
 
-    public void setAddresses(List<Address> addresses) {
+    public void setAddresses(ObservableList<Address> addresses) {
         this.addresses = addresses;
     }
 
-    public List<RentalProperty> getRentalProperties() {
+    public ObservableList<RentalProperty> getRentalProperties() {
         return rentalProperties;
     }
 
-    public void setRentalProperties(List<RentalProperty> rentalProperties) {
+    public void setRentalProperties(ObservableList<RentalProperty> rentalProperties) {
         this.rentalProperties = rentalProperties;
     }
 
-    public List<Tenancy> getTenancies() {
+    public ObservableList<Tenancy> getTenancies() {
         return tenancies;
     }
 
-    public void setTenancies(List<Tenancy> tenancies) {
+    public void setTenancies(ObservableList<Tenancy> tenancies) {
         this.tenancies = tenancies;
     }
 
+    public String getBankAccountString() {
+        if (this.getBankAccount() == null) {
+            return "";
+        }
+
+        return this.getBankAccount().getBic();
+    }
+
     public BankAccount getBankAccount() {
+        return bankAccount.get();
+    }
+
+    public Property<BankAccount> bankAccountProperty() {
         return bankAccount;
     }
 
     public void setBankAccount(BankAccount bankAccount) {
-        this.bankAccount = bankAccount;
+        this.bankAccount.set(bankAccount);
     }
 }

@@ -6,7 +6,6 @@ import src.de.haubauer.business.models.Person;
 import src.de.haubauer.db.PersonDao;
 import src.de.haubauer.enums.AddressStatus;
 import src.de.haubauer.enums.Role;
-import src.de.haubauer.helpers.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +38,6 @@ public class PersonService {
         person.setLandline("051257987");
         person.setMobile("15775325");
 
-        List<Address> addresses = new ArrayList<>();
-
         Address address1 = new Address();
         address1.setNumber(random.nextInt(200));
         address1.setStreet("Superstraße");
@@ -55,9 +52,7 @@ public class PersonService {
             case 2: address1.setStatus(AddressStatus.Outdated); break;
         }
 
-        addresses.add(address1);
-
-        person.setAddresses(addresses);
+        person.getAddresses().add(address1);
 
         BankAccount bankAccount = new BankAccount();
 
@@ -66,6 +61,8 @@ public class PersonService {
         bankAccount.setIban("253634664643");
         bankAccount.setOwner("Saimann Laidwig");
         bankAccount.setPerson(person);
+
+        person.setBankAccount(bankAccount);
 
         return person;
     }

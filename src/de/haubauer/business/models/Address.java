@@ -29,6 +29,10 @@ public class Address {
         this.street = street;
     }
 
+    public String getReadableAddress() {
+        return this.getStreet() + " " + this.getNumber();
+    }
+
     public int getNumber() {
         return number;
     }

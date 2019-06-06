@@ -1,5 +1,6 @@
 package src.de.haubauer.ui.controllers.tenants;
 
+import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -48,6 +49,9 @@ public class TenantsController implements Initializable {
         this.service.getAllTenants().forEach(p -> this.viewModel.getTenants().add(p));
 
         this.tableView.setItems(this.viewModel.getTenants());
+
+        this.addressColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getAddressString(), cell.getValue().getAddresses()));
+        this.bankAccountColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getBankAccountString(), cell.getValue().bankAccountProperty()));
         //this.titleColumn.setCellValueFactory();
         /* this.firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         this.lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
