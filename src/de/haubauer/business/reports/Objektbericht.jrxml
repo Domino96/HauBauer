@@ -275,7 +275,7 @@ Tel. 0123-5555563]]></text>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="303" splitType="Stretch">
+		<band height="341" splitType="Stretch">
 			<rectangle>
 				<reportElement x="-20" y="1" width="595" height="21" forecolor="rgba(0, 0, 0, 0.0)" backcolor="#337CB8" uuid="2487923b-519a-4a2b-90fb-a6d3fd1d60b0"/>
 			</rectangle>
@@ -382,7 +382,7 @@ Tel. 0123-5555563]]></text>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="Einnahmeübersicht" uuid="98f00068-b2c1-4d86-babd-0367ae7d62df">
-						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource() ]]></dataSourceExpression>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="100" uuid="ad261e96-3cb5-4ce9-a951-8aa2257f4491">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
@@ -656,7 +656,7 @@ Tel. 0123-5555563]]></text>
 				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="-20" y="34" width="60" height="30" uuid="704c0cff-9dfd-4bb6-947a-c68ac797fd2d"/>
+				<reportElement x="-14" y="34" width="60" height="30" uuid="704c0cff-9dfd-4bb6-947a-c68ac797fd2d"/>
 				<text><![CDATA[Erstellt am:]]></text>
 			</staticText>
 			<textField pattern="MMMMM dd, yyyy">
