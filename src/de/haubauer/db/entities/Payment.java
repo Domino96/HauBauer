@@ -22,4 +22,8 @@ public class Payment extends DatedEntity{
     @ManyToOne
     @JoinColumn(name = "tenancyId")
     Tenancy tenancy;
+
+    @ManyToOne
+    @JoinColumn(name = "paymentTypeId")
+    src.de.haubauer.db.entities.PaymentType paymentType;
 }

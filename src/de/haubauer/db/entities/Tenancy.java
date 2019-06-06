@@ -27,4 +27,6 @@ public class Tenancy extends DatedEntity{
     @JoinColumn(name = "rentalPropertyId")
     RentalProperty rentalProperty;
 
+
+
 }

@@ -37,4 +37,6 @@ public class Person extends DatedEntity{
     @OneToOne
     @JoinColumn(name = "bankAccountId")
     BankAccount bankAccount;
+
+
 }
