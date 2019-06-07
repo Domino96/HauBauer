@@ -44,8 +44,13 @@ public class BaseDao<T> {
             session.save(entities.get(i));
 
             if (i % 20 == 0) {
-                session.flush();
-                session.clear();
+                try {
+                    session.flush();
+                    session.clear();
+                }
+                catch (Exception e){
+                    System.out.println(e);
+                }
             }
         }
 
