@@ -9,39 +9,39 @@ public class RentalType extends DatedEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int rentalTypeId;
-    String rentalTypeName;
-    String rentalTypeDescription;
+    private int rentalTypeId;
+    private String name;
+    private String description;
 
     @OneToMany
     @JoinColumn(name = "rentalPropertyId")
-    List<RentalProperty> RentalProperty;
+    private List<RentalProperty> rentalProperties;
 
     public int getRentalTypeId() {
         return rentalTypeId;
     }
 
-    public String getRentalTypeName() {
-        return rentalTypeName;
+    public String getName() {
+        return name;
     }
 
-    public void setRentalTypeName(String rentalTypeName) {
-        this.rentalTypeName = rentalTypeName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getRentalTypeDescription() {
-        return rentalTypeDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setRentalTypeDescription(String rentalTypeDescription) {
-        this.rentalTypeDescription = rentalTypeDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public List<src.de.haubauer.db.entities.RentalProperty> getRentalProperty() {
-        return RentalProperty;
+    public List<src.de.haubauer.db.entities.RentalProperty> getRentalProperties() {
+        return rentalProperties;
     }
 
-    public void setRentalProperty(List<src.de.haubauer.db.entities.RentalProperty> rentalProperty) {
-        RentalProperty = rentalProperty;
+    public void setRentalProperties(List<src.de.haubauer.db.entities.RentalProperty> rentalProperties) {
+        this.rentalProperties = rentalProperties;
     }
 }

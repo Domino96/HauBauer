@@ -8,33 +8,33 @@ import java.util.List;
 public class PaymentType extends DatedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int paymentTypeId;
+    private int paymentTypeId;
 
-    String paymentTypeName;
-    String PaymentTypeDescription;
+    private String name;
+    private String description;
 
     @OneToMany
     @JoinColumn(name = "paymentId")
-    List<Payment> Payments;
+    private List<Payment> Payments;
 
     public int getPaymentTypeId() {
         return paymentTypeId;
     }
 
-    public String getPaymentTypeName() {
-        return paymentTypeName;
+    public String getName() {
+        return name;
     }
 
-    public void setPaymentTypeName(String paymentTypeName) {
-        this.paymentTypeName = paymentTypeName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getPaymentTypeDescription() {
-        return PaymentTypeDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPaymentTypeDescription(String paymentTypeDescription) {
-        PaymentTypeDescription = paymentTypeDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<Payment> getPayments() {

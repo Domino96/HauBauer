@@ -9,38 +9,38 @@ import java.util.List;
 public class Person extends DatedEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int personId;
+    private int personId;
 
-    String title;
-    String firstName;
-    String lastName;
-    String landline;
-    String mobile;
-    String email;
+    private String title;
+    private String firstName;
+    private String lastName;
+    private String landline;
+    private String mobile;
+    private String email;
 
     @ManyToMany
     @JoinTable(name = "AddressPerson",
                 joinColumns = {@JoinColumn(name = "personId")},
                 inverseJoinColumns = {@JoinColumn(name = "addressId")})
-    List<Address> addresses;
+    private List<Address> addresses;
 
     @ManyToMany
     @JoinTable(name = "RentalPropertyPerson",
             joinColumns = {@JoinColumn(name = "personId")},
             inverseJoinColumns = {@JoinColumn(name = "RentalPropertyId")})
-    List<RentalProperty> rentalPropertys;
+    private List<RentalProperty> rentalProperties;
 
     @OneToMany
     @JoinColumn(name = "tenancyId")
-    List<Tenancy> tenancy;
+    private List<Tenancy> tenancies;
 
     @OneToOne
     @JoinColumn(name = "bankAccountId")
-    BankAccount bankAccount;
+    private BankAccount bankAccount;
 
     @ManyToOne
     @JoinColumn(name = "userRoleId")
-    List<UserRole> userRoles;
+    private List<UserRole> userRoles;
 
     public int getPersonId() {
         return personId;
@@ -104,19 +104,19 @@ public class Person extends DatedEntity{
     }
 
     public List<RentalProperty> getRentalPropertys() {
-        return rentalPropertys;
+        return rentalProperties;
     }
 
     public void setRentalPropertys(List<RentalProperty> rentalPropertys) {
-        this.rentalPropertys = rentalPropertys;
+        this.rentalProperties = rentalPropertys;
     }
 
     public List<Tenancy> getTenancy() {
-        return tenancy;
+        return this.tenancies;
     }
 
     public void setTenancy(List<Tenancy> tenancy) {
-        this.tenancy = tenancy;
+        this.tenancies = tenancy;
     }
 
     public BankAccount getBankAccount() {

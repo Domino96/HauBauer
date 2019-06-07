@@ -4,11 +4,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import src.de.haubauer.helpers.Singleton;
 
 import java.util.List;
 
-public class BaseDao<T> extends Singleton {
+public class BaseDao<T> {
     private final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
     private Session session;
     private Class<T> clazz;
@@ -38,6 +37,21 @@ public class BaseDao<T> extends Singleton {
         transaction.commit();
     }
 
+    public final void save(List<T> entities) {
+        Transaction transaction = session.beginTransaction();
+
+        for (int i = 0; i < entities.size(); i++) {
+            session.save(entities.get(i));
+
+            if (i % 20 == 0) {
+                session.flush();
+                session.clear();
+            }
+        }
+
+        transaction.commit();
+    }
+
     @SafeVarargs
     public final void update(T... entities) {
         Transaction transaction = session.beginTransaction();
@@ -54,12 +68,42 @@ public class BaseDao<T> extends Singleton {
         transaction.commit();
     }
 
+    public final void update(List<T> entities) {
+        Transaction transaction = session.beginTransaction();
+
+        for (int i = 0; i < entities.size(); i++) {
+            session.update(entities.get(i));
+
+            if (i % 20 == 0) {
+                session.flush();
+                session.clear();
+            }
+        }
+
+        transaction.commit();
+    }
+
     @SafeVarargs
     public final void delete(T... entities) {
         Transaction transaction = session.beginTransaction();
 
         for (int i = 0; i < entities.length; i++) {
             session.delete(entities[i]);
+
+            if (i % 20 == 0) {
+                session.flush();
+                session.clear();
+            }
+        }
+
+        transaction.commit();
+    }
+
+    public final void delete(List<T> entities) {
+        Transaction transaction = session.beginTransaction();
+
+        for (int i = 0; i < entities.size(); i++) {
+            session.delete(entities.get(i));
 
             if (i % 20 == 0) {
                 session.flush();

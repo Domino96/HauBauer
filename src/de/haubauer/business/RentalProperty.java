@@ -1,9 +1,9 @@
 package src.de.haubauer.business;
 
 import src.de.haubauer.db.BaseDao;
-import src.de.haubauer.db.entities.RentalType;
 import src.de.haubauer.db.entities.Tenancy;
-import src.de.haubauer.db.entities.UsageType;
+import src.de.haubauer.enums.RentalType;
+import src.de.haubauer.enums.UsageType;
 
 import java.math.BigDecimal;
 import java.util.List;

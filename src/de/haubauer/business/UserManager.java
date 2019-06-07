@@ -1,10 +1,25 @@
 package src.de.haubauer.business;
 
 import src.de.haubauer.db.entities.User;
-import src.de.haubauer.helpers.Singleton;
 
-public class UserManager extends Singleton {
+public class UserManager {
     private User loggedInUser;
+
+    private static UserManager instance;
+
+    public static UserManager getInstance() {
+        if (instance == null) {
+            try {
+                instance = new UserManager();
+            } catch (Exception e) {
+                throw new RuntimeException(e.getMessage(), e.getCause());
+            }
+        }
+
+        return instance;
+    }
+
+    private UserManager() {}
 
     /**
      * Versucht, den User mit dem gewählten Benutzername und Passwort einzuloggen.

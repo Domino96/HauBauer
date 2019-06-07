@@ -8,39 +8,39 @@ import java.util.List;
 public class UserRole extends DatedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int userRoleId;
+    private int userRoleId;
 
-    String userRoleName;
-    String userRoleDescription;
+    private String name;
+    private String description;
     @OneToMany
     @JoinColumn(name = "userId")
-    List<User> Users;
+    private List<User> users;
 
     public int getUserRoleId() {
         return userRoleId;
     }
 
-    public String getUserRoleName() {
-        return userRoleName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserRoleName(String userRoleNameName) {
-        this.userRoleName = userRoleName;
+    public void setName(String userRoleNameName) {
+        this.name = userRoleNameName;
     }
 
-    public String getUserRoleDescription() {
-        return userRoleDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setUserRoleDescription(String userRoleDescription) {
-        this.userRoleDescription = userRoleDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<User> getUsers() {
-        return Users;
+        return users;
     }
 
     public void setUsers(List<User> Users) {
-        this.Users = Users;
+        this.users = Users;
     }
 }

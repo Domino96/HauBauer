@@ -9,12 +9,12 @@ public class UsageType extends DatedEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int usageTypeId;
-    String usageTypeName;
-    String usageTypeDescription;
+    private int usageTypeId;
+    private String name;
+    private String description;
     @OneToMany
     @JoinColumn(name = "rentalPropertyId")
-    List<RentalProperty> RentalProperty;
+    private List<RentalProperty> rentalProperties;
 
 
     //GETTER    AND     SETTER
@@ -24,28 +24,28 @@ public class UsageType extends DatedEntity{
         return usageTypeId;
     }
 
-    public String getUsageTypeName() {
-        return usageTypeName;
+    public String getName() {
+        return name;
     }
 
-    public void setUsageTypeName(String usageTypeName) {
-        this.usageTypeName = usageTypeName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getUsageTypeDescription() {
-        return usageTypeDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setUsageTypeDescription(String usageTypeDescription) {
-        this.usageTypeDescription = usageTypeDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public List<src.de.haubauer.db.entities.RentalProperty> getRentalProperty() {
-        return RentalProperty;
+    public List<src.de.haubauer.db.entities.RentalProperty> getRentalProperties() {
+        return rentalProperties;
     }
 
-    public void setRentalProperty(List<src.de.haubauer.db.entities.RentalProperty> rentalProperty) {
-        RentalProperty = rentalProperty;
+    public void setRentalProperties(List<src.de.haubauer.db.entities.RentalProperty> rentalProperties) {
+        this.rentalProperties = rentalProperties;
     }
 }
 

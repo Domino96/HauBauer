@@ -11,42 +11,42 @@ import java.util.List;
 public class RentalProperty extends DatedEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int rentalPropertyId;
+    private int rentalPropertyId;
 
-    String description;
-    double area;
-    BigDecimal squareMeterPriceCold;
-    BigDecimal sideCostsMonth;
-    String note;
+    private String description;
+    private double area;
+    private BigDecimal squareMeterPriceCold;
+    private BigDecimal sideCostsMonth;
+    private String note;
     @OneToMany
     @JoinColumn(name = "parent")
-    List<RentalProperty> children = new ArrayList<RentalProperty>();
+    private List<RentalProperty> children = new ArrayList<RentalProperty>();
     @ManyToOne
-    RentalProperty parent;
-    int floor;
+    private RentalProperty parent;
+    private int floor;
 
     @ManyToOne
-    @JoinColumn(name = "adressId")
-    Address address;
+    @JoinColumn(name = "addressId")
+    private Address address;
 
-    @ManyToMany(mappedBy = "rentalPropertys")
-    List<Person> persons;
+    @ManyToMany(mappedBy = "rentalProperties")
+    private List<Person> people;
 
     @OneToMany
     @JoinColumn(name = "tenancyId")
-    List<Tenancy> tenancy;
+    private List<Tenancy> tenancy;
 
     @ManyToOne
     @JoinColumn(name = "usageTypeId")
-    UsageType usageType;
+    private UsageType usageType;
 
     @ManyToOne
     @JoinColumn(name = "rentalTypeId")
-    RentalType rentalType;
+    private RentalType rentalType;
 
     @ManyToOne
     @JoinColumn(name = "rentalRoleId")
-    RentalRole rentalRole;
+    private RentalRole rentalRole;
 
 
     public int getRentalPropertyId() {
@@ -125,12 +125,12 @@ public class RentalProperty extends DatedEntity{
         this.address = address;
     }
 
-    public List<Person> getPersons() {
-        return persons;
+    public List<Person> getPeople() {
+        return people;
     }
 
-    public void setPersons(List<Person> persons) {
-        this.persons = persons;
+    public void setPeople(List<Person> people) {
+        this.people = people;
     }
 
     public List<Tenancy> getTenancy() {
