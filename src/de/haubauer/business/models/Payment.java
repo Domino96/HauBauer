@@ -1,33 +1,23 @@
-package src.de.haubauer.db.entities;
+package src.de.haubauer.business.models;
 
+import src.de.haubauer.enums.PaymentType;
 import src.de.haubauer.helpers.DatedObject;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Entity
-@Table(name = "Payment")
 public class Payment extends DatedObject {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int paymentId;
+    private int id;
 
     private Date date;
     private BigDecimal value;
     private BigDecimal billed;
     private String comment;
-
-    @ManyToOne
-    @JoinColumn(name = "tenancyId")
     private Tenancy tenancy;
-
-    @ManyToOne
-    @JoinColumn(name = "paymentTypeId")
     private PaymentType paymentType;
 
-    public int getPaymentId() {
-        return paymentId;
+    public int getId() {
+        return id;
     }
 
     public Date getDate() {
