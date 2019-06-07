@@ -72,6 +72,9 @@
         <attribute name="street">
             <value name="street"/>
         </attribute>
+        <attribute name="phoneNumber">
+            <value name="phoneNumber"/>
+        </attribute>
         <attribute name="number">
             <value name="number"/>
         </attribute>

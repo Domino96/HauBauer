@@ -3,6 +3,7 @@ package src.de.haubauer.business.models;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 import src.de.haubauer.db.entities.RentalProperty;
 import src.de.haubauer.db.entities.Tenancy;
 import src.de.haubauer.enums.AddressStatus;
@@ -108,13 +109,15 @@ public class Person {
     }
 
     public String getAddressString() {
-        Optional<Address> address = this.getAddresses().filtered(x -> x.getStatus() == AddressStatus.Primary).stream().findFirst();
+        final SortedList<Address> sortedAddresses = this.getAddresses().sorted();
 
-        if (address.isPresent()) {
-            return address.get().getReadableAddress();
+        if (sortedAddresses.isEmpty()) {
+            return "";
         }
 
-        return "";
+        final Address lastAddress = sortedAddresses.get(sortedAddresses.size() - 1).clone();
+
+        return lastAddress.getReadableAddress();
     }
 
     public ObservableList<Address> getAddresses() {
