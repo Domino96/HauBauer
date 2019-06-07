@@ -15,7 +15,7 @@ public class PaymentType extends DatedObject {
     private String name;
     private String description;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "paymentId")
     private List<Payment> Payments;
 

@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import de.haubauer.business.services.PersonService;
 import de.haubauer.ui.viewmodels.TenantsDialogViewModel;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.text.NumberFormat;
@@ -63,6 +64,10 @@ public abstract class TenantsDialogController implements Initializable {
 
     @FXML
     private TextField bankField;
+
+    protected Stage getStage() {
+        return (Stage) this.title.getScene().getWindow();
+    }
 
     public TenantsDialogController(String title) {
         this.viewModel.setTitle(title);

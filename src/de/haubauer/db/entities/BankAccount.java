@@ -16,7 +16,7 @@ public class BankAccount extends DatedObject {
     private String owner;
     private String bank;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "personId")
     private Person person;
 

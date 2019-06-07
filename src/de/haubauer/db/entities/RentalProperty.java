@@ -20,33 +20,33 @@ public class RentalProperty extends DatedObject {
     private BigDecimal squareMeterPriceCold;
     private BigDecimal sideCostsMonth;
     private String note;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "parent")
     private List<RentalProperty> children = new ArrayList<RentalProperty>();
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private RentalProperty parent;
     private int floor;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "addressId")
     private Address address;
 
-    @ManyToMany(mappedBy = "rentalProperties")
+    @ManyToMany(mappedBy = "rentalProperties", cascade = CascadeType.ALL)
     private List<Person> people;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "tenancyId")
     private List<Tenancy> tenancy;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "usageTypeId")
     private UsageType usageType;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "rentalTypeId")
     private RentalType rentalType;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "rentalRoleId")
     private RentalRole rentalRole;
 

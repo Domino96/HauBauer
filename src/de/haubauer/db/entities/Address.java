@@ -20,11 +20,11 @@ public class Address extends DatedObject {
     private String phoneNumber;
     private AddressStatus status;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "rentalPropertyId")
     private List<RentalProperty> rentalProperties;
 
-    @ManyToMany(mappedBy = "addresses")
+    @ManyToMany(mappedBy = "addresses", cascade = CascadeType.ALL)
     private List<Person> people;
 
     public int getAddressId() {

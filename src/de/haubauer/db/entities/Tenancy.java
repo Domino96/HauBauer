@@ -17,15 +17,15 @@ public class Tenancy extends DatedObject {
     private Date endDate;
     private int status;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "personId")
     private Person person;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "paymentId")
     private List<Payment> payments;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "rentalPropertyId")
     private RentalProperty rentalProperty;
 

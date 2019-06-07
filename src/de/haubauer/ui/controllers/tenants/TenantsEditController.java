@@ -11,5 +11,7 @@ public class TenantsEditController extends TenantsDialogController {
 
     public void save() {
         this.service.updateTenant(this.viewModel.getTenant());
+
+        this.getStage().close();
     }
 }

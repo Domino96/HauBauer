@@ -14,7 +14,7 @@ public class UsageType extends DatedObject {
     private int usageTypeId;
     private String name;
     private String description;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "rentalPropertyId")
     private List<RentalProperty> rentalProperties;
 

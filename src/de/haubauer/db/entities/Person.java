@@ -20,23 +20,23 @@ public class Person extends DatedObject {
     private String mobile;
     private String email;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "AddressPerson",
                 joinColumns = {@JoinColumn(name = "personId")},
                 inverseJoinColumns = {@JoinColumn(name = "addressId")})
     private List<Address> addresses;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "RentalPropertyPerson",
             joinColumns = {@JoinColumn(name = "personId")},
             inverseJoinColumns = {@JoinColumn(name = "RentalPropertyId")})
     private List<RentalProperty> rentalProperties;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "tenancyId")
     private List<Tenancy> tenancies;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "bankAccountId")
     private BankAccount bankAccount;
     

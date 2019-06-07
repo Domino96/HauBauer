@@ -7,5 +7,7 @@ public class TenantsAddController extends TenantsDialogController {
 
     public void save() {
         this.service.saveTenant(this.viewModel.getTenant());
+
+        this.getStage().close();
     }
 }

@@ -18,7 +18,7 @@ public class User extends DatedObject {
     private String phone;
     private String email;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userRoleId")
     private UserRole userRole;
 

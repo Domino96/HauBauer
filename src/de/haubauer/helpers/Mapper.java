@@ -1,15 +1,23 @@
 package de.haubauer.helpers;
 
-import it.avutils.jmapper.JMapper;
-import javafx.beans.property.Property;
-import javafx.beans.value.ObservableValue;
+import org.modelmapper.ModelMapper;
 
 import java.util.List;
-import java.util.Observable;
 import java.util.stream.Collectors;
 
 public class Mapper {
-    private static final String configurationPath = "de/haubauer/mappings.xml";
+    private static Mapper instance;
+    private ModelMapper modelMapper = new ModelMapper();
+
+    private Mapper() { }
+
+    public static Mapper getInstance() {
+        if (Mapper.instance == null) {
+            Mapper.instance = new Mapper();
+        }
+
+        return Mapper.instance;
+    }
 
     /**
      * Mappt das angegebene Objekt zur angegebenen Klasse.
@@ -19,10 +27,8 @@ public class Mapper {
      * @param <TDestination> Den Typ des Zielobjektes.
      * @return Eine Instanz von TDestination, das die Werte des Quellobjektes enthält.
      */
-    public static <TSource, TDestination> TDestination map(TSource source, Class<TDestination> destinationClass) {
-        JMapper<TDestination, TSource> mapper = new JMapper<>(destinationClass, (Class<TSource>)source.getClass(), configurationPath);
-
-        return mapper.getDestination(source);
+    public <TSource, TDestination> TDestination map(TSource source, Class<TDestination> destinationClass) {
+        return this.modelMapper.map(source, destinationClass);
     }
 
     /**
@@ -33,9 +39,9 @@ public class Mapper {
      * @param <TDestination> Den Typ der Zielobjekte.
      * @return Eine ArrayList, die die Zielobjekte enthält.
      */
-    public static <TSource, TDestination> List<TDestination> map(List<TSource> source, Class<TDestination> destinationClass) {
+    /*public static <TSource, TDestination> List<TDestination> map(List<TSource> source, Class<TDestination> destinationClass) {
         JMapper<TDestination, TSource> mapper = new JMapper<>(destinationClass, (Class<TSource>)source.getClass(), configurationPath);
 
         return source.stream().map(mapper::getDestination).collect(Collectors.toList());
-    }
+    }*/
 }

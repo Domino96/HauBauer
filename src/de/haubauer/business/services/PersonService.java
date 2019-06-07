@@ -28,11 +28,11 @@ public class PersonService {
     }
 
     public void saveTenant(Person tenant) {
-        this.personDao.save(Mapper.map(tenant, de.haubauer.db.entities.Person.class));
+        this.personDao.save(Mapper.getInstance().map(tenant, de.haubauer.db.entities.Person.class));
     }
 
     public void updateTenant(Person tenant) {
-        this.personDao.update(Mapper.map(tenant, de.haubauer.db.entities.Person.class));
+        this.personDao.update(Mapper.getInstance().map(tenant, de.haubauer.db.entities.Person.class));
     }
 
     private Person generatePerson() {
