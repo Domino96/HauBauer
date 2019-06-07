@@ -1,4 +1,4 @@
-package sample;
+package src.de.haubauer.ui.controllers;
 
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -22,15 +22,15 @@ public class SceneController {
         this.main = scene;
     }
 
-    protected void addScreen(String name, Pane pane){
+    public void addScreen(String name, Pane pane){
         screenMap.put(name, pane);
     }
 
-    protected void removeScreen(String name){
+    public void removeScreen(String name){
         screenMap.remove(name);
     }
 
-    protected void activate(String name){
+    public void activate(String name){
         main.setRoot( screenMap.get(name) );
     }
 }

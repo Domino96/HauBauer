@@ -2,6 +2,7 @@ package src.de.haubauer.ui.controllers.tenants;
 
 import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -11,6 +12,7 @@ import javafx.stage.Stage;
 import src.de.haubauer.business.models.Person;
 import src.de.haubauer.business.services.PersonService;
 import src.de.haubauer.ui.FxmlLibrary;
+import src.de.haubauer.ui.controllers.SceneController;
 import src.de.haubauer.ui.viewmodels.TenantsViewModel;
 
 import java.io.IOException;
@@ -72,5 +74,9 @@ public class TenantsController implements Initializable {
             dialog.setScene(new Scene(FxmlLibrary.getTenantsEditDialog(this.viewModel.getSelectedTenants().get(0)), 500, 700));
             dialog.show();
         }
+    }
+
+    public void onDashboardClicked(ActionEvent actionEvent) {
+        SceneController.getInstance().activate("Dashboard");
     }
 }

@@ -5,18 +5,16 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="633.0" style="-fx-background-color: #d3d3d3;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.de.haubauer.ui.controllers.tenants.TenantsController">
     <children>
-        <ToolBar prefHeight="60.0" prefWidth="633.0">
+        <ToolBar prefHeight="64.0" prefWidth="141.0">
             <items>
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" text="Dashboard" />
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" text="Mietobjekt" />
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" style="-fx-background-color: #B5B5B5;" text="Mieterstammdaten" />
+                <Button mnemonicParsing="false" onAction="#onDashboardClicked" prefHeight="50.0" prefWidth="121.0" text="Dashboard" />
             </items>
         </ToolBar>
         <Button layoutX="14.0" layoutY="64.0" mnemonicParsing="false" onAction="#addItem" prefHeight="50.0" prefWidth="57.0">
@@ -74,5 +72,10 @@
         </columns>
       </TableView>
       <Button layoutX="498.0" layoutY="67.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" text="Reports generieren" />
+        <ToolBar layoutX="135.0" layoutY="-4.0" prefHeight="72.0" prefWidth="492.0">
+            <items>
+                <fx:include fx:id="navigationToolbar" source="../Navigation_toolbar.fxml" />
+            </items>
+        </ToolBar>
     </children>
 </Pane>

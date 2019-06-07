@@ -1,4 +1,4 @@
-package sample;
+package src.de.haubauer.ui.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +14,7 @@ public class Controller  {
 
     @FXML
     private void onMietobjektClicked(ActionEvent event) {
-        SceneController.getInstance().activate("Mieterstammdaten");
+        SceneController.getInstance().activate("Mietobjekt");
     }
 
     @FXML
