@@ -36,6 +36,7 @@ public class TenantsController implements Initializable {
 
         this.tableView.setItems(this.viewModel.getTenants());
         this.tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        this.viewModel.setSelectedTenants(this.tableView.getSelectionModel().getSelectedItems());
 
         // create bindings from getters
         this.addressColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getAddressString(), cell.getValue().getAddresses()));
@@ -43,7 +44,6 @@ public class TenantsController implements Initializable {
     }
 
     public void deleteItems() {
-        final ObservableList<Person> itemsToDelete = tableView.getSelectionModel().getSelectedItems();
         final Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Sind Sie sicher?");
         alert.setHeaderText("Löschen");
@@ -52,7 +52,7 @@ public class TenantsController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            this.viewModel.getTenants().removeAll(itemsToDelete);
+            this.viewModel.getTenants().removeAll(this.viewModel.getSelectedTenants());
         }
     }
 
@@ -65,10 +65,12 @@ public class TenantsController implements Initializable {
     }
 
     public void editItem() throws IOException {
-        final Stage dialog = new Stage();
-        dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.setTitle("Mietstammdatensatz bearbeiten");
-        dialog.setScene(new Scene(FxmlLibrary.getTenantsEditDialog(), 500, 700));
-        dialog.show();
+        if (this.viewModel.getSelectedTenants().size() == 1) {
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.setTitle("Mietstammdatensatz bearbeiten");
+            dialog.setScene(new Scene(FxmlLibrary.getTenantsEditDialog(this.viewModel.getSelectedTenants().get(0)), 500, 700));
+            dialog.show();
+        }
     }
 }
