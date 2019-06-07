@@ -40,9 +40,6 @@ public class Person extends DatedObject {
     @JoinColumn(name = "bankAccountId")
     private BankAccount bankAccount;
 
-    @ManyToOne
-    @JoinColumn(name = "userRoleId")
-    private List<UserRole> userRoles;
 
     public int getPersonId() {
         return personId;
@@ -96,7 +93,6 @@ public class Person extends DatedObject {
         this.email = email;
     }
 
-
     public List<Address> getAddresses() {
         return addresses;
     }
@@ -129,11 +125,4 @@ public class Person extends DatedObject {
         this.bankAccount = bankAccount;
     }
 
-    public List<UserRole> getUserRoles() {
-        return userRoles;
-    }
-
-    public void setUserRoles(List<UserRole> userRoles) {
-        this.userRoles = userRoles;
-    }
 }
