@@ -1,8 +1,7 @@
-package src.de.haubauer.business;
+package src.de.haubauer.business.models;
 
 import src.de.haubauer.business.models.UsageType;
 import src.de.haubauer.db.BaseDao;
-import src.de.haubauer.db.entities.Tenancy;
 
 
 import java.math.BigDecimal;
@@ -23,6 +22,7 @@ public class RentalProperty {
    private Tenancy currentTenancy;
    private List<Tenancy> pastTenancy;
    private RentalProperty parent;
+   private UsageType usageType;
    private int floor;
 
    BaseDao<RentalProperty> rentalDao = new BaseDao<>(RentalProperty.class);
