@@ -17,9 +17,13 @@ public class Mapper {
      * @return Eine Instanz von TDestination, das die Werte des Quellobjektes enthält.
      */
     public static <TSource, TDestination> TDestination map(TSource source, Class<TDestination> destinationClass) {
-        JMapper<TDestination, TSource> mapper = new JMapper<>(destinationClass, (Class<TSource>)source.getClass(), configurationPath);
+        try {
+            JMapper<TDestination, TSource> mapper = new JMapper<>(destinationClass, (Class<TSource>)source.getClass(), configurationPath);
 
-        return mapper.getDestination(source);
+            return mapper.getDestination(source);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     /**

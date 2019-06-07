@@ -29,23 +29,23 @@
         </rowConstraints>
          <children>
             <Label text="Anrede" />
-            <Label text="Voranme" GridPane.rowIndex="1" />
+            <Label text="Vorname" GridPane.rowIndex="1" />
             <Label text="Nachname" GridPane.rowIndex="2" />
             <Label text="Anschrift" GridPane.rowIndex="3" />
             <Label text="Telefonnummer" GridPane.rowIndex="4" />
             <Label text="E-Mail" GridPane.rowIndex="5" />
             <Label text="Kontoverbindung" GridPane.rowIndex="6" />
-            <TextField text="Herr" GridPane.columnIndex="1" />
-            <TextField text="Christian" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField text="Mustermann" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField text="Am Hackenbruch 51, 40229" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField text="01745151053" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField text="haubau@gmail.com" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextField text="DE748599652174485752" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="141.0" text="Speichern" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <TextField fx:id="titleField" GridPane.columnIndex="1" />
+            <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="landlineField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="bankAccountField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="141.0" onAction="#save" text="Speichern" GridPane.columnIndex="1" GridPane.rowIndex="8" />
          </children>
       </GridPane>
-      <Label layoutX="78.0" layoutY="24.0" text="Stammdaten bearbeiten">
+      <Label fx:id="title" layoutX="78.0" layoutY="24.0" text="[PLACEHOLDER]">
          <font>
             <Font size="22.0" />
          </font>

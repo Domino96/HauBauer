@@ -8,18 +8,18 @@ import java.util.List;
 public class User extends DatedEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int userId;
+    private int userId;
 
-    String userName;
-    String hash;
-    String firstName;
-    String lastName;
-    String phone;
-    String email;
+    private String userName;
+    private String hash;
+    private String firstName;
+    private String lastName;
+    private String phone;
+    private String email;
 
     @ManyToOne
     @JoinColumn(name = "userRoleId")
-    UserRole userRole;
+    private UserRole userRole;
 
     public int getUserId() {
         return userId;

@@ -9,23 +9,23 @@ import java.util.List;
 public class Tenancy extends DatedEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int tenancyId;
+    private int tenancyId;
 
-    Date startDate;
-    Date endDate;
-    int status;
+    private Date startDate;
+    private Date endDate;
+    private int status;
 
     @ManyToOne
     @JoinColumn(name = "personId")
-    Person person;
+    private Person person;
 
     @OneToMany
     @JoinColumn(name = "paymentId")
-    List<Payment> payment;
+    private List<Payment> payments;
 
     @ManyToOne
     @JoinColumn(name = "rentalPropertyId")
-    RentalProperty rentalProperty;
+    private RentalProperty rentalProperty;
 
     public int getTenancyId() {
         return tenancyId;
@@ -63,12 +63,12 @@ public class Tenancy extends DatedEntity{
         this.person = person;
     }
 
-    public List<Payment> getPayment() {
-        return payment;
+    public List<Payment> getPayments() {
+        return payments;
     }
 
-    public void setPayment(List<Payment> payment) {
-        this.payment = payment;
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
     }
 
     public RentalProperty getRentalProperty() {

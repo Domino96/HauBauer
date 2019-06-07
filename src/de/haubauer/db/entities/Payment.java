@@ -11,21 +11,21 @@ import java.util.Date;
 public class Payment extends DatedEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int paymentId;
+    private int paymentId;
 
-    Date date;
-    BigDecimal value;
-    BigDecimal billed;
-    PaymentType type = PaymentType.Payment;
-    String comment;
+    private Date date;
+    private BigDecimal value;
+    private BigDecimal billed;
+    private PaymentType type = PaymentType.Payment;
+    private String comment;
 
     @ManyToOne
     @JoinColumn(name = "tenancyId")
-    Tenancy tenancy;
+    private Tenancy tenancy;
 
     @ManyToOne
     @JoinColumn(name = "paymentTypeId")
-    src.de.haubauer.db.entities.PaymentType paymentType;
+    private PaymentType paymentType;
 
     public int getPaymentId() {
         return paymentId;
@@ -79,11 +79,11 @@ public class Payment extends DatedEntity{
         this.tenancy = tenancy;
     }
 
-    public src.de.haubauer.db.entities.PaymentType getPaymentType() {
+    public PaymentType getPaymentType() {
         return paymentType;
     }
 
-    public void setPaymentType(src.de.haubauer.db.entities.PaymentType paymentType) {
+    public void setPaymentType(PaymentType paymentType) {
         this.paymentType = paymentType;
     }
 }

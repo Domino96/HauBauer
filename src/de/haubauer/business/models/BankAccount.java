@@ -1,25 +1,16 @@
-package src.de.haubauer.db.entities;
+package src.de.haubauer.business.models;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "BankAccount")
-public class BankAccount extends DatedEntity{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int bankAccountId;
+public class BankAccount {
+    private int id;
 
     private String iban;
     private String bic;
     private String owner;
     private String bank;
-
-    @OneToOne
-    @JoinColumn(name = "personId")
     private Person person;
 
-    public int getBankAccountid() {
-        return bankAccountId;
+    public int getId() {
+        return id;
     }
 
     public String getIban() {
@@ -38,12 +29,12 @@ public class BankAccount extends DatedEntity{
         this.bic = bic;
     }
 
-    public String getAccountOwner() {
+    public String getOwner() {
         return owner;
     }
 
-    public void setAccountOwner(String accountOwner) {
-        owner = accountOwner;
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     public String getBank() {
@@ -62,6 +53,3 @@ public class BankAccount extends DatedEntity{
         this.person = person;
     }
 }
-
-
-

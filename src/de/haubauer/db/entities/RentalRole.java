@@ -8,32 +8,32 @@ import java.util.List;
 public class RentalRole extends DatedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int rentalRoleId;
+    private int rentalRoleId;
 
-    String rentalRoleName;
-    String rentalRoleDescription;
+    private String name;
+    private String description;
     @OneToMany
     @JoinColumn(name = "rentalPropertyId")
-    List<RentalProperty> rentalProperties;
+    private List<RentalProperty> rentalProperties;
 
     public int getRentalRoleId() {
         return rentalRoleId;
     }
 
-    public String getRentalRoleName() {
-        return rentalRoleName;
+    public String getName() {
+        return name;
     }
 
-    public void setRentalRoleName(String rentalRoleName) {
-        this.rentalRoleName = rentalRoleName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getRentalRoleDescription() {
-        return rentalRoleDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setRentalRoleDescription(String rentalRoleDescription) {
-        this.rentalRoleDescription = rentalRoleDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<RentalProperty> getRentalProperties() {
