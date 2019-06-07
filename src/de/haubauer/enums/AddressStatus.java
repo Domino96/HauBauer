@@ -1,4 +1,4 @@
-package src.de.haubauer.enums;
+package de.haubauer.enums;
 
 public enum AddressStatus {
     Outdated,

@@ -1,4 +1,4 @@
-package src.de.haubauer.business.models;
+package de.haubauer.business.models;
 
 public class BankAccount {
     private int id;

@@ -1,7 +1,7 @@
-package src.de.haubauer.db.entities;
+package de.haubauer.db.entities;
 
 
-import src.de.haubauer.helpers.DatedObject;
+import de.haubauer.helpers.DatedObject;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

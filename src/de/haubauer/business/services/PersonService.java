@@ -1,11 +1,11 @@
-package src.de.haubauer.business.services;
+package de.haubauer.business.services;
 
-import src.de.haubauer.business.models.Address;
-import src.de.haubauer.business.models.BankAccount;
-import src.de.haubauer.business.models.Person;
-import src.de.haubauer.db.PersonDao;
-import src.de.haubauer.enums.AddressStatus;
-import src.de.haubauer.helpers.Mapper;
+import de.haubauer.business.models.Address;
+import de.haubauer.business.models.BankAccount;
+import de.haubauer.business.models.Person;
+import de.haubauer.db.PersonDao;
+import de.haubauer.enums.AddressStatus;
+import de.haubauer.helpers.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +28,11 @@ public class PersonService {
     }
 
     public void saveTenant(Person tenant) {
-        this.personDao.save(Mapper.map(tenant, src.de.haubauer.db.entities.Person.class));
+        this.personDao.save(Mapper.map(tenant, de.haubauer.db.entities.Person.class));
     }
 
     public void updateTenant(Person tenant) {
-        this.personDao.update(Mapper.map(tenant, src.de.haubauer.db.entities.Person.class));
+        this.personDao.update(Mapper.map(tenant, de.haubauer.db.entities.Person.class));
     }
 
     private Person generatePerson() {

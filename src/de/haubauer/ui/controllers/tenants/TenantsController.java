@@ -1,4 +1,4 @@
-package src.de.haubauer.ui.controllers.tenants;
+package de.haubauer.ui.controllers.tenants;
 
 import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
@@ -9,11 +9,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import src.de.haubauer.business.models.Person;
-import src.de.haubauer.business.services.PersonService;
-import src.de.haubauer.ui.FxmlLibrary;
-import src.de.haubauer.ui.controllers.SceneController;
-import src.de.haubauer.ui.viewmodels.TenantsViewModel;
+import de.haubauer.business.models.Person;
+import de.haubauer.business.services.PersonService;
+import de.haubauer.ui.FxmlLibrary;
+import de.haubauer.ui.controllers.SceneController;
+import de.haubauer.ui.viewmodels.TenantsViewModel;
 
 import java.io.IOException;
 import java.net.URL;

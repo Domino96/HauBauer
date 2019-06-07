@@ -1,6 +1,6 @@
-package src.de.haubauer.business;
+package de.haubauer.business;
 
-import src.de.haubauer.db.entities.User;
+import de.haubauer.db.entities.User;
 
 public class UserManager {
     private User loggedInUser;

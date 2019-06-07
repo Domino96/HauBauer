@@ -1,10 +1,10 @@
-package src.de.haubauer.ui.controllers.tenants;
+package de.haubauer.ui.controllers.tenants;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import src.de.haubauer.business.services.PersonService;
-import src.de.haubauer.ui.viewmodels.TenantsDialogViewModel;
+import de.haubauer.business.services.PersonService;
+import de.haubauer.ui.viewmodels.TenantsDialogViewModel;
 
 import java.net.URL;
 import java.util.ResourceBundle;

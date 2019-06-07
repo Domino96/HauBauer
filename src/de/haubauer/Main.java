@@ -1,11 +1,11 @@
-package src.de.haubauer;
+package de.haubauer;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import src.de.haubauer.ui.controllers.SceneController;
+import de.haubauer.ui.controllers.SceneController;
 
 import java.io.IOException;
 

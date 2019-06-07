@@ -1,4 +1,4 @@
-package src.de.haubauer.ui.controllers;
+package de.haubauer.ui.controllers;
 
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;

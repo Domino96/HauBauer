@@ -1,5 +1,5 @@
 <jmapper>
-    <class name="src.de.haubauer.business.Payment">
+    <class name="de.haubauer.business.Payment">
         <attribute name="date">
             <value name="date"/>
         </attribute>
@@ -23,7 +23,7 @@
         </attribute>
     </class>
 
-    <class name="src.de.haubauer.business.models.Person">
+    <class name="de.haubauer.business.models.Person">
         <attribute name="id">
             <value name="personId"/>
         </attribute>
@@ -62,7 +62,7 @@
         </attribute>
     </class>
 
-    <class name="src.de.haubauer.business.models.Address">
+    <class name="de.haubauer.business.models.Address">
         <attribute name="id">
             <value name="addressId"/>
         </attribute>
@@ -92,7 +92,7 @@
         </attribute>
     </class>
 
-    <class name="src.de.haubauer.business.models.BankAccount">
+    <class name="de.haubauer.business.models.BankAccount">
         <attribute name="id">
             <value name="bankAccountId"/>
         </attribute>
@@ -116,7 +116,7 @@
         </attribute>
     </class>
 
-    <class name="src.de.haubauer.business.models.User">
+    <class name="de.haubauer.business.models.User">
         <attribute name="id">
             <value name="userId"/>
         </attribute>
@@ -146,7 +146,7 @@
         </attribute>
     </class>
 
-    <class name="src.de.haubauer.business.models.Payment">
+    <class name="de.haubauer.business.models.Payment">
         <attribute name="id">
             <value name="paymentId"/>
         </attribute>
@@ -173,7 +173,7 @@
         </attribute>
     </class>
 
-    <class name="src.de.haubauer.business.models.Tenancy">
+    <class name="de.haubauer.business.models.Tenancy">
         <attribute name="id">
             <value name="tenancyId"/>
         </attribute>
@@ -200,7 +200,7 @@
         </attribute>
     </class>
 
-    <class name="src.de.haubauer.business.models.RentalType">
+    <class name="de.haubauer.business.models.RentalType">
         <attribute name="id">
             <value name="rentalTypeId"/>
         </attribute>
@@ -218,7 +218,7 @@
         </attribute>
     </class>
 
-    <class name="src.de.haubauer.business.models.UsageType">
+    <class name="de.haubauer.business.models.UsageType">
         <attribute name="id">
             <value name="usageTypeId"/>
         </attribute>
@@ -236,7 +236,7 @@
         </attribute>
     </class>
 
-    <class name="src.de.haubauer.business.models.PaymentType">
+    <class name="de.haubauer.business.models.PaymentType">
         <attribute name="id">
             <value name="paymentTypeId"/>
         </attribute>
@@ -254,7 +254,7 @@
         </attribute>
     </class>
 
-    <class name="src.de.haubauer.business.models.UserRole">
+    <class name="de.haubauer.business.models.UserRole">
         <attribute name="id">
             <value name="userRoleId"/>
         </attribute>

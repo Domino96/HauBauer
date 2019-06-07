@@ -1,10 +1,10 @@
-package src.de.haubauer.ui;
+package de.haubauer.ui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import src.de.haubauer.business.models.Person;
-import src.de.haubauer.ui.controllers.tenants.TenantsAddController;
-import src.de.haubauer.ui.controllers.tenants.TenantsEditController;
+import de.haubauer.business.models.Person;
+import de.haubauer.ui.controllers.tenants.TenantsAddController;
+import de.haubauer.ui.controllers.tenants.TenantsEditController;
 
 import java.io.IOException;
 

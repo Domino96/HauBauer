@@ -1,6 +1,6 @@
-package src.de.haubauer.ui.controllers.tenants;
+package de.haubauer.ui.controllers.tenants;
 
-import src.de.haubauer.business.models.Person;
+import de.haubauer.business.models.Person;
 
 public class TenantsEditController extends TenantsDialogController {
     public TenantsEditController(final Person tenant) {

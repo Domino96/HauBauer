@@ -1,6 +1,6 @@
-package src.de.haubauer.db;
+package de.haubauer.db;
 
-import src.de.haubauer.db.entities.Person;
+import de.haubauer.db.entities.Person;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
-package src.de.haubauer.business.models;
+package de.haubauer.business.models;
 
-import src.de.haubauer.db.entities.Person;
-import src.de.haubauer.db.entities.RentalProperty;
-import src.de.haubauer.enums.AddressStatus;
+import de.haubauer.db.entities.Person;
+import de.haubauer.db.entities.RentalProperty;
+import de.haubauer.enums.AddressStatus;
 
 import java.util.List;
 
