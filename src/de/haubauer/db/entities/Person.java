@@ -39,8 +39,7 @@ public class Person extends DatedObject {
     @OneToOne
     @JoinColumn(name = "bankAccountId")
     private BankAccount bankAccount;
-
-
+    
     public int getPersonId() {
         return personId;
     }
@@ -124,5 +123,4 @@ public class Person extends DatedObject {
     public void setBankAccount(BankAccount bankAccount) {
         this.bankAccount = bankAccount;
     }
-
 }
