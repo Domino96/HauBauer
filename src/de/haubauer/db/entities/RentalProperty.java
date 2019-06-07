@@ -1,6 +1,8 @@
 package src.de.haubauer.db.entities;
 
 
+import src.de.haubauer.helpers.DatedObject;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -8,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "RentalProperty")
-public class RentalProperty extends DatedEntity{
+public class RentalProperty extends DatedObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int rentalPropertyId;

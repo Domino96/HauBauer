@@ -1,29 +1,17 @@
-package src.de.haubauer.db.entities;
+package src.de.haubauer.business.models;
 
 import src.de.haubauer.helpers.DatedObject;
 
-import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "UsageType")
 public class UsageType extends DatedObject {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int usageTypeId;
+    private int id;
     private String name;
     private String description;
-    @OneToMany
-    @JoinColumn(name = "rentalPropertyId")
     private List<RentalProperty> rentalProperties;
 
-
-    //GETTER    AND     SETTER
-
-
-    public int getUsageTypeId() {
-        return usageTypeId;
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -42,12 +30,11 @@ public class UsageType extends DatedObject {
         this.description = description;
     }
 
-    public List<src.de.haubauer.db.entities.RentalProperty> getRentalProperties() {
+    public List<RentalProperty> getRentalProperties() {
         return rentalProperties;
     }
 
-    public void setRentalProperties(List<src.de.haubauer.db.entities.RentalProperty> rentalProperties) {
+    public void setRentalProperties(List<RentalProperty> rentalProperties) {
         this.rentalProperties = rentalProperties;
     }
 }
-

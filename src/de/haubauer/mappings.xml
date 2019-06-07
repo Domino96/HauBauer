@@ -3,6 +3,9 @@
         <attribute name="date">
             <value name="date"/>
         </attribute>
+        <attribute name="dateCreated">
+            <value name="dateCreated"/>
+        </attribute>
         <attribute name="tenancy">
             <value name="tenancy"/>
         </attribute>
@@ -23,6 +26,9 @@
     <class name="src.de.haubauer.business.models.Person">
         <attribute name="id">
             <value name="personId"/>
+        </attribute>
+        <attribute name="dateCreated">
+            <value name="dateCreated"/>
         </attribute>
         <attribute name="title">
             <value name="title"/>
@@ -60,6 +66,9 @@
         <attribute name="id">
             <value name="addressId"/>
         </attribute>
+        <attribute name="dateCreated">
+            <value name="dateCreated"/>
+        </attribute>
         <attribute name="street">
             <value name="street"/>
         </attribute>
@@ -87,6 +96,9 @@
         <attribute name="id">
             <value name="bankAccountId"/>
         </attribute>
+        <attribute name="dateCreated">
+            <value name="dateCreated"/>
+        </attribute>
         <attribute name="iban">
             <value name="iban"/>
         </attribute>
@@ -101,6 +113,87 @@
         </attribute>
         <attribute name="person">
             <value name="person"/>
+        </attribute>
+    </class>
+
+    <class name="src.de.haubauer.business.models.User">
+        <attribute name="id">
+            <value name="userId"/>
+        </attribute>
+        <attribute name="userName">
+            <value name="userName"/>
+        </attribute>
+        <attribute name="hash">
+            <value name="hash"/>
+        </attribute>
+        <attribute name="firstName">
+            <value name="firstName"/>
+        </attribute>
+        <attribute name="lastName">
+            <value name="lastName"/>
+        </attribute>
+        <attribute name="phone">
+            <value name="phone"/>
+        </attribute>
+        <attribute name="email">
+            <value name="email"/>
+        </attribute>
+        <attribute name="userRole">
+            <value name="userRole"/>
+        </attribute>
+    </class>
+
+    <class name="src.de.haubauer.business.models.RentalType">
+        <attribute name="id">
+            <value name="rentalTypeId"/>
+        </attribute>
+        <attribute name="name">
+            <value name="name"/>
+        </attribute>
+        <attribute name="dateCreated">
+            <value name="dateCreated"/>
+        </attribute>
+        <attribute name="description">
+            <value name="description"/>
+        </attribute>
+        <attribute name="rentalProperties">
+            <value name="rentalProperties"/>
+        </attribute>
+    </class>
+
+    <class name="src.de.haubauer.business.models.UsageType">
+        <attribute name="id">
+            <value name="usageTypeId"/>
+        </attribute>
+        <attribute name="name">
+            <value name="name"/>
+        </attribute>
+        <attribute name="dateCreated">
+            <value name="dateCreated"/>
+        </attribute>
+        <attribute name="description">
+            <value name="description"/>
+        </attribute>
+        <attribute name="rentalProperties">
+            <value name="rentalProperties"/>
+        </attribute>
+    </class>
+
+    <class name="src.de.haubauer.business.models.UserRole">
+        <attribute name="id">
+            <value name="userRoleId"/>
+        </attribute>
+        <attribute name="name">
+            <value name="name"/>
+        </attribute>
+        <attribute name="dateCreated">
+            <value name="dateCreated"/>
+        </attribute>
+        <attribute name="description">
+            <value name="description"/>
+        </attribute>
+        <attribute name="users">
+            <value name="users"/>
         </attribute>
     </class>
 </jmapper>

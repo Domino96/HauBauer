@@ -5,7 +5,6 @@ import src.de.haubauer.business.models.BankAccount;
 import src.de.haubauer.business.models.Person;
 import src.de.haubauer.db.PersonDao;
 import src.de.haubauer.enums.AddressStatus;
-import src.de.haubauer.enums.Role;
 import src.de.haubauer.helpers.Mapper;
 
 import java.util.ArrayList;
@@ -40,7 +39,7 @@ public class PersonService {
         Person person = new Person();
 
         person.setTitle(random.nextBoolean() ? "Herr" : "Frau");
-        person.setRole(Role.Tenant);
+        // person.setRole(Role.Tenant);
         person.setEmail("test@test.de");
         person.setFirstName("Christian");
         person.setLastName("Schulze");

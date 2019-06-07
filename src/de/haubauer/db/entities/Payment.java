@@ -1,6 +1,7 @@
 package src.de.haubauer.db.entities;
 
 import src.de.haubauer.enums.PaymentType;
+import src.de.haubauer.helpers.DatedObject;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -8,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "Payment")
-public class Payment extends DatedEntity{
+public class Payment extends DatedObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int paymentId;
