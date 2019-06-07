@@ -1,10 +1,10 @@
-package src.de.haubauer.ui.viewmodels;
+package de.haubauer.ui.viewmodels;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import src.de.haubauer.business.models.Person;
+import de.haubauer.business.models.Person;
 
 public class TenantsDialogViewModel {
     private StringProperty title = new SimpleStringProperty("");

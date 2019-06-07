@@ -1,12 +1,10 @@
-package src.de.haubauer.business.models;
+package de.haubauer.business.models;
 
+import de.haubauer.helpers.DatedObject;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import src.de.haubauer.db.entities.Person;
-import src.de.haubauer.db.entities.RentalProperty;
-import src.de.haubauer.enums.AddressStatus;
-import src.de.haubauer.helpers.DatedObject;
+import de.haubauer.enums.AddressStatus;
 
 public class Address extends DatedObject implements Cloneable {
     private int id;

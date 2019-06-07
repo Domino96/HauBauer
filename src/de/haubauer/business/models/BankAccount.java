@@ -1,4 +1,4 @@
-package src.de.haubauer.business.models;
+package de.haubauer.business.models;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;

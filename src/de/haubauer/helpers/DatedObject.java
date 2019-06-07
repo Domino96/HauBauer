@@ -1,4 +1,4 @@
-package src.de.haubauer.helpers;
+package de.haubauer.helpers;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package src.de.haubauer.db;
+package de.haubauer.db;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;

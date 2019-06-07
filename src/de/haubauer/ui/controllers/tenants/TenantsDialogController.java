@@ -1,17 +1,15 @@
-package src.de.haubauer.ui.controllers.tenants;
+package de.haubauer.ui.controllers.tenants;
 
-import javafx.beans.binding.Bindings;
-import javafx.beans.binding.StringBinding;
+import de.haubauer.business.models.Address;
+import de.haubauer.business.models.BankAccount;
+import de.haubauer.business.models.Person;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import src.de.haubauer.business.models.Address;
-import src.de.haubauer.business.models.BankAccount;
-import src.de.haubauer.business.models.Person;
-import src.de.haubauer.business.services.PersonService;
-import src.de.haubauer.ui.viewmodels.TenantsDialogViewModel;
+import de.haubauer.business.services.PersonService;
+import de.haubauer.ui.viewmodels.TenantsDialogViewModel;
 
 import java.net.URL;
 import java.text.NumberFormat;

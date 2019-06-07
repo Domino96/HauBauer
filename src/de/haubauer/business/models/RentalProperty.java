@@ -1,6 +1,6 @@
-package src.de.haubauer.business.models;
+package de.haubauer.business.models;
 
-import src.de.haubauer.db.BaseDao;
+import de.haubauer.db.BaseDao;
 
 
 import java.math.BigDecimal;

@@ -1,4 +1,4 @@
-package src.de.haubauer.ui.controllers.tenants;
+package de.haubauer.ui.controllers.tenants;
 
 public class TenantsAddController extends TenantsDialogController {
     public TenantsAddController() {

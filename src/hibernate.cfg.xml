@@ -11,18 +11,18 @@
         <property name="hbm2ddl.auto">create</property>
 
         <!-- Mapping files here -->
-        <mapping class="src.de.haubauer.db.entities.User"/>
-        <mapping class="src.de.haubauer.db.entities.Person"/>
-        <mapping class="src.de.haubauer.db.entities.RentalProperty"/>
-        <mapping class="src.de.haubauer.db.entities.Payment"/>
-        <mapping class="src.de.haubauer.db.entities.Tenancy"/>
-        <mapping class="src.de.haubauer.db.entities.Address"/>
-        <mapping class="src.de.haubauer.db.entities.BankAccount"/>
-        <mapping class="src.de.haubauer.db.entities.UserRole"/>
-        <mapping class="src.de.haubauer.db.entities.UsageType"/>
-        <mapping class="src.de.haubauer.db.entities.RentalType"/>
-        <mapping class="src.de.haubauer.db.entities.PaymentType"/>
-        <mapping class="src.de.haubauer.db.entities.RentalRole"/>
+        <mapping class="de.haubauer.db.entities.User"/>
+        <mapping class="de.haubauer.db.entities.Person"/>
+        <mapping class="de.haubauer.db.entities.RentalProperty"/>
+        <mapping class="de.haubauer.db.entities.Payment"/>
+        <mapping class="de.haubauer.db.entities.Tenancy"/>
+        <mapping class="de.haubauer.db.entities.Address"/>
+        <mapping class="de.haubauer.db.entities.BankAccount"/>
+        <mapping class="de.haubauer.db.entities.UserRole"/>
+        <mapping class="de.haubauer.db.entities.UsageType"/>
+        <mapping class="de.haubauer.db.entities.RentalType"/>
+        <mapping class="de.haubauer.db.entities.PaymentType"/>
+        <mapping class="de.haubauer.db.entities.RentalRole"/>
 
     </session-factory>
 </hibernate-configuration>

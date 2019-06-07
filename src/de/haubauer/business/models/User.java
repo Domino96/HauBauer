@@ -1,6 +1,6 @@
-package src.de.haubauer.business.models;
+package de.haubauer.business.models;
 
-import src.de.haubauer.helpers.DatedObject;
+import de.haubauer.helpers.DatedObject;
 
 public class User extends DatedObject {
     private int id;

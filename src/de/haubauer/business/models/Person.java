@@ -1,14 +1,9 @@
-package src.de.haubauer.business.models;
+package de.haubauer.business.models;
 
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
-import src.de.haubauer.db.entities.RentalProperty;
-import src.de.haubauer.db.entities.Tenancy;
-import src.de.haubauer.enums.AddressStatus;
-
-import java.util.Optional;
 
 public class Person {
     private int id;

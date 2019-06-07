@@ -1,7 +1,7 @@
-package src.de.haubauer.business.models;
+package de.haubauer.business.models;
 
-import src.de.haubauer.enums.PaymentType;
-import src.de.haubauer.helpers.DatedObject;
+import de.haubauer.enums.PaymentType;
+import de.haubauer.helpers.DatedObject;
 
 import java.math.BigDecimal;
 import java.util.Date;

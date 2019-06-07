@@ -9,13 +9,11 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="633.0" style="-fx-background-color: #d3d3d3;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.de.haubauer.ui.controllers.rentalproperties.RentalPropertiesController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="633.0" style="-fx-background-color: #d3d3d3;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.haubauer.ui.controllers.rentalproperties.RentalPropertiesController">
     <children>
-        <ToolBar prefHeight="60.0" prefWidth="633.0">
+        <ToolBar prefHeight="64.0" prefWidth="138.0">
             <items>
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" text="Dashboard" />
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" style="-fx-background-color: #B5B5B5;" text="Mietobjekt" />
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" text="Mieterstammdaten" />
+                <Button mnemonicParsing="false" onAction="#onDashboardClicked" prefHeight="50.0" prefWidth="121.0" text="Dashboard" />
             </items>
         </ToolBar>
         <Button layoutX="14.0" layoutY="64.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="57.0">
@@ -48,5 +46,10 @@
       </TableView>
       <Button layoutX="498.0" layoutY="67.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" text="Reports generieren" />
       <Button layoutX="369.0" layoutY="67.0" mnemonicParsing="false" onAction="#zahlungUbersichtForItem" onZoomFinished="#zahlungUbersichtForItem" prefHeight="50.0" prefWidth="121.0" text="Zahlungsübersicht" />
+      <ToolBar layoutX="134.0" prefHeight="64.0" prefWidth="498.0">
+          <items>
+              <fx:include fx:id="navigationToolbar" source="../Navigation_toolbar.fxml" />
+          </items>
+      </ToolBar>
     </children>
 </Pane>
