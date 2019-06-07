@@ -12,7 +12,7 @@ import java.util.List;
  *
  */
 public class RentalProperty {
-   private RentalType type = RentalType.Private;
+   private RentalType rentalType;
    private String description;
    private String address;
    private int zipCode;
@@ -34,7 +34,7 @@ public class RentalProperty {
      * @param instance
      */
    public void add(RentalProperty instance){
-       rentalDao.save(instance);
+       rentalDao.save();
    }
 
     /**
@@ -53,16 +53,16 @@ public class RentalProperty {
        rentalDao.delete(instance);
    }
 
+   public void addObjecttype(){
+
+    };
+
+   public void addUsageType(){
+
+    };
+
 
    /*GETTER     AND     SETTER*/
-
-    public RentalType getType() {
-        return type;
-    }
-
-    public void setType(RentalType type) {
-        this.type = type;
-    }
 
     public String getDescription() {
         return description;
