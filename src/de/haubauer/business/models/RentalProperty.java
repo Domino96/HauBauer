@@ -1,5 +1,6 @@
 package src.de.haubauer.business;
 
+import src.de.haubauer.business.models.UsageType;
 import src.de.haubauer.db.BaseDao;
 import src.de.haubauer.db.entities.Tenancy;
 

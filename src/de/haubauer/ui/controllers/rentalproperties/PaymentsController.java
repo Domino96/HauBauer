@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -45,6 +46,7 @@ public class PaymentsController extends Stage implements Initializable {
         try {
             payments = FXMLLoader.load(getClass().getResource("../../fxml/rentalproperties/payments-edit.fxml"));
             Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);     //Form dahinter nichtmehr anklickbar
             stage.setTitle("Zahlungen bearbeiten");
             stage.setScene(new Scene(payments, 450, 450));
             stage.show();
@@ -60,6 +62,7 @@ public class PaymentsController extends Stage implements Initializable {
         try {
             payments = FXMLLoader.load(getClass().getResource("../../fxml/rentalproperties/payments-add.fxml"));
             Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Zahlungen hinzufügen");
             stage.setScene(new Scene(payments, 450, 450));
             stage.show();
