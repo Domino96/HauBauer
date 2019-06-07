@@ -1,25 +1,18 @@
-package src.de.haubauer.db.entities;
+package src.de.haubauer.business.models;
 
 import src.de.haubauer.helpers.DatedObject;
 
-import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "UserRole")
 public class UserRole extends DatedObject {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userRoleId;
+    private int id;
 
     private String name;
     private String description;
-    @OneToMany
-    @JoinColumn(name = "userId")
     private List<User> users;
 
-    public int getUserRoleId() {
-        return userRoleId;
+    public int getId() {
+        return id;
     }
 
     public String getName() {

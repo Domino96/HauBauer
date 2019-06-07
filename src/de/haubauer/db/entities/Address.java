@@ -1,13 +1,14 @@
 package src.de.haubauer.db.entities;
 
 import src.de.haubauer.enums.AddressStatus;
+import src.de.haubauer.helpers.DatedObject;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "Address")
-public class Address extends DatedEntity{
+public class Address extends DatedObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int addressId;

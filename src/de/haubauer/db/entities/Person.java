@@ -1,12 +1,14 @@
 package src.de.haubauer.db.entities;
 
 
+import src.de.haubauer.helpers.DatedObject;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "Person")
-public class Person extends DatedEntity{
+public class Person extends DatedObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int personId;
@@ -38,9 +40,6 @@ public class Person extends DatedEntity{
     @JoinColumn(name = "bankAccountId")
     private BankAccount bankAccount;
 
-    @ManyToOne
-    @JoinColumn(name = "userRoleId")
-    private List<UserRole> userRoles;
 
     public int getPersonId() {
         return personId;
@@ -94,7 +93,6 @@ public class Person extends DatedEntity{
         this.email = email;
     }
 
-
     public List<Address> getAddresses() {
         return addresses;
     }
@@ -127,11 +125,4 @@ public class Person extends DatedEntity{
         this.bankAccount = bankAccount;
     }
 
-    public List<UserRole> getUserRoles() {
-        return userRoles;
-    }
-
-    public void setUserRoles(List<UserRole> userRoles) {
-        this.userRoles = userRoles;
-    }
 }

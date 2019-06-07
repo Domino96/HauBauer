@@ -1,11 +1,13 @@
 package src.de.haubauer.db.entities;
 
+import src.de.haubauer.helpers.DatedObject;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "PaymentType")
-public class PaymentType extends DatedEntity {
+public class PaymentType extends DatedObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int paymentTypeId;

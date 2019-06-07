@@ -6,7 +6,6 @@ import javafx.collections.ObservableList;
 import src.de.haubauer.db.entities.RentalProperty;
 import src.de.haubauer.db.entities.Tenancy;
 import src.de.haubauer.enums.AddressStatus;
-import src.de.haubauer.enums.Role;
 
 import java.util.Optional;
 
@@ -18,7 +17,7 @@ public class Person {
     private StringProperty landline = new SimpleStringProperty("");
     private StringProperty mobile = new SimpleStringProperty("");
     private StringProperty email = new SimpleStringProperty("");
-    private ObjectProperty<Role> role = new SimpleObjectProperty<>(Role.Tenant);
+    private ObjectProperty<UserRole> role = new SimpleObjectProperty<>();
     private ObservableList<Address> addresses = FXCollections.observableArrayList();
     private ObservableList<RentalProperty> rentalProperties = FXCollections.observableArrayList();
     private ObservableList<Tenancy> tenancies = FXCollections.observableArrayList();
@@ -96,15 +95,15 @@ public class Person {
         this.email.set(email);
     }
 
-    public Role getRole() {
+    public UserRole getRole() {
         return role.get();
     }
 
-    public Property<Role> roleProperty() {
+    public Property<UserRole> roleProperty() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(UserRole role) {
         this.role.set(role);
     }
 
