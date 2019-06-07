@@ -1,30 +1,25 @@
-package src.de.haubauer.db.entities;
+package src.de.haubauer.business.models;
 
+import src.de.haubauer.db.entities.Person;
+import src.de.haubauer.db.entities.RentalProperty;
 import src.de.haubauer.enums.AddressStatus;
 
-import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "Address")
-public class Address extends DatedEntity{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int addressId;
+public class Address {
+    private int id;
 
     private String street;
     private int number;
     private int zipCode;
     private String town;
-    private String phoneNumber;
     private AddressStatus status;
-
-    @OneToMany
-    @JoinColumn(name = "rentalPropertyId")
     private List<RentalProperty> rentalProperties;
-
-    @ManyToMany(mappedBy = "addresses")
     private List<Person> people;
+
+    public int getId() {
+        return id;
+    }
 
     public String getStreet() {
         return street;
@@ -32,6 +27,10 @@ public class Address extends DatedEntity{
 
     public void setStreet(String street) {
         this.street = street;
+    }
+
+    public String getReadableAddress() {
+        return this.getStreet() + " " + this.getNumber();
     }
 
     public int getNumber() {
@@ -58,14 +57,6 @@ public class Address extends DatedEntity{
         this.town = town;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
     public AddressStatus getStatus() {
         return status;
     }
@@ -90,6 +81,3 @@ public class Address extends DatedEntity{
         this.people = people;
     }
 }
-
-
-

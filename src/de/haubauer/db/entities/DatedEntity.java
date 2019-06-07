@@ -9,4 +9,12 @@ public abstract class DatedEntity {
     public DatedEntity() {
         this.dateCreated = new Date();
     }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
 }

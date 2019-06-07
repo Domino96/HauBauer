@@ -1,7 +1,6 @@
 package src.de.haubauer.db;
 
 import src.de.haubauer.db.entities.Person;
-import src.de.haubauer.enums.Role;
 
 import java.util.List;
 
@@ -13,7 +12,7 @@ public class PersonDao extends BaseDao<Person> {
     public List<Person> getAllTenants() {
         return this.queryBuilder()
                 .where("role", "= :role")
-                .setParameter("role", Role.Tenant)
+                .setParameter("role", "Mieter")
                 .build()
                 .list();
     }

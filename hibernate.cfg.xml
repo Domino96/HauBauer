@@ -18,6 +18,11 @@
         <mapping class="src.de.haubauer.db.entities.Tenancy"/>
         <mapping class="src.de.haubauer.db.entities.Address"/>
         <mapping class="src.de.haubauer.db.entities.BankAccount"/>
+        <mapping class="src.de.haubauer.db.entities.UserRole"/>
+        <mapping class="src.de.haubauer.db.entities.UsageType"/>
+        <mapping class="src.de.haubauer.db.entities.RentalType"/>
+        <mapping class="src.de.haubauer.db.entities.PaymentType"/>
+        <mapping class="src.de.haubauer.db.entities.RentalRole"/>
 
     </session-factory>
 </hibernate-configuration>
