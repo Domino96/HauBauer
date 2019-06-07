@@ -2,8 +2,7 @@ package src.de.haubauer.business;
 
 import src.de.haubauer.db.BaseDao;
 import src.de.haubauer.db.entities.Tenancy;
-import src.de.haubauer.enums.RentalType;
-import src.de.haubauer.enums.UsageType;
+
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -12,7 +11,6 @@ import java.util.List;
  *
  */
 public class RentalProperty {
-   private RentalType rentalType;
    private String description;
    private String address;
    private int zipCode;
@@ -24,7 +22,6 @@ public class RentalProperty {
    private Tenancy currentTenancy;
    private List<Tenancy> pastTenancy;
    private RentalProperty parent;
-   private UsageType usageType;
    private int floor;
 
    BaseDao<RentalProperty> rentalDao = new BaseDao<>(RentalProperty.class);
