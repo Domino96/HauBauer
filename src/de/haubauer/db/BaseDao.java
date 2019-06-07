@@ -37,7 +37,6 @@ public class BaseDao<T> {
         transaction.commit();
     }
 
-    @SafeVarargs
     public final void save(List<T> entities) {
         Transaction transaction = session.beginTransaction();
 
@@ -69,7 +68,6 @@ public class BaseDao<T> {
         transaction.commit();
     }
 
-    @SafeVarargs
     public final void update(List<T> entities) {
         Transaction transaction = session.beginTransaction();
 
@@ -101,7 +99,6 @@ public class BaseDao<T> {
         transaction.commit();
     }
 
-    @SafeVarargs
     public final void delete(List<T> entities) {
         Transaction transaction = session.beginTransaction();
 
