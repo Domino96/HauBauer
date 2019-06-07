@@ -1,15 +1,9 @@
-package src.de.haubauer.db.entities;
+package src.de.haubauer.business.models;
 
 import src.de.haubauer.helpers.DatedObject;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "User")
 public class User extends DatedObject {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userId;
+    private int id;
 
     private String userName;
     private String hash;
@@ -17,13 +11,10 @@ public class User extends DatedObject {
     private String lastName;
     private String phone;
     private String email;
-
-    @ManyToOne
-    @JoinColumn(name = "userRoleId")
     private UserRole userRole;
 
-    public int getUserId() {
-        return userId;
+    public int getId() {
+        return id;
     }
 
     public String getUserName() {

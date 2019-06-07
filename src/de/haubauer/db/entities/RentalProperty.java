@@ -1,7 +1,7 @@
 package src.de.haubauer.db.entities;
 
-import src.de.haubauer.enums.RentalType;
-import src.de.haubauer.enums.UsageType;
+
+import src.de.haubauer.helpers.DatedObject;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -10,38 +10,154 @@ import java.util.List;
 
 @Entity
 @Table(name = "RentalProperty")
-public class RentalProperty extends DatedEntity{
+public class RentalProperty extends DatedObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int rentalPropertyId;
+    private int rentalPropertyId;
 
-
-    RentalType type = RentalType.Private;
-    String description;
-    int zipCode;
-    String town;
-    double area;
-    BigDecimal squareMeterPriceCold;
-    BigDecimal sideCostsMonth;
-    String note;
+    private String description;
+    private double area;
+    private BigDecimal squareMeterPriceCold;
+    private BigDecimal sideCostsMonth;
+    private String note;
     @OneToMany
     @JoinColumn(name = "parent")
-    List<RentalProperty> children = new ArrayList<RentalProperty>();
+    private List<RentalProperty> children = new ArrayList<RentalProperty>();
     @ManyToOne
-    RentalProperty parent;
-    UsageType usageType;
-    int floor;
+    private RentalProperty parent;
+    private int floor;
 
     @ManyToOne
-    @JoinColumn(name = "adressId")
-    Address address;
+    @JoinColumn(name = "addressId")
+    private Address address;
 
-    @ManyToMany(mappedBy = "rentalPropertys")
-    List<Person> persons;
+    @ManyToMany(mappedBy = "rentalProperties")
+    private List<Person> people;
 
     @OneToMany
     @JoinColumn(name = "tenancyId")
-    List<Tenancy> tenancy;
+    private List<Tenancy> tenancy;
+
+    @ManyToOne
+    @JoinColumn(name = "usageTypeId")
+    private UsageType usageType;
+
+    @ManyToOne
+    @JoinColumn(name = "rentalTypeId")
+    private RentalType rentalType;
+
+    @ManyToOne
+    @JoinColumn(name = "rentalRoleId")
+    private RentalRole rentalRole;
+
+
+    public int getRentalPropertyId() {
+        return rentalPropertyId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getArea() {
+        return area;
+    }
+
+    public void setArea(double area) {
+        this.area = area;
+    }
+
+    public BigDecimal getSquareMeterPriceCold() {
+        return squareMeterPriceCold;
+    }
+
+    public void setSquareMeterPriceCold(BigDecimal squareMeterPriceCold) {
+        this.squareMeterPriceCold = squareMeterPriceCold;
+    }
+
+    public BigDecimal getSideCostsMonth() {
+        return sideCostsMonth;
+    }
+
+    public void setSideCostsMonth(BigDecimal sideCostsMonth) {
+        this.sideCostsMonth = sideCostsMonth;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public List<RentalProperty> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<RentalProperty> children) {
+        this.children = children;
+    }
+
+    public RentalProperty getParent() {
+        return parent;
+    }
+
+    public void setParent(RentalProperty parent) {
+        this.parent = parent;
+    }
+
+    public int getFloor() {
+        return floor;
+    }
+
+    public void setFloor(int floor) {
+        this.floor = floor;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<Person> getPeople() {
+        return people;
+    }
+
+    public void setPeople(List<Person> people) {
+        this.people = people;
+    }
+
+    public List<Tenancy> getTenancy() {
+        return tenancy;
+    }
+
+    public void setTenancy(List<Tenancy> tenancy) {
+        this.tenancy = tenancy;
+    }
+
+    public UsageType getUsageType() {
+        return usageType;
+    }
+
+    public void setUsageType(UsageType usageType) {
+        this.usageType = usageType;
+    }
+
+    public RentalType getRentalType() {
+        return rentalType;
+    }
+
+    public void setRentalType(RentalType rentalType) {
+        this.rentalType = rentalType;
+    }
 }
 
 
