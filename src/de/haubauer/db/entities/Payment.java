@@ -30,6 +30,10 @@ public class Payment extends DatedObject {
         return paymentId;
     }
 
+    public void setPaymentId(int paymentId) {
+        this.paymentId = paymentId;
+    }
+
     public Date getDate() {
         return date;
     }

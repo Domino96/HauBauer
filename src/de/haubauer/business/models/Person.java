@@ -1,11 +1,12 @@
 package de.haubauer.business.models;
 
+import de.haubauer.helpers.DatedObject;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
 
-public class Person {
+public class Person extends DatedObject {
     private int id;
     private StringProperty title = new SimpleStringProperty("");
     private StringProperty firstName = new SimpleStringProperty("");
@@ -18,6 +19,14 @@ public class Person {
     private ObservableList<RentalProperty> rentalProperties = FXCollections.observableArrayList();
     private ObservableList<Tenancy> tenancies = FXCollections.observableArrayList();
     private ObjectProperty<BankAccount> bankAccount = new SimpleObjectProperty<>();
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title.get();

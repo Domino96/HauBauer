@@ -33,6 +33,10 @@ public class Tenancy extends DatedObject {
         return tenancyId;
     }
 
+    public void setTenancyId(int tenancyId) {
+        this.tenancyId = tenancyId;
+    }
+
     public Date getStartDate() {
         return startDate;
     }

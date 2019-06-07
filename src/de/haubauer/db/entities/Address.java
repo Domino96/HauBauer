@@ -27,6 +27,14 @@ public class Address extends DatedObject {
     @ManyToMany(mappedBy = "addresses")
     private List<Person> people;
 
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
+    }
+
     public String getStreet() {
         return street;
     }

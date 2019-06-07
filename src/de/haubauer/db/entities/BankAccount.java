@@ -20,8 +20,12 @@ public class BankAccount extends DatedObject {
     @JoinColumn(name = "personId")
     private Person person;
 
-    public int getBankAccountid() {
+    public int getBankAccountId() {
         return bankAccountId;
+    }
+
+    public void setBankAccountId(int bankAccountId) {
+        this.bankAccountId = bankAccountId;
     }
 
     public String getIban() {

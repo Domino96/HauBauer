@@ -18,6 +18,10 @@ public class BankAccount {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getIban() {
         return iban.get();
     }

@@ -10,53 +10,28 @@ import java.util.List;
  *
  */
 public class RentalProperty {
-   private String description;
-   private String address;
-   private int zipCode;
-   private String town;
-   private double area;
-   private BigDecimal squareMeterPriceCold;
-   private BigDecimal sideCostsMonth;
-   private String note;
-   private Tenancy currentTenancy;
-   private List<Tenancy> pastTenancy;
-   private RentalProperty parent;
-   private UsageType usageType;
-   private int floor;
+    private int id;
+    private String description;
+    private String address;
+    private int zipCode;
+    private String town;
+    private double area;
+    private BigDecimal squareMeterPriceCold;
+    private BigDecimal sideCostsMonth;
+    private String note;
+    private Tenancy currentTenancy;
+    private List<Tenancy> pastTenancy;
+    private RentalProperty parent;
+    private UsageType usageType;
+    private int floor;
 
-   BaseDao<RentalProperty> rentalDao = new BaseDao<>(RentalProperty.class);
+    public int getId() {
+        return id;
+    }
 
-    /**
-     * Fügt ein Mietobjekt in die Datenbank hinzu
-     * @param instance
-     */
-   public void add(RentalProperty instance){
-       rentalDao.save();
-   }
-
-    /**
-     * Editiert den übergebenen Datensatz in der Datenbank
-     * @param instance
-     */
-   public void edit( RentalProperty instance){
-       rentalDao.update(instance);
-   }
-
-    /**
-     * Löscht den übergebenen Datensatz in der Datenbank
-     * @param instance
-     */
-   public void delete(RentalProperty instance){
-       rentalDao.delete(instance);
-   }
-
-   public void addObjecttype(){
-
-    };
-
-   public void addUsageType(){
-
-    };
+    public void setId(int id) {
+        this.id = id;
+    }
 
 
    /*GETTER     AND     SETTER*/

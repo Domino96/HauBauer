@@ -23,6 +23,10 @@ public class RentalType extends DatedObject {
         return rentalTypeId;
     }
 
+    public void setRentalTypeId(int rentalTypeId) {
+        this.rentalTypeId = rentalTypeId;
+    }
+
     public String getName() {
         return name;
     }

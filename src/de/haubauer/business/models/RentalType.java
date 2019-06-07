@@ -11,8 +11,12 @@ public class RentalType extends DatedObject {
     private String description;
     private List<RentalProperty> rentalProperties;
 
-    public int getRentalTypeId() {
+    public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

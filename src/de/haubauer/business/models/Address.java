@@ -22,6 +22,10 @@ public class Address extends DatedObject implements Cloneable {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getStreet() {
         return street.get();
     }

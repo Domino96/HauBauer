@@ -44,6 +44,10 @@ public class Person extends DatedObject {
         return personId;
     }
 
+    public void setPersonId(int personId) {
+        this.personId = personId;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -100,20 +104,20 @@ public class Person extends DatedObject {
         this.addresses = addresses;
     }
 
-    public List<RentalProperty> getRentalPropertys() {
+    public List<RentalProperty> getRentalProperties() {
         return rentalProperties;
     }
 
-    public void setRentalPropertys(List<RentalProperty> rentalPropertys) {
-        this.rentalProperties = rentalPropertys;
+    public void setRentalProperties(List<RentalProperty> rentalProperties) {
+        this.rentalProperties = rentalProperties;
     }
 
-    public List<Tenancy> getTenancy() {
+    public List<Tenancy> getTenancies() {
         return this.tenancies;
     }
 
-    public void setTenancy(List<Tenancy> tenancy) {
-        this.tenancies = tenancy;
+    public void setTenancies(List<Tenancy> tenancies) {
+        this.tenancies = tenancies;
     }
 
     public BankAccount getBankAccount() {

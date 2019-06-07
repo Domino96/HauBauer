@@ -26,6 +26,10 @@ public class UsageType extends DatedObject {
         return usageTypeId;
     }
 
+    public void setUsageTypeId(int usageTypeId) {
+        this.usageTypeId = usageTypeId;
+    }
+
     public String getName() {
         return name;
     }

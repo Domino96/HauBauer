@@ -22,6 +22,10 @@ public class RentalRole extends DatedObject {
         return rentalRoleId;
     }
 
+    public void setRentalRoleId(int rentalRoleId) {
+        this.rentalRoleId = rentalRoleId;
+    }
+
     public String getName() {
         return name;
     }

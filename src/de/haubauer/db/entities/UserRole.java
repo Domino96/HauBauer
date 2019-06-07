@@ -22,6 +22,10 @@ public class UserRole extends DatedObject {
         return userRoleId;
     }
 
+    public void setUserRoleId(int userRoleId) {
+        this.userRoleId = userRoleId;
+    }
+
     public String getName() {
         return name;
     }

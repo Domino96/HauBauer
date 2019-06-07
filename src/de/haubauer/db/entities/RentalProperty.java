@@ -55,6 +55,10 @@ public class RentalProperty extends DatedObject {
         return rentalPropertyId;
     }
 
+    public void setRentalPropertyId(int rentalPropertyId) {
+        this.rentalPropertyId = rentalPropertyId;
+    }
+
     public String getDescription() {
         return description;
     }

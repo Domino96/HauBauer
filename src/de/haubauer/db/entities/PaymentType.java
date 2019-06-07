@@ -23,6 +23,10 @@ public class PaymentType extends DatedObject {
         return paymentTypeId;
     }
 
+    public void setPaymentTypeId(int paymentTypeId) {
+        this.paymentTypeId = paymentTypeId;
+    }
+
     public String getName() {
         return name;
     }

@@ -1,12 +1,15 @@
 package de.haubauer.helpers;
 
 import it.avutils.jmapper.JMapper;
+import javafx.beans.property.Property;
+import javafx.beans.value.ObservableValue;
 
 import java.util.List;
+import java.util.Observable;
 import java.util.stream.Collectors;
 
 public class Mapper {
-    private static final String configurationPath = "src/de/haubauer/mappings.xml";
+    private static final String configurationPath = "de/haubauer/mappings.xml";
 
     /**
      * Mappt das angegebene Objekt zur angegebenen Klasse.
