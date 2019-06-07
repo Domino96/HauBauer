@@ -120,6 +120,9 @@
         <attribute name="id">
             <value name="userId"/>
         </attribute>
+        <attribute name="dateCreated">
+            <value name="dateCreated"/>
+        </attribute>
         <attribute name="userName">
             <value name="userName"/>
         </attribute>
@@ -140,6 +143,60 @@
         </attribute>
         <attribute name="userRole">
             <value name="userRole"/>
+        </attribute>
+    </class>
+
+    <class name="src.de.haubauer.business.models.Payment">
+        <attribute name="id">
+            <value name="paymentId"/>
+        </attribute>
+        <attribute name="dateCreated">
+            <value name="dateCreated"/>
+        </attribute>
+        <attribute name="date">
+            <value name="date"/>
+        </attribute>
+        <attribute name="value">
+            <value name="value"/>
+        </attribute>
+        <attribute name="billed">
+            <value name="billed"/>
+        </attribute>
+        <attribute name="comment">
+            <value name="comment"/>
+        </attribute>
+        <attribute name="tenancy">
+            <value name="tenancy"/>
+        </attribute>
+        <attribute name="paymentType">
+            <value name="paymentType"/>
+        </attribute>
+    </class>
+
+    <class name="src.de.haubauer.business.models.Tenancy">
+        <attribute name="id">
+            <value name="tenancyId"/>
+        </attribute>
+        <attribute name="dateCreated">
+            <value name="dateCreated"/>
+        </attribute>
+        <attribute name="startDate">
+            <value name="startDate"/>
+        </attribute>
+        <attribute name="endDate">
+            <value name="endDate"/>
+        </attribute>
+        <attribute name="status">
+            <value name="status"/>
+        </attribute>
+        <attribute name="person">
+            <value name="person"/>
+        </attribute>
+        <attribute name="payments">
+            <value name="payments"/>
+        </attribute>
+        <attribute name="rentalProperty">
+            <value name="rentalProperty"/>
         </attribute>
     </class>
 
@@ -176,6 +233,24 @@
         </attribute>
         <attribute name="rentalProperties">
             <value name="rentalProperties"/>
+        </attribute>
+    </class>
+
+    <class name="src.de.haubauer.business.models.PaymentType">
+        <attribute name="id">
+            <value name="paymentTypeId"/>
+        </attribute>
+        <attribute name="name">
+            <value name="name"/>
+        </attribute>
+        <attribute name="dateCreated">
+            <value name="dateCreated"/>
+        </attribute>
+        <attribute name="description">
+            <value name="description"/>
+        </attribute>
+        <attribute name="payments">
+            <value name="payments"/>
         </attribute>
     </class>
 

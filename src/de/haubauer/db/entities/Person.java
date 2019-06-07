@@ -39,7 +39,7 @@ public class Person extends DatedObject {
     @OneToOne
     @JoinColumn(name = "bankAccountId")
     private BankAccount bankAccount;
-
+    
     public int getPersonId() {
         return personId;
     }
@@ -91,7 +91,6 @@ public class Person extends DatedObject {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
     public List<Address> getAddresses() {
         return addresses;
