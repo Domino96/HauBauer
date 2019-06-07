@@ -15,8 +15,6 @@ import src.de.haubauer.ui.viewmodels.TenantsDialogViewModel;
 
 import java.net.URL;
 import java.text.NumberFormat;
-import java.util.Comparator;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public abstract class TenantsDialogController implements Initializable {

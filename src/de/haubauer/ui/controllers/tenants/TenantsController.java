@@ -40,7 +40,7 @@ public class TenantsController implements Initializable {
 
         // create bindings from getters
         this.addressColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getAddressString(), cell.getValue().getAddresses()));
-        this.bankAccountColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getBankAccountString(), cell.getValue().bankAccountProperty()));
+        this.bankAccountColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getBankAccountString(), cell.getValue().getBankAccount().bicProperty()));
     }
 
     public void deleteItems() {

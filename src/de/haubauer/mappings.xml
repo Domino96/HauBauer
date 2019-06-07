@@ -1,5 +1,8 @@
 <jmapper>
     <class name="src.de.haubauer.business.Payment">
+        <attribute name="id">
+            <value name="paymentId"/>
+        </attribute>
         <attribute name="date">
             <value name="date"/>
         </attribute>
@@ -26,6 +29,45 @@
     <class name="src.de.haubauer.business.models.Person">
         <attribute name="id">
             <value name="personId"/>
+        </attribute>
+        <attribute name="dateCreated">
+            <value name="dateCreated"/>
+        </attribute>
+        <attribute name="title">
+            <value name="title"/>
+        </attribute>
+        <attribute name="firstName">
+            <value name="firstName"/>
+        </attribute>
+        <attribute name="lastName">
+            <value name="lastName"/>
+        </attribute>
+        <attribute name="landline">
+            <value name="landline"/>
+        </attribute>
+        <attribute name="mobile">
+            <value name="mobile"/>
+        </attribute>
+        <attribute name="role">
+            <value name="role"/>
+        </attribute>
+        <attribute name="addresses">
+            <value name="addresses"/>
+        </attribute>
+        <attribute name="rentalProperties">
+            <value name="rentalProperties"/>
+        </attribute>
+        <attribute name="tenancies">
+            <value name="tenancies"/>
+        </attribute>
+        <attribute name="bankAccount">
+            <value name="bankAccount"/>
+        </attribute>
+    </class>
+
+    <class name="src.de.haubauer.db.entities.Person">
+        <attribute name="personId">
+            <value name="id"/>
         </attribute>
         <attribute name="dateCreated">
             <value name="dateCreated"/>
@@ -95,9 +137,66 @@
         </attribute>
     </class>
 
+    <class name="src.de.haubauer.db.entities.Address">
+        <attribute name="addressId">
+            <value name="id"/>
+        </attribute>
+        <attribute name="dateCreated">
+            <value name="dateCreated"/>
+        </attribute>
+        <attribute name="street">
+            <value name="street"/>
+        </attribute>
+        <attribute name="phoneNumber">
+            <value name="phoneNumber"/>
+        </attribute>
+        <attribute name="number">
+            <value name="number"/>
+        </attribute>
+        <attribute name="zipCode">
+            <value name="zipCode"/>
+        </attribute>
+        <attribute name="town">
+            <value name="town"/>
+        </attribute>
+        <attribute name="status">
+            <value name="status"/>
+        </attribute>
+        <attribute name="rentalProperties">
+            <value name="rentalProperties"/>
+        </attribute>
+        <attribute name="people">
+            <value name="people"/>
+        </attribute>
+    </class>
+
     <class name="src.de.haubauer.business.models.BankAccount">
         <attribute name="id">
             <value name="bankAccountId"/>
+        </attribute>
+        <attribute name="dateCreated">
+            <value name="dateCreated"/>
+        </attribute>
+        <attribute name="iban">
+            <value name="iban"/>
+        </attribute>
+        <attribute name="bic">
+            <value name="bic"/>
+        </attribute>
+        <attribute name="owner">
+            <value name="owner"/>
+        </attribute>
+        <attribute name="bank">
+            <value name="bank"/>
+        </attribute>
+        <attribute name="person">
+            <value name="person"/>
+        </attribute>
+    </class>
+
+    <class name="src.de.haubauer.db.entities.BankAccount">
+        <attribute name="bankAccountId">
+            <value name="id"/>
         </attribute>
         <attribute name="dateCreated">
             <value name="dateCreated"/>
