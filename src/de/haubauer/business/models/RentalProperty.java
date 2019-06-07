@@ -1,17 +1,12 @@
-package src.de.haubauer.business;
+package src.de.haubauer.business.models;
 
-import src.de.haubauer.db.BaseDao;
 import src.de.haubauer.db.entities.Tenancy;
-import src.de.haubauer.enums.RentalType;
-import src.de.haubauer.enums.UsageType;
+import src.de.haubauer.helpers.DatedObject;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-/**
- *
- */
-public class RentalProperty {
+public class RentalProperty extends DatedObject {
    private RentalType rentalType;
    private String description;
    private String address;
@@ -26,41 +21,6 @@ public class RentalProperty {
    private RentalProperty parent;
    private UsageType usageType;
    private int floor;
-
-   BaseDao<RentalProperty> rentalDao = new BaseDao<>(RentalProperty.class);
-
-    /**
-     * Fügt ein Mietobjekt in die Datenbank hinzu
-     * @param instance
-     */
-   public void add(RentalProperty instance){
-       rentalDao.save();
-   }
-
-    /**
-     * Editiert den übergebenen Datensatz in der Datenbank
-     * @param instance
-     */
-   public void edit( RentalProperty instance){
-       rentalDao.update(instance);
-   }
-
-    /**
-     * Löscht den übergebenen Datensatz in der Datenbank
-     * @param instance
-     */
-   public void delete(RentalProperty instance){
-       rentalDao.delete(instance);
-   }
-
-   public void addObjecttype(){
-
-    };
-
-   public void addUsageType(){
-
-    };
-
 
    /*GETTER     AND     SETTER*/
 
@@ -166,5 +126,13 @@ public class RentalProperty {
 
     public void setFloor(int floor) {
         this.floor = floor;
+    }
+
+    public RentalType getRentalType() {
+        return rentalType;
+    }
+
+    public void setRentalType(RentalType rentalType) {
+        this.rentalType = rentalType;
     }
 }

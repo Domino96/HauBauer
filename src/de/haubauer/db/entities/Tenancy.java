@@ -1,12 +1,14 @@
 package src.de.haubauer.db.entities;
 
+import src.de.haubauer.helpers.DatedObject;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "Tenancy")
-public class Tenancy extends DatedEntity{
+public class Tenancy extends DatedObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int tenancyId;

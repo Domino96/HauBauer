@@ -1,12 +1,12 @@
-package src.de.haubauer.db.entities;
+package src.de.haubauer.helpers;
 
 import java.util.Date;
 
-public abstract class DatedEntity {
+public abstract class DatedObject {
     private Date dateCreated;
 
 
-    public DatedEntity() {
+    public DatedObject() {
         this.dateCreated = new Date();
     }
 
