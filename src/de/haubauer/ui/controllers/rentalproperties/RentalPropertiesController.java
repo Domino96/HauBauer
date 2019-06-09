@@ -2,18 +2,16 @@ package de.haubauer.ui.controllers.rentalproperties;
 
 import de.haubauer.business.models.RentalProperty;
 import de.haubauer.business.services.RentalPropertyService;
+import de.haubauer.ui.FxmlLibrary;
 import de.haubauer.ui.viewmodels.RentalPropertyViewModel;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import de.haubauer.ui.controllers.SceneController;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -103,5 +101,9 @@ public class RentalPropertiesController implements Initializable {
     public void zahlungUbersichtForItem() {
         RentalProperty item = tableView.getSelectionModel().getSelectedItem();
         tableView.getItems();
+    }
+
+    public void onDashboardClicked(){
+
     }
 }

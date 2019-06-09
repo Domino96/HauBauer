@@ -12,7 +12,7 @@ public class RentalPropertyService {
 
     public List<RentalProperty> getAllRentalProperies() {
         // return Mapper.map(this.personDao.getAllTenants(), Person.class);
-        return Mapper.getInstance().map(this.rentalPropertyDao.getAll(),RentalProperty.class);
+        return Mapper.getInstance().map(this.rentalPropertyDao.getAll());
 
         // return Mapper.map(this.personDao.getAllTenants(), Person.class);
     }
