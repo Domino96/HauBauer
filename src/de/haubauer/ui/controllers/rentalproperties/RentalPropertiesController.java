@@ -1,5 +1,8 @@
-package src.de.haubauer.ui.controllers.rentalproperties;
+package de.haubauer.ui.controllers.rentalproperties;
 
+import de.haubauer.business.models.RentalProperty;
+import de.haubauer.business.services.RentalPropertyService;
+import de.haubauer.ui.viewmodels.RentalPropertyViewModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,7 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import de.haubauer.ui.controllers.SceneController;
 import javafx.stage.Stage;
-import src.de.haubauer.ui.FxmlLibrary;
+import de.haubauer.ui.FxmlLibrary;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,48 +26,48 @@ import java.util.ResourceBundle;
 
 public class RentalPropertiesController implements Initializable {
 
-    @FXML
-    private TableColumn<TableInit, String> nummer;
+    private RentalPropertyViewModel viewModel = new RentalPropertyViewModel();
+    private RentalPropertyService service = new RentalPropertyService();
 
     @FXML
-    private TableColumn<TableInit, String> typ;
+    private TableColumn<RentalProperty, String> nummer;
 
     @FXML
-    private TableColumn<TableInit, String> beschreibung;
+    private TableColumn<RentalProperty, String> typ;
 
     @FXML
-    private TableColumn<TableInit, String> anschrift;
+    private TableColumn<RentalProperty, String> beschreibung;
 
     @FXML
-    private TableColumn<TableInit, String> wohnflaeche;
+    private TableColumn<RentalProperty, String> anschrift;
 
     @FXML
-    private TableColumn<TableInit, String> qm;
+    private TableColumn<RentalProperty, String> wohnflaeche;
 
     @FXML
-    private TableColumn<TableInit, String> nebenkosten;
+    private TableColumn<RentalProperty, String> qm;
 
     @FXML
-    private TableColumn<TableInit, String> notiz;
+    private TableColumn<RentalProperty, String> nebenkosten;
 
     @FXML
-    private TableView<TableInit> tableView;
+    private TableColumn<RentalProperty, String> notiz;
+
+    @FXML
+    private TableView<RentalProperty> tableView;
 
     @FXML
     private Button addBtn;
 
 
-    ObservableList<TableInit> list = FXCollections.observableArrayList();
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        list.add(new TableInit("16577", "Garage", "Testing", "Am Hackenbruch 51", "3m", "60qm", "180", "dump"));
-        list.add(new TableInit("16577", "Haus", "Testing", "Kettwiger 51", "5m", "80qm", "300", "hello world"));
-        list.add(new TableInit("16577", "Garage", "Testing", "Am Hackenbruch 51", "3m", "60qm", "180", "dump"));
-        list.add(new TableInit("16577", "Haus", "Testing", "Kettwiger 51", "5m", "80qm", "300", "hello world"));
 
-        this.tableView.setItems(list);
+        this.service.getAllRentalProperies().forEach(p -> this.viewModel.getRentalProperties().add(p));
+
+        this.tableView.setItems(this.viewModel.getRentalProperties());
+
         this.nummer.setCellValueFactory(new PropertyValueFactory<>("nummer"));
         this.typ.setCellValueFactory(new PropertyValueFactory<>("typ"));
         this.beschreibung.setCellValueFactory(new PropertyValueFactory<>("beschreibung"));
@@ -79,7 +82,7 @@ public class RentalPropertiesController implements Initializable {
     }
 
     public void deleteItems() {
-        ObservableList<TableInit> list = tableView.getSelectionModel().getSelectedItems();
+        ObservableList<RentalProperty> list = tableView.getSelectionModel().getSelectedItems();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText("Delete");
@@ -102,7 +105,7 @@ public class RentalPropertiesController implements Initializable {
     }
 
     public void zahlungUbersichtForItem() {
-        TableInit item = tableView.getSelectionModel().getSelectedItem();
+        RentalProperty item = tableView.getSelectionModel().getSelectedItem();
         tableView.getItems();
     }
 

@@ -12,17 +12,17 @@ import java.util.List;
 public class RentalProperty {
     private int id;
     private String description;
-    private String address;
+    private de.haubauer.business.models.Address address;
     private int zipCode;
     private String town;
     private double area;
     private BigDecimal squareMeterPriceCold;
     private BigDecimal sideCostsMonth;
     private String note;
-    private Tenancy currentTenancy;
-    private List<Tenancy> pastTenancy;
+    private de.haubauer.business.models.Tenancy currentTenancy;
+    private List<de.haubauer.business.models.Tenancy> pastTenancy;
     private RentalProperty parent;
-    private UsageType usageType;
+    private de.haubauer.business.models.UsageType usageType;
     private int floor;
 
     public int getId() {
@@ -44,11 +44,11 @@ public class RentalProperty {
         this.description = description;
     }
 
-    public Address getAddress() {
+    public de.haubauer.business.models.Address getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(de.haubauer.business.models.Address address) {
         this.address = address;
     }
 
@@ -100,19 +100,19 @@ public class RentalProperty {
         this.note = note;
     }
 
-    public Tenancy getCurrentTenancy() {
+    public de.haubauer.business.models.Tenancy getCurrentTenancy() {
         return currentTenancy;
     }
 
-    public void setCurrentTenancy(Tenancy currentTenancy) {
+    public void setCurrentTenancy(de.haubauer.business.models.Tenancy currentTenancy) {
         this.currentTenancy = currentTenancy;
     }
 
-    public List<Tenancy> getPastTenancy() {
+    public List<de.haubauer.business.models.Tenancy> getPastTenancy() {
         return pastTenancy;
     }
 
-    public void setPastTenancy(List<Tenancy> pastTenancy) {
+    public void setPastTenancy(List<de.haubauer.business.models.Tenancy> pastTenancy) {
         this.pastTenancy = pastTenancy;
     }
 

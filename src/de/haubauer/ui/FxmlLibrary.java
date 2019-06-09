@@ -2,10 +2,10 @@ package de.haubauer.ui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import src.de.haubauer.ui.controllers.rentalproperties.RentalPropertiesController;
-import src.de.haubauer.ui.controllers.rentalproperties.RentalPropertyAddController;
-import src.de.haubauer.ui.controllers.tenants.TenantsAddController;
-import src.de.haubauer.ui.controllers.tenants.TenantsEditController;
+import de.haubauer.business.models.Person;
+import de.haubauer.ui.controllers.rentalproperties.RentalPropertyAddController;
+import de.haubauer.ui.controllers.tenants.TenantsAddController;
+import de.haubauer.ui.controllers.tenants.TenantsEditController;
 
 import java.io.IOException;
 

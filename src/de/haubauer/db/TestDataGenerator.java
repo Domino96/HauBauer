@@ -1,6 +1,11 @@
-package src.de.haubauer.db;
+package de.haubauer.db;
 
-import src.de.haubauer.db.entities.*;
+import de.haubauer.db.entities.RentalProperty;
+import de.haubauer.db.entities.Person;
+import de.haubauer.db.entities.User;
+import de.haubauer.db.entities.BankAccount;
+import de.haubauer.db.entities.Tenancy;
+import de.haubauer.db.
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
