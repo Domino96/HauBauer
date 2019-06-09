@@ -12,13 +12,17 @@ import java.util.List;
  * @param <T> Die Klasse der Entity, auf der Datenbankoperationen ausgeführt werden soll.
  */
 public class BaseDao<T> {
-    private final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+    private static SessionFactory sessionFactory;
     private Session session;
     private Class<T> clazz;
 
     public BaseDao(Class<T> clazz) {
         this.session = sessionFactory.openSession();
         this.clazz = clazz;
+    }
+
+    public static void initialize() {
+        sessionFactory = new Configuration().configure().buildSessionFactory();
     }
 
     protected Class<T> getEntityClass() {
@@ -187,7 +191,5 @@ public class BaseDao<T> {
         if (session != null) {
             session.close();
         }
-
-        sessionFactory.close();
     }
 }

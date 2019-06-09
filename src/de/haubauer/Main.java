@@ -1,5 +1,6 @@
 package de.haubauer;
 
+import de.haubauer.db.BaseDao;
 import de.haubauer.ui.FxmlLibrary;
 import de.haubauer.ui.controllers.SceneController;
 import javafx.application.Application;
@@ -10,6 +11,7 @@ import java.io.IOException;
 
 public class Main extends Application {
     public static void main(String[] args) {
+        BaseDao.initialize();
         launch(args);
     }
 
