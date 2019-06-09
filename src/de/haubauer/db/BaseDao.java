@@ -17,6 +17,10 @@ public class BaseDao<T> {
     private Class<T> clazz;
 
     public BaseDao(Class<T> clazz) {
+        if (sessionFactory == null) {
+            BaseDao.initialize();
+        }
+
         this.session = sessionFactory.openSession();
         this.clazz = clazz;
     }

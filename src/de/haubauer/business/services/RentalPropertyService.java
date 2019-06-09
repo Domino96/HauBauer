@@ -1,20 +1,17 @@
 package de.haubauer.business.services;
 
-import de.haubauer.db.RentalPropertyDao;
 import de.haubauer.business.models.RentalProperty;
+import de.haubauer.db.RentalPropertyDao;
 import de.haubauer.helpers.Mapper;
+import org.modelmapper.TypeToken;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RentalPropertyService {
     private RentalPropertyDao rentalPropertyDao = new RentalPropertyDao();
 
-    public List<RentalProperty> getAllRentalProperies() {
-        // return Mapper.map(this.personDao.getAllTenants(), Person.class);
-        return Mapper.getInstance().map(this.rentalPropertyDao.getAll());
-
-        // return Mapper.map(this.personDao.getAllTenants(), Person.class);
+    public List<RentalProperty> getAllRentalProperties() {
+        return Mapper.getInstance().map(this.rentalPropertyDao.getAll(), new TypeToken<List<RentalProperty>>() {});
     }
 
     public void saveRentalProperty(RentalProperty rentalProperty) {

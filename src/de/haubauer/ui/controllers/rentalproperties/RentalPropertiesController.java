@@ -58,7 +58,7 @@ public class RentalPropertiesController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        this.service.getAllRentalProperies().forEach(p -> this.viewModel.getRentalProperties().add(p));
+        this.service.getAllRentalProperties().forEach(p -> this.viewModel.getRentalProperties().add(p));
 
         this.tableView.setItems(this.viewModel.getRentalProperties());
 
