@@ -1,7 +1,7 @@
 package src.de.haubauer.db.entities;
 
-import src.de.haubauer.enums.PaymentType;
 import src.de.haubauer.helpers.DatedObject;
+import src.de.haubauer.db.entities.PaymentType;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -17,7 +17,6 @@ public class Payment extends DatedObject {
     private Date date;
     private BigDecimal value;
     private BigDecimal billed;
-    private PaymentType type = PaymentType.Payment;
     private String comment;
 
     @ManyToOne
@@ -54,14 +53,6 @@ public class Payment extends DatedObject {
 
     public void setBilled(BigDecimal billed) {
         this.billed = billed;
-    }
-
-    public PaymentType getType() {
-        return type;
-    }
-
-    public void setType(PaymentType type) {
-        this.type = type;
     }
 
     public String getComment() {

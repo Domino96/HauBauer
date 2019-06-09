@@ -1,4 +1,4 @@
-package src.de.haubauer.business;
+package src.de.haubauer.business.models;
 
 import src.de.haubauer.db.BaseDao;
 import src.de.haubauer.db.entities.Tenancy;
@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class RentalProperty {
    private String description;
-   private String address;
+   private src.de.haubauer.business.models.Address address;
    private int zipCode;
    private String town;
    private double area;
@@ -69,11 +69,11 @@ public class RentalProperty {
         this.description = description;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
@@ -147,14 +147,6 @@ public class RentalProperty {
 
     public void setParent(RentalProperty parent) {
         this.parent = parent;
-    }
-
-    public UsageType getUsageType() {
-        return usageType;
-    }
-
-    public void setUsageType(UsageType usageType) {
-        this.usageType = usageType;
     }
 
     public int getFloor() {

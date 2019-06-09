@@ -2,6 +2,8 @@ package src.de.haubauer.ui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import src.de.haubauer.ui.controllers.rentalproperties.RentalPropertiesController;
+import src.de.haubauer.ui.controllers.rentalproperties.RentalPropertyAddController;
 import src.de.haubauer.ui.controllers.tenants.TenantsAddController;
 import src.de.haubauer.ui.controllers.tenants.TenantsEditController;
 
@@ -30,6 +32,17 @@ public class FxmlLibrary {
     public static Parent getTenantsAddDialog() throws IOException {
         FXMLLoader loader = new FXMLLoader(FxmlLibrary.class.getResource("fxml/tenants/edit.fxml"));
         loader.setController(new TenantsAddController());
+
+        return loader.load();
+    }
+
+    public static Parent getRentalPropertyOverView() throws IOException {
+        return FXMLLoader.load(FxmlLibrary.class.getResource("fxml/rentalproperties/rental-properties.fxml"));
+    }
+
+    public static Parent getRentalPropertyAdd() throws IOException {
+        FXMLLoader loader = new FXMLLoader(FxmlLibrary.class.getResource("fxml/rentalproperties/add.fxml"));
+        loader.setController(new RentalPropertyAddController());
 
         return loader.load();
     }

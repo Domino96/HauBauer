@@ -3,13 +3,21 @@ package src.de.haubauer.ui.controllers.rentalproperties;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import src.de.haubauer.ui.FxmlLibrary;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+
 
 public class RentalPropertiesController implements Initializable {
 
@@ -39,6 +47,10 @@ public class RentalPropertiesController implements Initializable {
 
     @FXML
     private TableView<TableInit> tableView;
+
+    @FXML
+    private Button addBtn;
+
 
     ObservableList<TableInit> list = FXCollections.observableArrayList();
 
@@ -75,6 +87,16 @@ public class RentalPropertiesController implements Initializable {
         if (result.get() == ButtonType.OK){
             tableView.getItems().removeAll(list);
         }
+    }
+
+    public void addItem() throws IOException {
+        Stage addStage = new Stage();
+
+
+        Parent root = FxmlLibrary.getRentalPropertyAdd();
+
+        addStage.setScene(new Scene(root, 600, 480));
+        addStage.show();
     }
 
     public void zahlungUbersichtForItem() {
