@@ -1,7 +1,7 @@
-package src.de.haubauer.db.entities;
+package de.haubauer.db.entities;
 
 
-import src.de.haubauer.helpers.DatedObject;
+import de.haubauer.helpers.DatedObject;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -20,39 +20,43 @@ public class RentalProperty extends DatedObject {
     private BigDecimal squareMeterPriceCold;
     private BigDecimal sideCostsMonth;
     private String note;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "parent")
     private List<RentalProperty> children = new ArrayList<RentalProperty>();
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private RentalProperty parent;
     private int floor;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "addressId")
     private Address address;
 
-    @ManyToMany(mappedBy = "rentalProperties")
+    @ManyToMany(mappedBy = "rentalProperties", cascade = CascadeType.ALL)
     private List<Person> people;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "tenancyId")
     private List<Tenancy> tenancy;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "usageTypeId")
     private UsageType usageType;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "rentalTypeId")
     private RentalType rentalType;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "rentalRoleId")
     private RentalRole rentalRole;
 
 
     public int getRentalPropertyId() {
         return rentalPropertyId;
+    }
+
+    public void setRentalPropertyId(int rentalPropertyId) {
+        this.rentalPropertyId = rentalPropertyId;
     }
 
     public String getDescription() {

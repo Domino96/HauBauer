@@ -1,4 +1,4 @@
-package src.de.haubauer.ui;
+package de.haubauer.ui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class FxmlLibrary {
     public static Parent getRoot() throws IOException {
-        return getDashboard();
+        return getTenantsList();
     }
 
     public static Parent getDashboard() throws IOException {
@@ -22,9 +22,9 @@ public class FxmlLibrary {
         return FXMLLoader.load(FxmlLibrary.class.getResource("fxml/tenants/tenants.fxml"));
     }
 
-    public static Parent getTenantsEditDialog() throws IOException {
+    public static Parent getTenantsEditDialog(final Person tenant) throws IOException {
         FXMLLoader loader = new FXMLLoader(FxmlLibrary.class.getResource("fxml/tenants/edit.fxml"));
-        loader.setController(new TenantsEditController());
+        loader.setController(new TenantsEditController(tenant));
 
         return loader.load();
     }

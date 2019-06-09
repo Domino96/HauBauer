@@ -1,7 +1,7 @@
-package src.de.haubauer.db.entities;
+package de.haubauer.db.entities;
 
 
-import src.de.haubauer.helpers.DatedObject;
+import de.haubauer.helpers.DatedObject;
 
 import javax.persistence.*;
 import java.util.List;
@@ -20,29 +20,32 @@ public class Person extends DatedObject {
     private String mobile;
     private String email;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "AddressPerson",
                 joinColumns = {@JoinColumn(name = "personId")},
                 inverseJoinColumns = {@JoinColumn(name = "addressId")})
     private List<Address> addresses;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "RentalPropertyPerson",
             joinColumns = {@JoinColumn(name = "personId")},
             inverseJoinColumns = {@JoinColumn(name = "RentalPropertyId")})
     private List<RentalProperty> rentalProperties;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "tenancyId")
     private List<Tenancy> tenancies;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "bankAccountId")
     private BankAccount bankAccount;
-
-
+    
     public int getPersonId() {
         return personId;
+    }
+
+    public void setPersonId(int personId) {
+        this.personId = personId;
     }
 
     public String getTitle() {
@@ -101,20 +104,20 @@ public class Person extends DatedObject {
         this.addresses = addresses;
     }
 
-    public List<RentalProperty> getRentalPropertys() {
+    public List<RentalProperty> getRentalProperties() {
         return rentalProperties;
     }
 
-    public void setRentalPropertys(List<RentalProperty> rentalPropertys) {
-        this.rentalProperties = rentalPropertys;
+    public void setRentalProperties(List<RentalProperty> rentalProperties) {
+        this.rentalProperties = rentalProperties;
     }
 
-    public List<Tenancy> getTenancy() {
+    public List<Tenancy> getTenancies() {
         return this.tenancies;
     }
 
-    public void setTenancy(List<Tenancy> tenancy) {
-        this.tenancies = tenancy;
+    public void setTenancies(List<Tenancy> tenancies) {
+        this.tenancies = tenancies;
     }
 
     public BankAccount getBankAccount() {
@@ -124,5 +127,4 @@ public class Person extends DatedObject {
     public void setBankAccount(BankAccount bankAccount) {
         this.bankAccount = bankAccount;
     }
-
 }

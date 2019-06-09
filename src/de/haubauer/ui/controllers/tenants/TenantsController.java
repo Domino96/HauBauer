@@ -1,17 +1,19 @@
-package src.de.haubauer.ui.controllers.tenants;
+package de.haubauer.ui.controllers.tenants;
 
 import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import src.de.haubauer.business.models.Person;
-import src.de.haubauer.business.services.PersonService;
-import src.de.haubauer.ui.FxmlLibrary;
-import src.de.haubauer.ui.viewmodels.TenantsViewModel;
+import de.haubauer.business.models.Person;
+import de.haubauer.business.services.PersonService;
+import de.haubauer.ui.FxmlLibrary;
+import de.haubauer.ui.controllers.SceneController;
+import de.haubauer.ui.viewmodels.TenantsViewModel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,14 +38,14 @@ public class TenantsController implements Initializable {
 
         this.tableView.setItems(this.viewModel.getTenants());
         this.tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        this.viewModel.setSelectedTenants(this.tableView.getSelectionModel().getSelectedItems());
 
         // create bindings from getters
         this.addressColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getAddressString(), cell.getValue().getAddresses()));
-        this.bankAccountColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getBankAccountString(), cell.getValue().bankAccountProperty()));
+        this.bankAccountColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getBankAccountString(), cell.getValue().getBankAccount().bicProperty()));
     }
 
     public void deleteItems() {
-        final ObservableList<Person> itemsToDelete = tableView.getSelectionModel().getSelectedItems();
         final Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Sind Sie sicher?");
         alert.setHeaderText("Löschen");
@@ -52,7 +54,7 @@ public class TenantsController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            this.viewModel.getTenants().removeAll(itemsToDelete);
+            this.viewModel.getTenants().removeAll(this.viewModel.getSelectedTenants());
         }
     }
 
@@ -65,10 +67,16 @@ public class TenantsController implements Initializable {
     }
 
     public void editItem() throws IOException {
-        final Stage dialog = new Stage();
-        dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.setTitle("Mietstammdatensatz bearbeiten");
-        dialog.setScene(new Scene(FxmlLibrary.getTenantsEditDialog(), 500, 700));
-        dialog.show();
+        if (this.viewModel.getSelectedTenants().size() == 1) {
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.setTitle("Mietstammdatensatz bearbeiten");
+            dialog.setScene(new Scene(FxmlLibrary.getTenantsEditDialog(this.viewModel.getSelectedTenants().get(0)), 500, 700));
+            dialog.show();
+        }
+    }
+
+    public void onDashboardClicked(ActionEvent actionEvent) {
+        SceneController.getInstance().activate("Dashboard");
     }
 }

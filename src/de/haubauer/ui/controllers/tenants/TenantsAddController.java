@@ -1,4 +1,4 @@
-package src.de.haubauer.ui.controllers.tenants;
+package de.haubauer.ui.controllers.tenants;
 
 public class TenantsAddController extends TenantsDialogController {
     public TenantsAddController() {
@@ -7,5 +7,7 @@ public class TenantsAddController extends TenantsDialogController {
 
     public void save() {
         this.service.saveTenant(this.viewModel.getTenant());
+
+        this.getStage().close();
     }
 }

@@ -2,6 +2,7 @@ package src.de.haubauer.ui.controllers.rentalproperties;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import de.haubauer.ui.controllers.SceneController;
 import javafx.stage.Stage;
 import src.de.haubauer.ui.FxmlLibrary;
 
@@ -102,5 +104,9 @@ public class RentalPropertiesController implements Initializable {
     public void zahlungUbersichtForItem() {
         TableInit item = tableView.getSelectionModel().getSelectedItem();
         tableView.getItems();
+    }
+
+    public void onDashboardClicked(ActionEvent actionEvent) {
+        SceneController.getInstance().activate("Dashboard");
     }
 }

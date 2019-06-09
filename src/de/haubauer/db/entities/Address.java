@@ -1,7 +1,7 @@
-package src.de.haubauer.db.entities;
+package de.haubauer.db.entities;
 
-import src.de.haubauer.enums.AddressStatus;
-import src.de.haubauer.helpers.DatedObject;
+import de.haubauer.enums.AddressStatus;
+import de.haubauer.helpers.DatedObject;
 
 import javax.persistence.*;
 import java.util.List;
@@ -20,12 +20,20 @@ public class Address extends DatedObject {
     private String phoneNumber;
     private AddressStatus status;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "rentalPropertyId")
     private List<RentalProperty> rentalProperties;
 
-    @ManyToMany(mappedBy = "addresses")
+    @ManyToMany(mappedBy = "addresses", cascade = CascadeType.ALL)
     private List<Person> people;
+
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
+    }
 
     public String getStreet() {
         return street;

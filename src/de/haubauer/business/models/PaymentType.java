@@ -4,12 +4,13 @@ import de.haubauer.helpers.DatedObject;
 
 import java.util.List;
 
-public class RentalType extends DatedObject {
-
+public class PaymentType extends DatedObject {
     private int id;
+
     private String name;
     private String description;
-    private List<RentalProperty> rentalProperties;
+
+    private List<Payment> payments;
 
     public int getId() {
         return id;
@@ -35,11 +36,11 @@ public class RentalType extends DatedObject {
         this.description = description;
     }
 
-    public List<RentalProperty> getRentalProperties() {
-        return rentalProperties;
+    public List<Payment> getPayments() {
+        return payments;
     }
 
-    public void setRentalProperties(List<RentalProperty> rentalProperties) {
-        this.rentalProperties = rentalProperties;
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
     }
 }

@@ -1,40 +1,26 @@
-package de.haubauer.db.entities;
+package de.haubauer.business.models;
 
 import de.haubauer.helpers.DatedObject;
 
-import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-@Table(name = "Tenancy")
 public class Tenancy extends DatedObject {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int tenancyId;
+    private int id;
 
     private Date startDate;
     private Date endDate;
     private int status;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "personId")
     private Person person;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "paymentId")
     private List<Payment> payments;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "rentalPropertyId")
     private RentalProperty rentalProperty;
 
-    public int getTenancyId() {
-        return tenancyId;
+    public int getId() {
+        return id;
     }
 
-    public void setTenancyId(int tenancyId) {
-        this.tenancyId = tenancyId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Date getStartDate() {
