@@ -1,7 +1,5 @@
 package de.haubauer.ui.viewmodels;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import de.haubauer.business.models.Person;

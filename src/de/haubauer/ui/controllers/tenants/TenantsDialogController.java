@@ -111,5 +111,6 @@ public abstract class TenantsDialogController implements Initializable {
         this.bankField.textProperty().bindBidirectional(tenant.getBankAccount().bankProperty());
     }
 
+    @FXML
     public abstract void save();
 }

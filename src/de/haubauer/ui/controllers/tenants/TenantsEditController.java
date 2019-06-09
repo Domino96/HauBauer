@@ -1,6 +1,7 @@
 package de.haubauer.ui.controllers.tenants;
 
 import de.haubauer.business.models.Person;
+import javafx.fxml.FXML;
 
 public class TenantsEditController extends TenantsDialogController {
     public TenantsEditController(final Person tenant) {
@@ -9,6 +10,7 @@ public class TenantsEditController extends TenantsDialogController {
         this.viewModel.setTenant(tenant);
     }
 
+    @FXML
     public void save() {
         this.service.updateTenant(this.viewModel.getTenant());
 

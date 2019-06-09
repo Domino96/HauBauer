@@ -3,8 +3,10 @@ package de.haubauer.helpers;
 import org.modelmapper.ModelMapper;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
+/**
+ * Ein Wrapper für ModelMapper, um das Mapping zwischen Entity (Datenschicht) und Model (Logikschicht) zu vereinfachen.
+ */
 public class Mapper {
     private static Mapper instance;
     private ModelMapper modelMapper = new ModelMapper();
@@ -32,16 +34,14 @@ public class Mapper {
     }
 
     /**
-     * Mappt das angegebene Objekt zur angegebenen Klasse.
-     * @param source Die Quellliste, deren Inhalt gemappt werden soll.
-     * @param destinationClass Die Klasse, in das die Inhalte gemappt werden soll.
-     * @param <TSource> Den Typ der Quellobjekte.
-     * @param <TDestination> Den Typ der Zielobjekte.
-     * @return Eine ArrayList, die die Zielobjekte enthält.
+     * Mappt die angegebenen Quellobjekte zur angegebenen Klasse.
+     * @param source Eine Liste von Quellobjekten.
+     * @param destinationClass Die Klasse, in das das Quellobjekt gemappt werden soll.
+     * @param <TSource> Den Typ des Quellobjektes.
+     * @param <TDestination> Den Typ des Zielobjektes.
+     * @return Eine Liste von TDestination, das die Zielobjekte enthält.
      */
-    /*public static <TSource, TDestination> List<TDestination> map(List<TSource> source, Class<TDestination> destinationClass) {
-        JMapper<TDestination, TSource> mapper = new JMapper<>(destinationClass, (Class<TSource>)source.getClass(), configurationPath);
-
-        return source.stream().map(mapper::getDestination).collect(Collectors.toList());
-    }*/
+    public <TSource, TDestination> List<TDestination> map(List<TSource> source, Class<TDestination> destinationClass) {
+        return this.modelMapper.<List<TDestination>>map(source, destinationClass);
+    }
 }

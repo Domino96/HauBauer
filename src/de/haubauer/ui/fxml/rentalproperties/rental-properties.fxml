@@ -48,7 +48,7 @@
       <Button layoutX="369.0" layoutY="67.0" mnemonicParsing="false" onAction="#zahlungUbersichtForItem" onZoomFinished="#zahlungUbersichtForItem" prefHeight="50.0" prefWidth="121.0" text="Zahlungsübersicht" />
       <ToolBar layoutX="134.0" prefHeight="64.0" prefWidth="498.0">
           <items>
-              <fx:include fx:id="navigationToolbar" source="../Navigation_toolbar.fxml" />
+              <fx:include fx:id="navigationToolbar" source="../navigation-toolbar.fxml" />
           </items>
       </ToolBar>
     </children>

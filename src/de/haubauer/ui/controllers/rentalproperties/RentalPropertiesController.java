@@ -14,15 +14,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import de.haubauer.ui.controllers.SceneController;
-import javafx.stage.Stage;
-import de.haubauer.ui.FxmlLibrary;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-
 
 public class RentalPropertiesController implements Initializable {
 
@@ -107,9 +103,5 @@ public class RentalPropertiesController implements Initializable {
     public void zahlungUbersichtForItem() {
         RentalProperty item = tableView.getSelectionModel().getSelectedItem();
         tableView.getItems();
-    }
-
-    public void onDashboardClicked(ActionEvent actionEvent) {
-        SceneController.getInstance().activate("Dashboard");
     }
 }
