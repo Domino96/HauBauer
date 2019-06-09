@@ -42,6 +42,7 @@ public class TenantsController implements Initializable {
         this.bankAccountColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getBankAccountString(), cell.getValue().getBankAccount().bicProperty()));
     }
 
+    @FXML
     public void deleteItems() {
         final Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Sind Sie sicher?");
@@ -55,6 +56,7 @@ public class TenantsController implements Initializable {
         }
     }
 
+    @FXML
     public void addItem() throws IOException {
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
@@ -63,6 +65,7 @@ public class TenantsController implements Initializable {
         dialog.show();
     }
 
+    @FXML
     public void editItem() throws IOException {
         if (this.viewModel.getSelectedTenants().size() == 1) {
             final Stage dialog = new Stage();

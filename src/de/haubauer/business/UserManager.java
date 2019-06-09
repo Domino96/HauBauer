@@ -1,7 +1,10 @@
 package de.haubauer.business;
 
-import de.haubauer.db.entities.User;
+import de.haubauer.business.models.User;
 
+/**
+ * User-Verwaltung.
+ */
 public class UserManager {
     private User loggedInUser;
 
@@ -9,17 +12,19 @@ public class UserManager {
 
     public static UserManager getInstance() {
         if (instance == null) {
-            try {
-                instance = new UserManager();
-            } catch (Exception e) {
-                throw new RuntimeException(e.getMessage(), e.getCause());
-            }
+            instance = new UserManager();
         }
 
         return instance;
     }
 
-    private UserManager() {}
+    private UserManager() {
+        // Testdaten
+        this.loggedInUser = new User();
+        this.loggedInUser.setUserName("stefan-schmitz");
+        this.loggedInUser.setFirstName("Stefan");
+        this.loggedInUser.setLastName("Schmitz");
+    }
 
     /**
      * Versucht, den User mit dem gewählten Benutzername und Passwort einzuloggen.

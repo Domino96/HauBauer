@@ -74,4 +74,8 @@ public class PersonService {
 
         return person;
     }
+
+    public void dispose() {
+        this.personDao.dispose();
+    }
 }

@@ -15,10 +15,16 @@ public class SceneController {
         return SceneController.instance;
     }
 
+    /**
+     * Setzt die Hauptszene.
+     */
     public void setScene(Scene scene) {
         this.main = scene;
     }
 
+    /**
+     * Setzt den übergebenen Container als Root-Element für die Hauptszene.
+     */
     public void activate(Parent container){
         main.setRoot(container);
     }

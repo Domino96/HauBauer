@@ -2,6 +2,9 @@ package de.haubauer.helpers;
 
 import java.util.Date;
 
+/**
+ * Repräsentiert ein mit Erstelldatum datiertes Objekt.
+ */
 public abstract class DatedObject implements Comparable<DatedObject> {
     private Date dateCreated;
 

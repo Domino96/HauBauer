@@ -1,8 +1,5 @@
 package de.haubauer.business.models;
 
-import de.haubauer.db.BaseDao;
-
-
 import java.math.BigDecimal;
 import java.util.List;
 

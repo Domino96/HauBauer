@@ -7,6 +7,10 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.List;
 
+/**
+ * Ein Basis-Data-Access-Object.
+ * @param <T> Die Klasse der Entity, auf der Datenbankoperationen ausgeführt werden soll.
+ */
 public class BaseDao<T> {
     private final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
     private Session session;
@@ -21,6 +25,10 @@ public class BaseDao<T> {
         return this.clazz;
     }
 
+    /**
+     * Speichert die übergebenen Entities in der Datenbank.
+     * @param entities Eine mit Komma separierte Liste von Entities.
+     */
     @SafeVarargs
     public final void save(T... entities) {
         Transaction transaction = session.beginTransaction();
@@ -37,6 +45,10 @@ public class BaseDao<T> {
         transaction.commit();
     }
 
+    /**
+     * Speichert die übergebenen Entities in der Datenbank.
+     * @param entities Eine Liste von Entities.
+     */
     public final void save(List<T> entities) {
         Transaction transaction = session.beginTransaction();
 
@@ -52,6 +64,10 @@ public class BaseDao<T> {
         transaction.commit();
     }
 
+    /**
+     * Updatet die übergebenen Entities in der Datenbank.
+     * @param entities Eine mit Komma separierte Liste von Entities.
+     */
     @SafeVarargs
     public final void update(T... entities) {
         Transaction transaction = session.beginTransaction();
@@ -68,6 +84,10 @@ public class BaseDao<T> {
         transaction.commit();
     }
 
+    /**
+     * Updatet die übergebenen Entities in der Datenbank.
+     * @param entities Eine Liste von Entities.
+     */
     public final void update(List<T> entities) {
         Transaction transaction = session.beginTransaction();
 
@@ -83,6 +103,10 @@ public class BaseDao<T> {
         transaction.commit();
     }
 
+    /**
+     * Löscht die übergebenen Entities aus der Datenbank.
+     * @param entities Eine mit Komma separierte Liste von Entities.
+     */
     @SafeVarargs
     public final void delete(T... entities) {
         Transaction transaction = session.beginTransaction();
@@ -99,6 +123,10 @@ public class BaseDao<T> {
         transaction.commit();
     }
 
+    /**
+     * Löscht die übergebenen Entities aus der Datenbank.
+     * @param entities Eine Liste von Entities.
+     */
     public final void delete(List<T> entities) {
         Transaction transaction = session.beginTransaction();
 
@@ -114,14 +142,29 @@ public class BaseDao<T> {
         transaction.commit();
     }
 
+    /**
+     * Holt sich die Entity mit der übergebenen ID aus der Datenbank.
+     * @param id Die ID der Entity.
+     * @return Die resultierende Entity.
+     */
     public final T getById(int id) {
         return session.get(this.getEntityClass(), id);
     }
 
+    /**
+     * Holt sich alle Entities vom Typ T.
+     * @return Eine Liste aller Entities aus der Tabelle T.
+     */
     public final List<T> getAll() {
         return session.createQuery("from " + this.getEntityClass().getSimpleName(), this.getEntityClass()).list();
     }
 
+    /**
+     * Holt sich limit Entities aus der Datenbank, angefangen von start.
+     * @param start Wieviele Datensätze übersprungen werden sollen.
+     * @param limit Wieviele Datensätze geholt werden sollen.
+     * @return Eine Liste aller geholten Entities aus der Tabelle T.
+     */
     public final List<T> getAll(int start, int limit) {
         return session.createQuery("from " + this.getEntityClass().getSimpleName(), this.getEntityClass())
                 .setFirstResult(start)
@@ -137,6 +180,9 @@ public class BaseDao<T> {
         return new QueryBuilder<>(session, this.getEntityClass());
     }
 
+    /**
+     * Disposed die session.
+     */
     public void dispose() {
         if (session != null) {
             session.close();
