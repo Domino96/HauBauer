@@ -14,7 +14,7 @@ public class NavigationController {
 
     @FXML
     private void onRentalPropertiesListClicked(ActionEvent event) throws IOException {
-        // SceneController.getInstance().activate("Mietobjekt");
+        SceneController.getInstance().activate(FxmlLibrary.getRentalPropertiesList());
     }
 
     @FXML

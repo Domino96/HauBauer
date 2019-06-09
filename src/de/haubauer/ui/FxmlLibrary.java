@@ -60,7 +60,7 @@ public class FxmlLibrary {
         return loader.load();
     }
 
-    public static Parent getRentalPropertyOverView() throws IOException {
+    public static Parent getRentalPropertiesList() throws IOException {
         return FXMLLoader.load(FxmlLibrary.class.getResource("fxml/rentalproperties/rental-properties.fxml"));
     }
 
