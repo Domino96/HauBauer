@@ -1,10 +1,12 @@
 package de.haubauer.business.models;
 
+import de.haubauer.enums.AddressStatus;
 import de.haubauer.helpers.DatedObject;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import de.haubauer.enums.AddressStatus;
+
+import java.util.List;
 
 public class Address extends DatedObject implements Cloneable {
     private int id;
@@ -94,16 +96,16 @@ public class Address extends DatedObject implements Cloneable {
         return rentalProperties;
     }
 
-    public void setRentalProperties(ObservableList<RentalProperty> rentalProperties) {
-        this.rentalProperties = rentalProperties;
+    public void setRentalProperties(List<RentalProperty> rentalProperties) {
+        this.rentalProperties.addAll(rentalProperties);
     }
 
     public ObservableList<Person> getPeople() {
         return people;
     }
 
-    public void setPeople(ObservableList<Person> people) {
-        this.people = people;
+    public void setPeople(List<Person> people) {
+        this.people.addAll(people);
     }
 
     public String getPhoneNumber() {

@@ -6,6 +6,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
 
+import java.util.List;
+
 public class Person extends DatedObject {
     private int id;
     private StringProperty title = new SimpleStringProperty("");
@@ -128,24 +130,24 @@ public class Person extends DatedObject {
         return addresses;
     }
 
-    public void setAddresses(ObservableList<Address> addresses) {
-        this.addresses = addresses;
+    public void setAddresses(List<Address> addresses) {
+        this.addresses.addAll(addresses);
     }
 
     public ObservableList<RentalProperty> getRentalProperties() {
         return rentalProperties;
     }
 
-    public void setRentalProperties(ObservableList<RentalProperty> rentalProperties) {
-        this.rentalProperties = rentalProperties;
+    public void setRentalProperties(List<RentalProperty> rentalProperties) {
+        this.rentalProperties.addAll(rentalProperties);
     }
 
     public ObservableList<Tenancy> getTenancies() {
         return tenancies;
     }
 
-    public void setTenancies(ObservableList<Tenancy> tenancies) {
-        this.tenancies = tenancies;
+    public void setTenancies(List<Tenancy> tenancies) {
+        this.tenancies.addAll(tenancies);
     }
 
     public String getBankAccountString() {

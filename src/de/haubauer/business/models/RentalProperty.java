@@ -9,17 +9,17 @@ import java.util.List;
 public class RentalProperty {
     private int id;
     private String description;
-    private de.haubauer.business.models.Address address;
+    private Address address;
     private int zipCode;
     private String town;
     private double area;
     private BigDecimal squareMeterPriceCold;
     private BigDecimal sideCostsMonth;
     private String note;
-    private de.haubauer.business.models.Tenancy currentTenancy;
-    private List<de.haubauer.business.models.Tenancy> pastTenancy;
+    private Tenancy currentTenancy;
+    private List<Tenancy> pastTenancy;
     private RentalProperty parent;
-    private de.haubauer.business.models.UsageType usageType;
+    private UsageType usageType;
     private int floor;
 
     public int getId() {
