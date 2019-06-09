@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class FxmlLibrary {
     public static Parent getRoot() throws IOException {
-        return getTenantsList();
+        return getDashboard();
     }
 
     public static Parent getDashboard() throws IOException {

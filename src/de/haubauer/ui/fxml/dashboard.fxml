@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<BorderPane prefHeight="522.0" prefWidth="588.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.haubauer.ui.controllers.Controller">
+<BorderPane prefHeight="522.0" prefWidth="588.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.haubauer.ui.controllers.NavigationController">
    <center>
-       <fx:include fx:id="navigationDashboard" source="Navigation.fxml" />
+         <HBox prefHeight="129.0" prefWidth="518.0" BorderPane.alignment="CENTER">
+            <children>
+               <Button mnemonicParsing="false" onAction="#onTenantsListClicked" prefHeight="150.0" prefWidth="200.0" text="Mieterstammdaten">
+                  <HBox.margin>
+                     <Insets right="50.0" />
+                  </HBox.margin></Button>
+               <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#onRentalPropertiesListClicked" prefHeight="150.0" prefWidth="200.0" text="Mieterobjekte">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin></Button>
+            </children>
+         </HBox>
    </center>
    <top>
       <Label prefHeight="99.0" prefWidth="195.0" text="Dashboard" BorderPane.alignment="CENTER">
