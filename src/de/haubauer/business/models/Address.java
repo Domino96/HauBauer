@@ -97,6 +97,7 @@ public class Address extends DatedObject implements Cloneable {
     }
 
     public void setRentalProperties(List<RentalProperty> rentalProperties) {
+        this.rentalProperties.clear();
         this.rentalProperties.addAll(rentalProperties);
     }
 
@@ -105,6 +106,7 @@ public class Address extends DatedObject implements Cloneable {
     }
 
     public void setPeople(List<Person> people) {
+        this.people.clear();
         this.people.addAll(people);
     }
 

@@ -131,6 +131,7 @@ public class Person extends DatedObject {
     }
 
     public void setAddresses(List<Address> addresses) {
+        this.addresses.clear();
         this.addresses.addAll(addresses);
     }
 
@@ -139,6 +140,7 @@ public class Person extends DatedObject {
     }
 
     public void setRentalProperties(List<RentalProperty> rentalProperties) {
+        this.rentalProperties.clear();
         this.rentalProperties.addAll(rentalProperties);
     }
 
@@ -147,6 +149,7 @@ public class Person extends DatedObject {
     }
 
     public void setTenancies(List<Tenancy> tenancies) {
+        this.tenancies.clear();
         this.tenancies.addAll(tenancies);
     }
 
