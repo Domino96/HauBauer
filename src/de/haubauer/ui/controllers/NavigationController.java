@@ -1,8 +1,9 @@
-package de.haubauer.ui.controllers;
+package src.de.haubauer.ui.controllers;
 
 import de.haubauer.ui.FxmlLibrary;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import de.haubauer.ui.controllers.SceneController;
 
 import java.io.IOException;
 

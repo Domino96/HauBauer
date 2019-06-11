@@ -1,7 +1,7 @@
-package de.haubauer.db;
+package src.de.haubauer.db;
 
 import de.haubauer.db.entities.RentalProperty;
-import de.haubauer.db.BaseDao;
+import src.de.haubauer.db.BaseDao;
 
 import java.util.List;
 

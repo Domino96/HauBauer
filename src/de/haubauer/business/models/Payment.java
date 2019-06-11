@@ -1,4 +1,4 @@
-package de.haubauer.business.models;
+package src.de.haubauer.business.models;
 
 import de.haubauer.enums.PaymentType;
 import de.haubauer.helpers.DatedObject;
@@ -13,7 +13,7 @@ public class Payment extends DatedObject {
     private BigDecimal value;
     private BigDecimal billed;
     private String comment;
-    private Tenancy tenancy;
+    private de.haubauer.business.models.Tenancy tenancy;
     private PaymentType paymentType;
 
     public int getId() {
@@ -64,11 +64,11 @@ public class Payment extends DatedObject {
         this.comment = comment;
     }
 
-    public Tenancy getTenancy() {
+    public de.haubauer.business.models.Tenancy getTenancy() {
         return tenancy;
     }
 
-    public void setTenancy(Tenancy tenancy) {
+    public void setTenancy(de.haubauer.business.models.Tenancy tenancy) {
         this.tenancy = tenancy;
     }
 
