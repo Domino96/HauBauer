@@ -1,14 +1,18 @@
 package de.haubauer.ui.viewmodels;
 
+import de.haubauer.business.models.UserRole;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import de.haubauer.business.models.Person;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class TenantsDialogViewModel {
     private StringProperty title = new SimpleStringProperty("");
     private ObjectProperty<Person> tenant = new SimpleObjectProperty<>();
+    private ObservableList<UserRole> availableRoles = FXCollections.observableArrayList();
 
     public String getTitle() {
         return title.get();
@@ -32,5 +36,13 @@ public class TenantsDialogViewModel {
 
     public void setTenant(Person tenant) {
         this.tenant.set(tenant);
+    }
+
+    public ObservableList<UserRole> getAvailableRoles() {
+        return availableRoles;
+    }
+
+    public void setAvailableRoles(ObservableList<UserRole> availableRoles) {
+        this.availableRoles = availableRoles;
     }
 }

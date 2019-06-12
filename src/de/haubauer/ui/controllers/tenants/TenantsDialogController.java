@@ -73,8 +73,6 @@ public abstract class TenantsDialogController implements Initializable {
     @FXML
     private TextField bankField;
 
-    private ObservableList<UserRole> availableRoles = FXCollections.observableArrayList();
-
     protected Stage getStage() {
         return (Stage) this.title.getScene().getWindow();
     }
@@ -96,8 +94,8 @@ public abstract class TenantsDialogController implements Initializable {
         this.mobileField.textProperty().bindBidirectional(tenant.mobileProperty());
         this.emailField.textProperty().bindBidirectional(tenant.emailProperty());
 
-        this.availableRoles.addAll(this.service.getAvailableRoles());
-        this.roleComboBox.setItems(this.availableRoles);
+        this.viewModel.getAvailableRoles().addAll(this.service.getAvailableRoles());
+        this.roleComboBox.setItems(this.viewModel.getAvailableRoles());
         this.roleComboBox.setConverter(new UserRole.StringConverter());
 
         if (this.viewModel.getTenant().getRole() != null) {
