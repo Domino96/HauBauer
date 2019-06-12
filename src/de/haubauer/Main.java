@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
+    //private static final String startFxml = "ui/fxml/rentalproperties/payments.fxml";
+
     public static void main(String[] args) {
         BaseDao.initialize();
         launch(args);
