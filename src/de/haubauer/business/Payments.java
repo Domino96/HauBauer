@@ -1,8 +1,8 @@
-package src.de.haubauer.business;
+package de.haubauer.business;
 
 
-import src.de.haubauer.db.entities.PaymentType;
-import src.de.haubauer.db.entities.Tenancy;
+import de.haubauer.enums.PaymentType;
+import de.haubauer.db.entities.Tenancy;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -12,7 +12,7 @@ public class Payments {
 
     private int id;
     private Date date;
-    private Tenancy tenancy;    //wofür?
+    private Tenancy tenancy;
     private BigDecimal value;
     private BigDecimal billed;
     private PaymentType type;
@@ -101,14 +101,6 @@ public class Payments {
 
     public void setBilled(BigDecimal billed) {
         this.billed = billed;
-    }
-
-    public PaymentType getType() {
-        return type;
-    }
-
-    public void setType(PaymentType type) {
-        this.type = type;
     }
 
     public String getComment() {

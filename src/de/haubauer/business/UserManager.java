@@ -1,10 +1,30 @@
-package src.de.haubauer.business;
+package de.haubauer.business;
 
-import src.de.haubauer.db.entities.User;
-import src.de.haubauer.helpers.Singleton;
+import de.haubauer.business.models.User;
 
-public class UserManager extends Singleton {
+/**
+ * User-Verwaltung.
+ */
+public class UserManager {
     private User loggedInUser;
+
+    private static UserManager instance;
+
+    public static UserManager getInstance() {
+        if (instance == null) {
+            instance = new UserManager();
+        }
+
+        return instance;
+    }
+
+    private UserManager() {
+        // Testdaten
+        this.loggedInUser = new User();
+        this.loggedInUser.setUserName("stefan-schmitz");
+        this.loggedInUser.setFirstName("Stefan");
+        this.loggedInUser.setLastName("Schmitz");
+    }
 
     /**
      * Versucht, den User mit dem gewählten Benutzername und Passwort einzuloggen.

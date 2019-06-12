@@ -1,69 +1,103 @@
-package src.de.haubauer.ui.controllers.tenants;
+package de.haubauer.ui.controllers.tenants;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import de.haubauer.business.models.Person;
+import de.haubauer.business.services.PersonService;
+import de.haubauer.ui.FxmlLibrary;
+import de.haubauer.ui.viewmodels.TenantsViewModel;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TenantsController implements Initializable {
+    private TenantsViewModel viewModel = new TenantsViewModel();
+    private PersonService service = new PersonService();
 
     @FXML
-    private TableColumn<TableInit, String> titleColumn;
+    private TableColumn<Person, String> addressColumn;
 
     @FXML
-    private TableColumn<TableInit, String> vorname;
+    private TableColumn<Person, String> bankAccountColumn;
 
     @FXML
-    private TableColumn<TableInit, String> nachname;
+    private TableColumn<Person, String> roleColumn;
 
     @FXML
-    private TableColumn<TableInit, String> anschrift;
-
-    @FXML
-    private TableColumn<TableInit, String> telefonnummer;
-
-    @FXML
-    private TableColumn<TableInit, String> email;
-
-    @FXML
-    private TableColumn<TableInit, String> kontoverbindung;
-
-    @FXML
-    private TableView<TableInit> tableView;
-
-    ObservableList<TableInit> list = FXCollections.observableArrayList();
+    private TableView<Person> tableView;
 
     public void initialize(URL location, ResourceBundle resources) {
-        list.add(new TableInit("Herr", "Christian", "Mustermann", "Am Hackenbruch 51", "0174422124", "haubau@gmail.com", "DE0156165165732132437313"));
-        list.add(new TableInit("Herr", "Christian", "Mustermann", "Am Hackenbruch 51", "0174422124", "haubau@gmail.com", "DE0156165165732132437313"));
-        list.add(new TableInit("Herr", "Christian", "Mustermann", "Am Hackenbruch 51", "0174422124", "haubau@gmail.com", "DE0156165165732132437313"));
-        list.add(new TableInit("Frau", "Elizabeth", "Muller", "Am Hackenbruch 51", "0174422124", "haubau@gmail.com", "DE0156165165732132437313"));
-        list.add(new TableInit("Frau", "Elizabeth", "Muller", "Am Hackenbruch 51", "0174422124", "haubau@gmail.com", "DE0156165165732132437313"));
-        list.add(new TableInit("Frau", "Elizabeth", "Muller", "Am Hackenbruch 51", "0174422124", "haubau@gmail.com", "DE0156165165732132437313"));
-        list.add(new TableInit("Frau", "Elizabeth", "Muller", "Am Hackenbruch 51", "0174422124", "haubau@gmail.com", "DE0156165165732132437313"));
+        this.service.getAllTenants().forEach(p -> this.viewModel.getTenants().add(p));
 
-        this.tableView.setItems(list);
-        this.titleColumn.setCellValueFactory(new PropertyValueFactory<>("titleColumn"));
-        this.vorname.setCellValueFactory(new PropertyValueFactory<>("vorname"));
-        this.nachname.setCellValueFactory(new PropertyValueFactory<>("nachname"));
-        this.anschrift.setCellValueFactory(new PropertyValueFactory<>("anschrift"));
-        this.telefonnummer.setCellValueFactory(new PropertyValueFactory<>("telefonnummer"));
-        this.email.setCellValueFactory(new PropertyValueFactory<>("email"));
-        this.kontoverbindung.setCellValueFactory(new PropertyValueFactory<>("kontoverbindung"));
+        this.tableView.setItems(this.viewModel.getTenants());
+        this.tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        this.viewModel.setSelectedTenants(this.tableView.getSelectionModel().getSelectedItems());
 
-        // selecting multiple table view items with SHIFT or STRG
-        tableView.setOnMouseClicked(event -> tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE));
+        // create bindings from getters
+        this.addressColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getAddressString(), cell.getValue().getAddresses()));
+        this.bankAccountColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getBankAccountString(), cell.getValue().getBankAccount().bicProperty()));
+        this.roleColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> {
+            if (cell.getValue().getRole() != null) {
+                return cell.getValue().getRole().getName();
+            }
+
+            return "";
+        }, cell.getValue().roleProperty()));
     }
 
+    @FXML
     public void deleteItems() {
-        final ObservableList<TableInit> itemsToDelete = tableView.getSelectionModel().getSelectedItems();
-        tableView.getItems().removeAll(itemsToDelete);
+        if (!this.viewModel.getSelectedTenants().isEmpty()) {
+            final Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Sind Sie sicher?");
+            alert.setHeaderText("Löschen");
+            alert.setContentText("Sind Sie sicher, dass Sie die ausgewählten Mieter unwiderruflich löschen möchen?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                this.viewModel.getTenants().removeAll(this.viewModel.getSelectedTenants());
+            }
+        }
+    }
+
+    @FXML
+    public void addItem() throws IOException {
+        final Stage dialog = new Stage();
+        AtomicBoolean cancelledAdd = new AtomicBoolean(false);
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.setTitle("Mietstammdatensatz hinzufügen");
+        Person tenantToAdd = new Person();
+        dialog.setScene(new Scene(FxmlLibrary.getTenantsAddDialog(tenantToAdd), 500, 700));
+        dialog.setOnCloseRequest(event -> cancelledAdd.set(true));
+        dialog.showAndWait();
+
+        if (!cancelledAdd.get()) {
+            this.viewModel.getTenants().add(tenantToAdd);
+        }
+    }
+
+    @FXML
+    public void editItem() throws IOException {
+        if (this.viewModel.getSelectedTenants().size() == 1) {
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.setTitle("Mietstammdatensatz bearbeiten");
+            final Person copiedTenant = new Person(this.viewModel.getSelectedTenants().get(0));
+            dialog.setScene(new Scene(FxmlLibrary.getTenantsEditDialog(this.viewModel.getSelectedTenants().get(0)), 500, 700));
+            dialog.setOnCloseRequest(event -> {
+                this.viewModel.getSelectedTenants().get(0).roleProperty().unbind();
+                this.viewModel.getSelectedTenants().get(0).copy(copiedTenant);
+            });
+            dialog.showAndWait();
+        }
     }
 }

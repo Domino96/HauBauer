@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox fx:id="navigationToolbar" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.haubauer.ui.controllers.NavigationController" spacing="10">
+   <Button mnemonicParsing="false" onAction="#onDashboardClicked" prefHeight="50.0" prefWidth="121.0" text="Dashboard" />
+   <Button mnemonicParsing="false" onAction="#onTenantsListClicked" prefHeight="50.0" prefWidth="121.0" text="Mieterstammdaten" />
+   <Button mnemonicParsing="false" onAction="#onRentalPropertiesListClicked" prefHeight="50.0" prefWidth="121.0" text="Mieterobjekte" />
+</HBox>

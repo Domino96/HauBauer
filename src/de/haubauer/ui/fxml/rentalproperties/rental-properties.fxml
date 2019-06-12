@@ -4,21 +4,20 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="633.0" style="-fx-background-color: #d3d3d3;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.de.haubauer.ui.controllers.rentalproperties.RentalPropertiesController">
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="400.0" prefWidth="633.0" style="-fx-background-color: #d3d3d3;"
+      xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="de.haubauer.ui.controllers.rentalproperties.RentalPropertiesController">
     <children>
-        <ToolBar prefHeight="60.0" prefWidth="633.0">
-            <items>
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" text="Dashboard" />
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" style="-fx-background-color: #B5B5B5;" text="Mietobjekt" />
-                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" text="Mieterstammdaten" />
-            </items>
-        </ToolBar>
-        <Button layoutX="14.0" layoutY="64.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="57.0">
+        <fx:include fx:id="navigationToolbar" source="../navigation-toolbar.fxml" />
+
+        <Button fx:id="addBtn" layoutX="14.0" layoutY="64.0" mnemonicParsing="false" onAction="#addItem" prefHeight="50.0" prefWidth="57.0">
             <font>
                 <Font size="26.0" />
             </font>
@@ -36,17 +35,49 @@
         <Separator layoutX="-5.0" layoutY="123.0" prefHeight="7.0" prefWidth="637.0" />
       <TableView fx:id="tableView" editable="true" layoutX="-1.0" layoutY="127.0" prefHeight="272.0" prefWidth="633.0">
         <columns>
-          <TableColumn fx:id="nummer" prefWidth="63.0" text="Nummer" />
-            <TableColumn fx:id="typ" prefWidth="49.0" text="Typ" />
-            <TableColumn fx:id="beschreibung" prefWidth="68.0" text="Beschreibung" />
-            <TableColumn fx:id="anschrift" prefWidth="75.0" text="Anschrift" />
-            <TableColumn fx:id="wohnflaeche" prefWidth="75.0" text="Wohnfläche" />
-            <TableColumn fx:id="qm" prefWidth="123.0" text="Quadratmeterpreis kalt" />
-            <TableColumn fx:id="nebenkosten" prefWidth="112.0" text="Nebenkosten gesamt" />
-            <TableColumn fx:id="notiz" prefWidth="67.0" text="Notizfeld" />
+          <TableColumn fx:id="nummer" prefWidth="63.0" text="Nummer">
+            <cellValueFactory>
+                <PropertyValueFactory property="rentalPropertyId"/>
+            </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="typ" prefWidth="49.0" text="Typ">
+            <cellValueFactory>
+                <PropertyValueFactory property="rentalType"/>
+            </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="beschreibung" prefWidth="68.0" text="Beschreibung">
+            <cellValueFactory>
+                <PropertyValueFactory property="description"/>
+            </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="anschrift" prefWidth="75.0" text="Anschrift">
+                <cellValueFactory>
+                    <PropertyValueFactory property="address"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="wohnflaeche" prefWidth="75.0" text="Wohnfläche">
+                <cellValueFactory>
+                    <PropertyValueFactory property="area"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="qm" prefWidth="123.0" text="Quadratmeterpreis kalt">
+                <cellValueFactory>
+                    <PropertyValueFactory property="squareMeterPriceCold"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="nebenkosten" prefWidth="112.0" text="Nebenkosten gesamt">
+                <cellValueFactory>
+                    <PropertyValueFactory property="sideCostsMonth"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="notiz" prefWidth="67.0" text="Notizfeld">
+                <cellValueFactory>
+                    <PropertyValueFactory property="node"/>
+                </cellValueFactory>
+            </TableColumn>
         </columns>
       </TableView>
       <Button layoutX="498.0" layoutY="67.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" text="Reports generieren" />
-      <Button layoutX="369.0" layoutY="67.0" mnemonicParsing="false" onAction="#zahlungUbersichtForItem" onZoomFinished="#zahlungUbersichtForItem" prefHeight="50.0" prefWidth="121.0" text="Zahlungsübersicht" />
+      <Button layoutX="369.0" layoutY="67.0" mnemonicParsing="false" onAction="#showPaymentsOverview" onZoomFinished="#showPaymentsOverview" prefHeight="50.0" prefWidth="121.0" text="Zahlungsübersicht" />
     </children>
 </Pane>

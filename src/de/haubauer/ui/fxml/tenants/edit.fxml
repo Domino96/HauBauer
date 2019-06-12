@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -9,43 +10,85 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.ComboBox?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <GridPane layoutX="63.0" layoutY="86.0" prefHeight="374.0" prefWidth="268.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <GridPane layoutX="100.0" layoutY="84.0" prefHeight="500.0" prefWidth="250.0">
+           <columnConstraints>
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints />
+           </columnConstraints>
+           <rowConstraints>
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label text="Anrede" />
-            <Label text="Voranme" GridPane.rowIndex="1" />
-            <Label text="Nachname" GridPane.rowIndex="2" />
-            <Label text="Anschrift" GridPane.rowIndex="3" />
-            <Label text="Telefonnummer" GridPane.rowIndex="4" />
-            <Label text="E-Mail" GridPane.rowIndex="5" />
-            <Label text="Kontoverbindung" GridPane.rowIndex="6" />
-            <TextField text="Herr" GridPane.columnIndex="1" />
-            <TextField text="Christian" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField text="Mustermann" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField text="Am Hackenbruch 51, 40229" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField text="01745151053" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField text="haubau@gmail.com" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextField text="DE748599652174485752" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="141.0" text="Speichern" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-         </children>
-      </GridPane>
-      <Label layoutX="78.0" layoutY="24.0" text="Stammdaten bearbeiten">
+           </rowConstraints>
+           <children>
+               <Label text="Rolle" />
+               <ComboBox fx:id="roleComboBox" GridPane.columnIndex="1" />
+               <Label text="Anrede" GridPane.rowIndex="1" />
+               <Label text="Vorname" GridPane.rowIndex="2" />
+               <Label text="Nachname" GridPane.rowIndex="3" />
+               <Label text="Anschrift" GridPane.rowIndex="8">
+                   <font>
+                       <Font name="System Bold" size="12.0" />
+                   </font>
+               </Label>
+               <Label text="Festnetz" GridPane.rowIndex="4" />
+               <Label layoutX="10.0" layoutY="93.0" text="Mobil" GridPane.rowIndex="5" />
+               <Label text="E-Mail" GridPane.rowIndex="6" />
+               <Label text="Kontoverbindung" GridPane.rowIndex="14">
+                   <font>
+                       <Font name="System Bold" size="12.0" />
+                   </font>
+               </Label>
+               <TextField fx:id="titleField" GridPane.columnIndex="1"  GridPane.rowIndex="1" />
+               <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               <TextField fx:id="streetField" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+               <TextField fx:id="landlineField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+               <TextField fx:id="mobileField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+               <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+               <Separator prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="7" />
+               <Label text="Straße" GridPane.rowIndex="9" />
+               <Label text="Hausnummer" GridPane.rowIndex="10" />
+               <Label text="PLZ" GridPane.rowIndex="11" />
+               <Label text="Ort" GridPane.rowIndex="12" />
+               <TextField fx:id="houseNumberField" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+               <TextField fx:id="zipCodeField" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+               <TextField fx:id="townField" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+               <Label text="IBAN" GridPane.rowIndex="15" />
+               <Label text="BIC" GridPane.rowIndex="16" />
+               <Label text="Kontoinhaber" GridPane.rowIndex="17" />
+               <Label text="Kreditinstitut" GridPane.rowIndex="18" />
+               <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="13" />
+               <TextField fx:id="ibanField" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+               <TextField fx:id="bicField" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+               <TextField fx:id="accountOwnerField" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+               <TextField fx:id="bankField" GridPane.columnIndex="1" GridPane.rowIndex="18" />
+               <Button fx:id="saveButton" mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="141.0" text="Speichern" GridPane.columnIndex="1" GridPane.rowIndex="20" />
+           </children>
+       </GridPane>
+      <Label fx:id="title" layoutX="78.0" layoutY="24.0" text="[PLACEHOLDER]">
          <font>
             <Font size="22.0" />
          </font>

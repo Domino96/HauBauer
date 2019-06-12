@@ -1,26 +1,36 @@
-package src.de.haubauer;
+package de.haubauer;
 
+import de.haubauer.db.BaseDao;
+import de.haubauer.db.RentalPropertyDao;
+import de.haubauer.db.TestDataGenerator;
+import de.haubauer.db.entities.RentalProperty;
+import de.haubauer.ui.FxmlLibrary;
+import de.haubauer.ui.controllers.SceneController;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class Main extends Application {
-    private static final String startFxml = "ui/fxml/dashboard.fxml";
+    //private static final String startFxml = "ui/fxml/rentalproperties/payments.fxml";
 
     public static void main(String[] args) {
+        BaseDao.initialize();
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(startFxml));
-        primaryStage.setTitle("HausBauer");
+        //generateData();
+        Scene scene = new Scene(FxmlLibrary.getRoot(), 1200, 750);
 
-        primaryStage.setScene(new Scene(root, 600, 480));
+        SceneController.getInstance().setScene(scene);
+
+        primaryStage.setTitle("HausBauer – Dashboard");
+        primaryStage.setWidth(1200);
+        primaryStage.setHeight(750);
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 }
