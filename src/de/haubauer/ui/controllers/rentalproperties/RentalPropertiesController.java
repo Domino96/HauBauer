@@ -1,6 +1,7 @@
 package de.haubauer.ui.controllers.rentalproperties;
 
 import de.haubauer.business.models.RentalProperty;
+import de.haubauer.business.reports.gbJasperReport;
 import de.haubauer.business.services.RentalPropertyService;
 import de.haubauer.ui.FxmlLibrary;
 import de.haubauer.ui.viewmodels.RentalPropertyViewModel;
@@ -108,6 +109,11 @@ public class RentalPropertiesController implements Initializable {
             newStage.setScene(new Scene(FxmlLibrary.getPayments(this.viewModel.getSelectedRentalProperties().get(0)), 800, 450));
             newStage.showAndWait();
         }
+    }
+    @FXML
+    public void generateReportsKlick() throws IOException{
+        gbJasperReport report = new gbJasperReport();
+        //report.generateReport();
     }
 
     public void onDashboardClicked(){

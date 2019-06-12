@@ -1,3 +1,6 @@
+package de.haubauer.business.reports;
+
+
 import java.util.Date;
 
 public class Objektbericht {

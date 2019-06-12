@@ -1,3 +1,6 @@
+package de.haubauer.business.reports;
+
+
 public class Gesamtbericht {
     private String wohnung;
     private double zahlungenIst;
