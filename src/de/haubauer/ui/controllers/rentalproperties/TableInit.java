@@ -1,4 +1,4 @@
-package src.de.haubauer.ui.controllers.rentalproperties;
+package de.haubauer.ui.controllers.rentalproperties;
 
 public class TableInit {
 

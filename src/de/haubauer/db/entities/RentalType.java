@@ -1,6 +1,6 @@
-package src.de.haubauer.db.entities;
+package de.haubauer.db.entities;
 
-import src.de.haubauer.helpers.DatedObject;
+import de.haubauer.helpers.DatedObject;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,12 +15,16 @@ public class RentalType extends DatedObject {
     private String name;
     private String description;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "rentalPropertyId")
     private List<RentalProperty> rentalProperties;
 
     public int getRentalTypeId() {
         return rentalTypeId;
+    }
+
+    public void setRentalTypeId(int rentalTypeId) {
+        this.rentalTypeId = rentalTypeId;
     }
 
     public String getName() {
@@ -39,11 +43,11 @@ public class RentalType extends DatedObject {
         this.description = description;
     }
 
-    public List<src.de.haubauer.db.entities.RentalProperty> getRentalProperties() {
+    public List<de.haubauer.db.entities.RentalProperty> getRentalProperties() {
         return rentalProperties;
     }
 
-    public void setRentalProperties(List<src.de.haubauer.db.entities.RentalProperty> rentalProperties) {
+    public void setRentalProperties(List<de.haubauer.db.entities.RentalProperty> rentalProperties) {
         this.rentalProperties = rentalProperties;
     }
 }

@@ -1,17 +1,16 @@
-package src.de.haubauer.ui.controllers.tenants;
+package de.haubauer.ui.controllers.tenants;
 
+import de.haubauer.business.models.Person;
+import de.haubauer.business.services.PersonService;
+import de.haubauer.ui.FxmlLibrary;
+import de.haubauer.ui.viewmodels.TenantsViewModel;
 import javafx.beans.binding.Bindings;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import src.de.haubauer.business.models.Person;
-import src.de.haubauer.business.services.PersonService;
-import src.de.haubauer.ui.FxmlLibrary;
-import src.de.haubauer.ui.viewmodels.TenantsViewModel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,9 +39,10 @@ public class TenantsController implements Initializable {
 
         // create bindings from getters
         this.addressColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getAddressString(), cell.getValue().getAddresses()));
-        this.bankAccountColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getBankAccountString(), cell.getValue().bankAccountProperty()));
+        this.bankAccountColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getBankAccountString(), cell.getValue().getBankAccount().bicProperty()));
     }
 
+    @FXML
     public void deleteItems() {
         final Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Sind Sie sicher?");
@@ -56,6 +56,7 @@ public class TenantsController implements Initializable {
         }
     }
 
+    @FXML
     public void addItem() throws IOException {
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
@@ -64,6 +65,7 @@ public class TenantsController implements Initializable {
         dialog.show();
     }
 
+    @FXML
     public void editItem() throws IOException {
         if (this.viewModel.getSelectedTenants().size() == 1) {
             final Stage dialog = new Stage();

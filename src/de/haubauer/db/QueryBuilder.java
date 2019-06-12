@@ -1,16 +1,23 @@
-package src.de.haubauer.db;
+package de.haubauer.db;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import java.util.HashMap;
 
+/**
+ * Ein QueryBuilder für die Entity T.
+ * @param <T> Die Klasse der Entity, für die eine Query gebaut werden soll.
+ */
 public class QueryBuilder<T> {
     private Class<T> entityClass;
     private Session session;
     private String hql;
     private HashMap<String, Object> parameters = new HashMap<>();
 
+    /**
+     * Dieser Konstruktor sollte nie manuell aufgerufen werden, sondern stehts von einer Dao-Klasse gecallt werden.
+     */
     QueryBuilder(Session session, Class<T> entityClass) {
         this.session = session;
         this.entityClass = entityClass;

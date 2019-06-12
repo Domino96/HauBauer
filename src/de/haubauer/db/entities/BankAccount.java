@@ -1,6 +1,6 @@
-package src.de.haubauer.db.entities;
+package de.haubauer.db.entities;
 
-import src.de.haubauer.helpers.DatedObject;
+import de.haubauer.helpers.DatedObject;
 
 import javax.persistence.*;
 
@@ -16,12 +16,16 @@ public class BankAccount extends DatedObject {
     private String owner;
     private String bank;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "personId")
     private Person person;
 
-    public int getBankAccountid() {
+    public int getBankAccountId() {
         return bankAccountId;
+    }
+
+    public void setBankAccountId(int bankAccountId) {
+        this.bankAccountId = bankAccountId;
     }
 
     public String getIban() {

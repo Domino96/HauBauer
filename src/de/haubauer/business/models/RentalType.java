@@ -1,6 +1,6 @@
-package src.de.haubauer.business.models;
+package de.haubauer.business.models;
 
-import src.de.haubauer.helpers.DatedObject;
+import de.haubauer.helpers.DatedObject;
 
 import java.util.List;
 
@@ -11,8 +11,12 @@ public class RentalType extends DatedObject {
     private String description;
     private List<RentalProperty> rentalProperties;
 
-    public int getRentalTypeId() {
+    public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

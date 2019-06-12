@@ -1,6 +1,6 @@
-package src.de.haubauer.db.entities;
+package de.haubauer.db.entities;
 
-import src.de.haubauer.helpers.DatedObject;
+import de.haubauer.helpers.DatedObject;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,12 +15,16 @@ public class PaymentType extends DatedObject {
     private String name;
     private String description;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "paymentId")
     private List<Payment> Payments;
 
     public int getPaymentTypeId() {
         return paymentTypeId;
+    }
+
+    public void setPaymentTypeId(int paymentTypeId) {
+        this.paymentTypeId = paymentTypeId;
     }
 
     public String getName() {

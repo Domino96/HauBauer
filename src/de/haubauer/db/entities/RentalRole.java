@@ -1,6 +1,6 @@
-package src.de.haubauer.db.entities;
+package de.haubauer.db.entities;
 
-import src.de.haubauer.helpers.DatedObject;
+import de.haubauer.helpers.DatedObject;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,12 +14,16 @@ public class RentalRole extends DatedObject {
 
     private String name;
     private String description;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "rentalPropertyId")
     private List<RentalProperty> rentalProperties;
 
     public int getRentalRoleId() {
         return rentalRoleId;
+    }
+
+    public void setRentalRoleId(int rentalRoleId) {
+        this.rentalRoleId = rentalRoleId;
     }
 
     public String getName() {
