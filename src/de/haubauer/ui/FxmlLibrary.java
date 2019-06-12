@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class FxmlLibrary {
     public static Parent getRoot() throws IOException {
-        return getTenantsList();
+        return getPayments();
     }
 
     public static Parent getDashboard() throws IOException {
@@ -33,5 +33,17 @@ public class FxmlLibrary {
         loader.setController(new TenantsAddController());
 
         return loader.load();
+    }
+
+    public static Parent getPayments() throws IOException {
+        return FXMLLoader.load(FxmlLibrary.class.getResource("fxml/rentalproperties/payments.fxml"));
+    }
+
+    public static Parent editPayments() throws IOException {
+        return FXMLLoader.load(FxmlLibrary.class.getResource("fxml/rentalproperties/payments-edit.fxml"));
+    }
+
+    public static Parent addPayments() throws IOException {
+        return FXMLLoader.load(FxmlLibrary.class.getResource("fxml/rentalproperties/payments-add.fxml"));
     }
 }

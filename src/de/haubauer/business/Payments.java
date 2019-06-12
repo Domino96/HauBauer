@@ -12,7 +12,7 @@ public class Payments {
 
     private int id;
     private Date date;
-    private Tenancy tenancy;    //wofür?
+    private Tenancy tenancy;
     private BigDecimal value;
     private BigDecimal billed;
     private PaymentType type;

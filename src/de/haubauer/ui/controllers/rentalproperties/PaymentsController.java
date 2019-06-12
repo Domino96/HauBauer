@@ -6,16 +6,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import src.de.haubauer.business.models.Payment;
+import src.de.haubauer.business.services.PaymentService;
+import src.de.haubauer.ui.viewmodels.PaymentViewModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class PaymentsController extends Stage implements Initializable {
-    //Buttons
+
+    private PaymentViewModel viewModel = new PaymentViewModel();
+    private PaymentService service = new PaymentService();
+
     @FXML
     private Button paymentsEditButton;
 
@@ -28,13 +35,24 @@ public class PaymentsController extends Stage implements Initializable {
     @FXML
     private Button paymentsDeleteButton;
 
-
+    @FXML
+    private TableView<Payment> tableView;
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        this.service.getAllPayments().forEach(p -> this.viewModel.getPayment().add(p));
+
+        this.tableView.setItems(this.viewModel.getPayment());
+        this.tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        this.viewModel.setSelectedPayment(this.tableView.getSelectionModel().getSelectedItems());
+
+        // create bindings from getters
+        //this.addressColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getAddressString(), cell.getValue().getAddresses()));
+        //this.bankAccountColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getBankAccountString(), cell.getValue().bankAccountProperty()));
+            //                                                  ämder das mal in nen str            wert d zelle aus methode                wenn sich der wert ändert - lade das nadere feld neu
     }
 
 
@@ -73,7 +91,18 @@ public class PaymentsController extends Stage implements Initializable {
     }
 
     @FXML
-    public void deletePayments(ActionEvent event) throws Exception {
+    public void deletePayments(ActionEvent event) throws Exception
+    {
+        final Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Sind Sie sicher?");
+        alert.setHeaderText("Löschen");
+        alert.setContentText("Sind Sie sicher, dass Sie den/die ausgewählten Datensatz/Datensätze unwiderruflich löschen möchten?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            this.viewModel.getPayment().removeAll(this.viewModel.getSelectedPayment());
+        }
     }
 
 
