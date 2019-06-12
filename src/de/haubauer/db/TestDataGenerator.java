@@ -8,6 +8,7 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class TestDataGenerator {
+    private Random randomGenerator = new Random();
 
     //User generierung
     private ArrayList<String> hash = new ArrayList<>();
@@ -35,6 +36,14 @@ public class TestDataGenerator {
     private ArrayList<String> bic = new ArrayList<String>(Arrays.asList("BELADEBEXXX","NOLADE21WIS","DEUTDEBBXXX","INGDDEFFXXX"));
     private ArrayList<String> bank = new ArrayList<>(Arrays.asList("Sparkasse Berlin","ING-DiBa","Deutsche Bank Berlin"));
 
+    private ArrayList<RentalProperty> rentalProperties = new ArrayList<>();
+    private ArrayList<Person> people = new ArrayList<>();
+    private ArrayList<Tenancy> tenancies = new ArrayList<>();
+    private ArrayList<User> users = new ArrayList<>();
+    private ArrayList<BankAccount> bankAccounts = new ArrayList<>();
+    private ArrayList<Payment> payments = new ArrayList<>();
+    private ArrayList<Address> addresses = new ArrayList<>();
+
     //Mietverhältnis generierung
 
     //Zahlungseingänge generieren
@@ -47,24 +56,23 @@ public class TestDataGenerator {
      * @return List of Rentalproperties
      */
     public List<RentalProperty> generateRental(int iterations){
-        ArrayList<RentalProperty> rentalProperties = new ArrayList<RentalProperty>();
     for(int i = 0;i < iterations; i++) {
         RentalType rentalType = new RentalType();
         UsageType usageType = new UsageType();
         RentalProperty rentalProperty = new RentalProperty();
 
-        rentalType.setName(this.objectType.get(new Random().nextInt(this.objectType.size())));
-        usageType.setName(this.usageType.get(new Random().nextInt(this.usageType.size())));
+        rentalType.setName(this.objectType.get(randomGenerator.nextInt(this.objectType.size())));
+        usageType.setName(this.usageType.get(randomGenerator.nextInt(this.usageType.size())));
 
-        rentalProperty.setSideCostsMonth(BigDecimal.valueOf(new Random().nextInt(500) + new Random().nextDouble()));
-        rentalProperty.setSquareMeterPriceCold(BigDecimal.valueOf(new Random().nextInt(10)));
-        rentalProperty.setArea(new Random().nextInt(150) + new Random().nextDouble());
+        rentalProperty.setSideCostsMonth(BigDecimal.valueOf(randomGenerator.nextInt(500) + randomGenerator.nextDouble()));
+        rentalProperty.setSquareMeterPriceCold(BigDecimal.valueOf(randomGenerator.nextInt(10)));
+        rentalProperty.setArea(randomGenerator.nextInt(150) + randomGenerator.nextDouble());
         rentalProperty.setUsageType(usageType);
         rentalProperty.setRentalType(rentalType);
         rentalProperty.setAddress(this.generateAddress(1).get(0));
         rentalProperty.setDescription(this.description);
         rentalProperty.setNote(this.note);
-        rentalProperty.setFloor(new Random().nextInt(3));
+        rentalProperty.setFloor(randomGenerator.nextInt(3));
 
         rentalProperties.add(rentalProperty);
 
@@ -73,36 +81,34 @@ public class TestDataGenerator {
     };
 
     public ArrayList<Person> generatePerson(int iterations, UserRole role){
-        ArrayList<Person> persons = new ArrayList<Person>();
         for (int i=0;i<iterations;i++){
             Person person = new Person();
 
-            person.setTitle(this.title.get(new Random().nextInt(this.title.size())));
+            person.setTitle(this.title.get(randomGenerator.nextInt(this.title.size())));
             person.setAddresses(generateAddress(1));
-            person.setEmail(this.email.get(new Random().nextInt(this.email.size())));
-            person.setFirstName(this.firstName.get(new Random().nextInt(this.firstName.size())));
-            person.setLastName(this.lastName.get(new Random().nextInt(this.lastName.size())));
-            person.setLandline(this.phone.get(new Random().nextInt(this.phone.size())));
-            person.setMobile(this.phone.get(new Random().nextInt(this.phone.size())));
+            person.setEmail(this.email.get(randomGenerator.nextInt(this.email.size())));
+            person.setFirstName(this.firstName.get(randomGenerator.nextInt(this.firstName.size())));
+            person.setLastName(this.lastName.get(randomGenerator.nextInt(this.lastName.size())));
+            person.setLandline(this.phone.get(randomGenerator.nextInt(this.phone.size())));
+            person.setMobile(this.phone.get(randomGenerator.nextInt(this.phone.size())));
             person.setBankAccount(generateBankAccount(1).get(0));
             person.setRole(role);
 
-            persons.add(person);
+            people.add(person);
         }
-        return persons;
+        return people;
     }
 
 
     public List<User> generateUser(int interations){
-        ArrayList<User> users = new ArrayList<User>();
         for (int i=0;i<interations;i++) {
             User user = new User();
 
-            user.setEmail(this.email.get(new Random().nextInt(this.email.size())));
-            user.setFirstName(this.firstName.get(new Random().nextInt(this.firstName.size())));
-            user.setLastName(this.lastName.get(new Random().nextInt(this.lastName.size())));
-            user.setEmail(this.email.get(new Random().nextInt(this.email.size())));
-            user.setPhone(this.phone.get(new Random().nextInt(this.phone.size())));
+            user.setEmail(this.email.get(randomGenerator.nextInt(this.email.size())));
+            user.setFirstName(this.firstName.get(randomGenerator.nextInt(this.firstName.size())));
+            user.setLastName(this.lastName.get(randomGenerator.nextInt(this.lastName.size())));
+            user.setEmail(this.email.get(randomGenerator.nextInt(this.email.size())));
+            user.setPhone(this.phone.get(randomGenerator.nextInt(this.phone.size())));
             user.setUserName(user.getFirstName().substring(0,1) + "_" + user.getLastName());
             user.setHash("erstmal irgendwas zum testen");
 
@@ -117,14 +123,13 @@ public class TestDataGenerator {
      * @return
      */
     public List<BankAccount> generateBankAccount(int interations){
-        ArrayList<BankAccount> bankAccounts = new ArrayList<BankAccount>();
         for (int i = 0; i < interations;i++){
             BankAccount bankAccount = new BankAccount();
 
-            bankAccount.setAccountOwner(this.firstName.get(new Random().nextInt(this.firstName.size()))+" "+this.lastName.get(new Random().nextInt(this.lastName.size())));
+            bankAccount.setAccountOwner(this.firstName.get(randomGenerator.nextInt(this.firstName.size()))+" "+this.lastName.get(randomGenerator.nextInt(this.lastName.size())));
             bankAccount.setIban(generateIban());
-            bankAccount.setBic(this.bic.get(new Random().nextInt(this.bic.size())));
-            bankAccount.setBank(this.bank.get(new Random().nextInt(this.bank.size())));
+            bankAccount.setBic(this.bic.get(randomGenerator.nextInt(this.bic.size())));
+            bankAccount.setBank(this.bank.get(randomGenerator.nextInt(this.bank.size())));
 
             bankAccounts.add(bankAccount);
         }
@@ -132,15 +137,11 @@ public class TestDataGenerator {
     }
 
     public List<Tenancy> generateTenancy(int interations){
-        ArrayList<Tenancy> tenancies = new ArrayList<Tenancy>();
         for (int i=0;i<interations;i++){
-            BaseDao<Person> personBaseDao = new BaseDao<Person>(Person.class);
-            BaseDao<RentalProperty> rentalPropertyBaseDao = new BaseDao<RentalProperty>(RentalProperty.class);
-
             Tenancy tenancy = new Tenancy();
 
-            tenancy.setPerson(personBaseDao.getById(new Random().nextInt(10)));
-            tenancy.setRentalProperty(rentalPropertyBaseDao.getById(new Random().nextInt(10)));
+            tenancy.setPerson(this.getRandomListValue(this.people));
+            tenancy.setRentalProperty(this.getRandomListValue(this.rentalProperties));
             tenancy.setEndDate(java.sql.Date.valueOf(createRandomDate(2000,2030)));
             tenancy.setStatus(tenancy.getEndDate().before(new Date(System.currentTimeMillis()))? 1 : 2);
             //tenancy.setStartDate(new Date(ThreadLocalRandom.current().nextLong(createRandomDate(2000,2030).getLong(),tenancy.getEndDate())));
@@ -150,18 +151,24 @@ public class TestDataGenerator {
         return tenancies;
     }
 
-    public List<Payment> generatePayment(int interations){
-        ArrayList<Payment> payments = new ArrayList<Payment>();
-        for (int i=0;i<interations;i++){
+    public List<Payment> generatePayment(int iterations){
+        System.out.println("RentalPropertyId: " + this.tenancies.get(0).getRentalProperty().getRentalPropertyId());
+        for (int i=0;i<iterations;i++){
             Payment payment = new Payment();
 
-            BigDecimal value = BigDecimal.valueOf(ThreadLocalRandom.current().nextLong(2000));
+            BigDecimal billed = BigDecimal.valueOf(ThreadLocalRandom.current().nextLong(2000));
+            BigDecimal value = BigDecimal.valueOf(ThreadLocalRandom.current().nextLong(billed.longValue()));
 
-            //payment.setType();
             payment.setDate(java.sql.Date.valueOf(createRandomDate(2000,2020)));
             payment.setComment(this.comment);
-            payment.setBilled(value);
+            payment.setBilled(billed);
             payment.setValue(value);
+
+            if (iterations < 30) {
+                payment.setTenancy(this.tenancies.get(0));
+            } else {
+                payment.setTenancy(this.getRandomListValue(this.tenancies));
+            }
 
             payments.add(payment);
         }
@@ -174,14 +181,13 @@ public class TestDataGenerator {
      * @return Liste von Adressen
      */
     public List<Address> generateAddress(int interations){
-        ArrayList<Address> addresses = new ArrayList<Address>();
         for (int i=0;i<interations;i++) {
             Address address = new Address();
 
-            address.setStreet(this.street.get(new Random().nextInt(this.street.size())));
-            address.setNumber(new Random().nextInt(100));
-            address.setZipCode(Integer.valueOf(this.zipCode.get(new Random().nextInt(this.zipCode.size()))));
-            address.setTown(this.town.get(new Random().nextInt(this.town.size())));
+            address.setStreet(this.street.get(randomGenerator.nextInt(this.street.size())));
+            address.setNumber(randomGenerator.nextInt(100));
+            address.setZipCode(Integer.valueOf(this.zipCode.get(randomGenerator.nextInt(this.zipCode.size()))));
+            address.setTown(this.town.get(randomGenerator.nextInt(this.town.size())));
 
             addresses.add(address);
         }
@@ -197,7 +203,7 @@ public class TestDataGenerator {
         int number = 0;
 
         for(int stelle = 0;stelle < 20; stelle++){
-            number = new Random().nextInt(9);
+            number = randomGenerator.nextInt(9);
             iban += number;
         }
         return iban + number;
@@ -229,6 +235,10 @@ public class TestDataGenerator {
         int month = createRandomIntBetween(1, 12);
         int year = createRandomIntBetween(startYear, endYear);
         return LocalDate.of(year, month, day);
+    }
+    
+    private <T> T getRandomListValue(List<T> list) {
+        return list.get(this.randomGenerator.nextInt(list.size()));
     }
 
 }
