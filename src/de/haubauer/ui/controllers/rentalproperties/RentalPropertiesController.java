@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import src.de.haubauer.business.services.RentalPropertyService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -62,14 +63,14 @@ public class RentalPropertiesController implements Initializable {
 
         this.tableView.setItems(this.viewModel.getRentalProperties());
 
-        this.nummer.setCellValueFactory(new PropertyValueFactory<>("nummer"));
-        this.typ.setCellValueFactory(new PropertyValueFactory<>("typ"));
-        this.beschreibung.setCellValueFactory(new PropertyValueFactory<>("beschreibung"));
-        this.anschrift.setCellValueFactory(new PropertyValueFactory<>("anschrift"));
-        this.wohnflaeche.setCellValueFactory(new PropertyValueFactory<>("wohnflaeche"));
-        this.qm.setCellValueFactory(new PropertyValueFactory<>("qm"));
-        this.nebenkosten.setCellValueFactory(new PropertyValueFactory<>("nebenkosten"));
-        this.notiz.setCellValueFactory(new PropertyValueFactory<>("notiz"));
+        this.nummer.setCellValueFactory(new PropertyValueFactory<>("id"));
+        this.typ.setCellValueFactory(new PropertyValueFactory<>("usageType"));
+        this.beschreibung.setCellValueFactory(new PropertyValueFactory<>("description"));
+        this.anschrift.setCellValueFactory(new PropertyValueFactory<>("address"));
+        this.wohnflaeche.setCellValueFactory(new PropertyValueFactory<>("area"));
+        this.qm.setCellValueFactory(new PropertyValueFactory<>("squareMeterPriceCold"));
+        this.nebenkosten.setCellValueFactory(new PropertyValueFactory<>("sideCostsMonth"));
+        this.notiz.setCellValueFactory(new PropertyValueFactory<>("note"));
 
         // selecting multiple table view items with SHIFT or STRG
         tableView.setOnMouseClicked(event -> tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE));
