@@ -177,7 +177,14 @@ public class BaseDao<T> {
      * @return Eine Liste aller Entities aus der Tabelle T.
      */
     public final List<T> getAll() {
-        return sessionFactory.getCurrentSession().createQuery("from " + this.getEntityClass().getSimpleName(), this.getEntityClass()).list();
+        final Session currentSession = sessionFactory.getCurrentSession();
+        final Transaction transaction = currentSession.beginTransaction();
+
+        List<T> list = currentSession.createQuery("from " + this.getEntityClass().getSimpleName(), this.getEntityClass()).list();
+
+        transaction.commit();
+
+        return list;
     }
 
     /**

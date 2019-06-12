@@ -53,9 +53,9 @@ public class FxmlLibrary {
      * Holt sich die "Mieterstammdatensatz anlegen"-View.
      * @return Der Container der Anlegungssicht.
      */
-    public static Parent getTenantsAddDialog() throws IOException {
+    public static Parent getTenantsAddDialog(final Person tenant) throws IOException {
         FXMLLoader loader = new FXMLLoader(FxmlLibrary.class.getResource("fxml/tenants/edit.fxml"));
-        loader.setController(new TenantsAddController());
+        loader.setController(new TenantsAddController(tenant));
 
         return loader.load();
     }

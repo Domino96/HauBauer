@@ -13,21 +13,7 @@ public class PersonDao extends BaseDao<Person> {
     }
 
     public List<Person> getAllTenants() {
-        final int userRoleId = this.getTenantRole().getUserRoleId();
-        final Session session = this.getSessionFactory().getCurrentSession();
-        final Transaction transaction = session.beginTransaction();
-
-        final List<Person> list = this.queryBuilder(session)
-                .where("role.userRoleId", "= :role")
-                .setParameter("role", userRoleId)
-                .build()
-                .list();
-
-        //final List<Person> list = this.getAll();
-
-        transaction.commit();
-
-        return list;
+        return this.getAll();
     }
 
     public List<Person> getAllTenants(int start, int limit) {

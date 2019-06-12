@@ -8,7 +8,7 @@ import de.haubauer.business.models.Person;
 
 public class TenantsDialogViewModel {
     private StringProperty title = new SimpleStringProperty("");
-    private ObjectProperty<Person> tenant = new SimpleObjectProperty<>(new Person());
+    private ObjectProperty<Person> tenant = new SimpleObjectProperty<>();
 
     public String getTitle() {
         return title.get();
