@@ -5,9 +5,7 @@ import javafx.fxml.FXML;
 
 public class TenantsEditController extends TenantsDialogController {
     public TenantsEditController(final Person tenant) {
-        super("Mietstammdatensatz bearbeiten");
-
-        this.viewModel.setTenant(tenant);
+        super("Mietstammdatensatz bearbeiten", tenant);
     }
 
     @FXML
