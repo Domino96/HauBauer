@@ -78,6 +78,6 @@
         </columns>
       </TableView>
       <Button layoutX="498.0" layoutY="67.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" text="Reports generieren" />
-      <Button layoutX="369.0" layoutY="67.0" mnemonicParsing="false" onAction="#zahlungUbersichtForItem" onZoomFinished="#zahlungUbersichtForItem" prefHeight="50.0" prefWidth="121.0" text="Zahlungsübersicht" />
+      <Button layoutX="369.0" layoutY="67.0" mnemonicParsing="false" onAction="#showPaymentsOverview" onZoomFinished="#showPaymentsOverview" prefHeight="50.0" prefWidth="121.0" text="Zahlungsübersicht" />
     </children>
 </Pane>

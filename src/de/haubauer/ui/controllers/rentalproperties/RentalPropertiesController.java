@@ -3,6 +3,7 @@ package de.haubauer.ui.controllers.rentalproperties;
 import de.haubauer.business.models.RentalProperty;
 import de.haubauer.business.services.RentalPropertyService;
 import de.haubauer.ui.FxmlLibrary;
+import de.haubauer.ui.controllers.SceneController;
 import de.haubauer.ui.viewmodels.RentalPropertyViewModel;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -59,6 +60,7 @@ public class RentalPropertiesController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         this.service.getAllRentalProperties().forEach(p -> this.viewModel.getRentalProperties().add(p));
+        this.viewModel.setSelectedRentalProperties(this.tableView.getSelectionModel().getSelectedItems());
 
         this.tableView.setItems(this.viewModel.getRentalProperties());
 
@@ -98,9 +100,10 @@ public class RentalPropertiesController implements Initializable {
         addStage.show();
     }
 
-    public void zahlungUbersichtForItem() {
-        RentalProperty item = tableView.getSelectionModel().getSelectedItem();
-        tableView.getItems();
+    public void showPaymentsOverview() throws IOException {
+        if (this.viewModel.getSelectedRentalProperties().size() == 1) {
+            SceneController.getInstance().activate(FxmlLibrary.getPayments(this.viewModel.getSelectedRentalProperties().get(0)));
+        }
     }
 
     public void onDashboardClicked(){

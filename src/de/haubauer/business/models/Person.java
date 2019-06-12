@@ -76,6 +76,10 @@ public class Person extends DatedObject implements Cloneable {
         this.lastName.set(lastName);
     }
 
+    public String getFullName() {
+        return String.format("%s %s", getFirstName(), getLastName());
+    }
+
     public String getLandline() {
         return landline.get();
     }

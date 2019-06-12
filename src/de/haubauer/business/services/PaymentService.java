@@ -11,8 +11,8 @@ import java.util.List;
 public class PaymentService {
     private PaymentDao dao = new PaymentDao();
 
-    public List<de.haubauer.business.models.Payment> getPayments(final RentalProperty rentalProperty) {
-        return Mapper.getInstance().map(this.dao.getPaymentsForProperty(rentalProperty.getRentalPropertyId()),
+    public List<de.haubauer.business.models.Payment> getPayments(final de.haubauer.business.models.RentalProperty rentalProperty) {
+        return Mapper.getInstance().map(this.dao.getPaymentsForProperty(rentalProperty.getId()),
                 new TypeToken<List<de.haubauer.business.models.Payment>>() {});
     }
 

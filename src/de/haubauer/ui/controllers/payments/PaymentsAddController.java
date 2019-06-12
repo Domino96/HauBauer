@@ -1,5 +1,6 @@
-package de.haubauer.ui.controllers.rentalproperties;
+package de.haubauer.ui.controllers.payments;
 
+import de.haubauer.business.models.Payment;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -37,6 +38,10 @@ public class PaymentsAddController implements Initializable {
     private ComboBox<PaymentType> payAPaymentTypeComboBox;
 
     private ObservableList<PaymentType> list = FXCollections.observableArrayList();
+
+    public PaymentsAddController(final Payment payment) {
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
