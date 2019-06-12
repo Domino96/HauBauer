@@ -86,7 +86,7 @@ public class RentalPropertiesController implements Initializable {
         this.notiz.setCellValueFactory(new PropertyValueFactory<>("note"));
 
         this.tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        this.viewModel.setSelectedRentalPropertys(this.tableView.getSelectionModel().getSelectedItems());
+        this.viewModel.setSelectedRentalProperties(this.tableView.getSelectionModel().getSelectedItems());
 
         // selecting multiple table view items with SHIFT or STRG
         tableView.setOnMouseClicked(event -> tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE));

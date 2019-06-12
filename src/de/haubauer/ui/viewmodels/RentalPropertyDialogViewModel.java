@@ -13,8 +13,8 @@ import javafx.collections.ObservableList;
 public class RentalPropertyDialogViewModel {
     private StringProperty title = new SimpleStringProperty("");
     private ObjectProperty<RentalProperty> rentalProperty = new SimpleObjectProperty<>(new RentalProperty());
-    public ObservableList<RentalType> rentalTypes = FXCollections.observableArrayList();
-    public ObservableList<UsageType> usageTypes = FXCollections.observableArrayList();
+    public ObservableList<RentalType> availableRentalTypes = FXCollections.observableArrayList();
+    public ObservableList<UsageType> availableUsageTypes = FXCollections.observableArrayList();
 
     public String getTitle() {
         return title.get();
@@ -30,6 +30,26 @@ public class RentalPropertyDialogViewModel {
 
     public RentalProperty getRentalProperty() {
         return rentalProperty.get();
+    }
+
+    public ObjectProperty<RentalProperty> rentalPropertyProperty() {
+        return rentalProperty;
+    }
+
+    public void setAvailableRentalTypes(ObservableList<RentalType> availableRentalTypes) {
+        this.availableRentalTypes = availableRentalTypes;
+    }
+
+    public ObservableList<UsageType> getAvailableUsageTypes() {
+        return availableUsageTypes;
+    }
+
+    public void setAvailableUsageTypes(ObservableList<UsageType> availableUsageTypes) {
+        this.availableUsageTypes = availableUsageTypes;
+    }
+
+    public ObservableList<RentalType> getAvailableRentalTypes(){
+        return availableRentalTypes;
     }
 
     public ObjectProperty<RentalProperty> rentalProperty() {

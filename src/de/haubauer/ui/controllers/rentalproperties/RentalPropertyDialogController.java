@@ -88,8 +88,8 @@ public abstract class RentalPropertyDialogController implements Initializable {
         this.note_txtArea.textProperty().bindBidirectional(rentalProperty.noteProperty());
 
 
-        this.viewModel.rentalTypes.addAll(this.service.getAvailableRentalTypes());
-        this.rentalType_cb.setItems(this.viewModel.rentalTypes);
+        this.viewModel.availableRentalTypes.addAll(this.service.getAvailableRentalTypes());
+        this.rentalType_cb.setItems(this.viewModel.getAvailableRentalTypes());
         this.rentalType_cb.setConverter(new RentalType.StringConverter());
 
         if (this.viewModel.getRentalProperty().getRentalTypes() != null) {
@@ -97,8 +97,8 @@ public abstract class RentalPropertyDialogController implements Initializable {
         }
 
 
-        this.viewModel.usageTypes.addAll(this.service.getAvailableUsagetypes());
-        this.rentalType_cb.setItems(this.viewModel.usageTypes);
+        this.viewModel.availableUsageTypes.addAll(this.service.getAvailableUsagetypes());
+        this.rentalType_cb.setItems(this.viewModel.getAvailableUsageTypes());
         this.rentalType_cb.setConverter(new UsageType.StringConverter());
 
         if (this.viewModel.getRentalProperty().getUsageTypes() != null) {
