@@ -1,16 +1,16 @@
-package src.de.haubauer.business.reports;
+package de.haubauer.business.reports;
 
-import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 import javax.swing.*;
 import java.io.*;
-import java.sql.Connection;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
-import java.util.Map;
 
 public class JasperReport {
     //public void generate() {
@@ -44,6 +44,11 @@ public class JasperReport {
         Generierung eines Reports (Bsp mit Rennwagen Datenbank)
          */
         try {
+            // Versuch diese Pfade mal
+            //InputStream inS= new FileInputStream(new File("Templates/new_Gesamtübersicht.jrxml"));
+            //JasperDesign jd= JRXmlLoader.load(inS);
+            //net.sf.jasperreports.engine.JasperReport jr= JasperCompileManager.compileReport("Templates/new_Gesamtübersicht.jrxml");
+
             InputStream inS= new FileInputStream(new File("C:\\temp\\new_Gesamtübersicht.jrxml"));
             JasperDesign jd= JRXmlLoader.load(inS);
             net.sf.jasperreports.engine.JasperReport jr= JasperCompileManager.compileReport("C:\\temp\\new_Gesamtübersicht.jrxml");
