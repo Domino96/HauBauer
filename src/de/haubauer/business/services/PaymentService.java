@@ -1,30 +1,26 @@
 package de.haubauer.business.services;
 
-import de.haubauer.db.BaseDao;
+import de.haubauer.db.PaymentDao;
 import de.haubauer.db.entities.Payment;
+import de.haubauer.db.entities.RentalProperty;
 import de.haubauer.helpers.Mapper;
+import org.modelmapper.TypeToken;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PaymentService {
-    private BaseDao baseDao = new BaseDao<>(Payment.class);
+    private PaymentDao dao = new PaymentDao();
 
-    public List<Payment> getAllPayments() {
-        // return Mapper.map(this.personDao.getAllTenants(), Person.class);
-
-        List<Payment> zahlung = new ArrayList<>();
-
-        zahlung = baseDao.getAll();
-
-        return zahlung;
+    public List<de.haubauer.business.models.Payment> getPayments(final RentalProperty rentalProperty) {
+        return Mapper.getInstance().map(this.dao.getPaymentsForProperty(rentalProperty.getRentalPropertyId()),
+                new TypeToken<List<de.haubauer.business.models.Payment>>() {});
     }
 
-    public void savePayment(Payment payment) {
-        this.baseDao.save(Mapper.getInstance().map(payment, de.haubauer.db.entities.Payment.class));
+    public void savePayment(de.haubauer.business.models.Payment payment) {
+        this.dao.save(Mapper.getInstance().map(payment, Payment.class));
     }
 
-    public void updatePayment(Payment payment) {
-        this.baseDao.update(Mapper.getInstance().map(payment, de.haubauer.db.entities.Payment.class));
+    public void updatePayment(de.haubauer.business.models.Payment payment) {
+        this.dao.update(Mapper.getInstance().map(payment, Payment.class));
     }
 }
