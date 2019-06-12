@@ -1,5 +1,8 @@
-package src.de.haubauer.ui.controllers.rentalproperties;
+package de.haubauer.ui.controllers.rentalproperties;
 
+import de.haubauer.business.models.Payment;
+import de.haubauer.business.services.PaymentService;
+import de.haubauer.ui.viewmodels.PaymentViewModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -15,14 +18,18 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import src.de.haubauer.db.entities.Payment;
-import src.de.haubauer.enums.PaymentType;
+
+import de.haubauer.enums.PaymentType;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
 
 public class PaymentsEditController implements Initializable {
+
+    protected PaymentService service = new PaymentService();
+    protected PaymentViewModel viewModel = new PaymentViewModel();
 
     //Buttons
     @FXML
@@ -49,7 +56,11 @@ public class PaymentsEditController implements Initializable {
     @FXML
     private Label payEIdLabel;
 
+
+
     private ObservableList<PaymentType> list = FXCollections.observableArrayList();
+
+
 
 
     @Override
@@ -58,5 +69,15 @@ public class PaymentsEditController implements Initializable {
         list.add(PaymentType.SideCostStatement);
 
         payEPaymentTypeComboBox.setItems(list);
+
+        final Payment payment = this.viewModel.getPayment();
+        this.payEAmountTextField.textProperty().bindBidirectional(payment);
+    }
+
+    @FXML
+    public void save() {
+        this.service.updatePayment(this.viewModel.getPayment());
+
+
     }
 }

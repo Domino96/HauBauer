@@ -1,4 +1,4 @@
-package src.de.haubauer.business.models;
+package de.haubauer.business.models;
 
 import java.math.BigDecimal;
 import java.util.List;

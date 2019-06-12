@@ -1,5 +1,6 @@
-package src.de.haubauer.ui;
+package de.haubauer.ui;
 
+import de.haubauer.business.Payments;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import de.haubauer.business.models.Person;
@@ -63,7 +64,7 @@ public class FxmlLibrary {
         return FXMLLoader.load(FxmlLibrary.class.getResource("fxml/rentalproperties/payments.fxml"));
     }
 
-    public static Parent editPayments() throws IOException {
+    public static Parent editPayments(final Payments payments) throws IOException {
         return FXMLLoader.load(FxmlLibrary.class.getResource("fxml/rentalproperties/payments-edit.fxml"));
     }
 

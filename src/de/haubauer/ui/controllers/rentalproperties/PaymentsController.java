@@ -1,4 +1,4 @@
-package src.de.haubauer.ui.controllers.rentalproperties;
+package de.haubauer.ui.controllers.rentalproperties;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,9 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import src.de.haubauer.business.models.Payment;
-import src.de.haubauer.business.services.PaymentService;
-import src.de.haubauer.ui.viewmodels.PaymentViewModel;
+import de.haubauer.business.models.Payment;
+import de.haubauer.business.services.PaymentService;
+import de.haubauer.ui.viewmodels.PaymentViewModel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +37,9 @@ public class PaymentsController extends Stage implements Initializable {
 
     @FXML
     private TableView<Payment> tableView;
+
+    @FXML
+    private Label paymentsObjectIdLabel;
 
 
 

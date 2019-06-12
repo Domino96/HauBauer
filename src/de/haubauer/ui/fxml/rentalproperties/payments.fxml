@@ -33,12 +33,12 @@
             <TableColumn prefWidth="331.9999084472656" text="Notiz" />
         </columns>
       </TableView>
-      <Label layoutX="14.0" layoutY="9.0" prefHeight="55.0" prefWidth="224.0" text="Zahlungen zu">
+      <Label layoutX="14.0" layoutY="9.0" prefHeight="55.0" prefWidth="350.0" text="Zahlungsübersicht zu">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label id="1" layoutX="238.0" layoutY="10.0" prefHeight="53.0" prefWidth="244.0" text="[MietobjektId]">
+      <Label id="1" fx:id="paymentsObjectIdLabel" layoutX="358.0" layoutY="10.0" prefHeight="53.0" prefWidth="244.0" text="[MietobjektId]">
          <font>
             <Font size="36.0" />
          </font>
