@@ -18,8 +18,8 @@ public class TestDataMain {
 
         rentalPropertyBaseDao.save(testDataGenerator.generateRental(100));
         personDao.save(testDataGenerator.generatePerson(100, tenantRole));
-        tenanciesDao.save(testDataGenerator.generateTenancy(100));
-        paymentDao.save(testDataGenerator.generatePayment(500));
+        // tenanciesDao.save(testDataGenerator.generateTenancy(100));
+        // paymentDao.save(testDataGenerator.generatePayment(500));
     }
 
     /**
