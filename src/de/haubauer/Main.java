@@ -26,6 +26,7 @@ public class Main extends Application {
         SceneController.getInstance().addScreen("Mieterstammdaten", FXMLLoader.load(getClass().getResource("ui/fxml/rentalproperties/rental-properties.fxml")));
         SceneController.getInstance().addScreen("Mietobjekt",FXMLLoader.load(getClass().getResource("ui/fxml/tenants/tenants.fxml")));
         SceneController.getInstance().addScreen("Dashboard",FXMLLoader.load(getClass().getResource("ui/fxml/dashboard.fxml")));
+        SceneController.getInstance().addScreen("login",FXMLLoader.load(getClass().getResource("ui/fxml/login.fxml")));
 
 
         primaryStage.setTitle("Dashboard - Willkommen");
