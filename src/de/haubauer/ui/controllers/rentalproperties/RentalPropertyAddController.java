@@ -20,6 +20,10 @@ public class RentalPropertyAddController extends RentalPropertyDialogController{
     public RentalPropertyAddController() {
         super("Mietobjekt hinzufügen");
     }
+
+    /**
+     * Nimmt die angegeben Daten und ruft die Methode zum speichern des Mietobjektes auf
+     */
     public void save(){
 
         this.service.saveRentalProperty(this.viewModel.getRentalProperty());

@@ -60,7 +60,11 @@ public class RentalPropertiesController implements Initializable {
     private Button addBtn;
 
 
-
+    /**
+     * Initialsierung der Übersicht der Mietobjekte
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -86,6 +90,9 @@ public class RentalPropertiesController implements Initializable {
         tableView.setOnMouseClicked(event -> tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE));
     }
 
+    /**
+     * Dialog, wenn man Mietobjekte löschen möchte
+     */
     public void deleteItems() {
         ObservableList<RentalProperty> list = tableView.getSelectionModel().getSelectedItems();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -99,6 +106,10 @@ public class RentalPropertiesController implements Initializable {
         }
     }
 
+    /**
+     * Aufruf der des Add Schemas
+     * @throws IOException
+     */
     public void addItem() throws IOException {
         Stage addStage = new Stage();
 
@@ -109,14 +120,13 @@ public class RentalPropertiesController implements Initializable {
         addStage.show();
     }
 
+    /**
+     * Aufruf der Zahlungsübersicht
+     */
     public void IntoPayment() {
         //Parent root = FxmlLibrary.getPayments();
         RentalProperty item = tableView.getSelectionModel().getSelectedItem();
 
         //tableView.getItems();
-    }
-
-    public void onDashboardClicked(){
-
     }
 }

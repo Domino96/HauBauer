@@ -16,21 +16,42 @@ public class RentalPropertyService {
     private BaseDao<RentalType> rentalTypeBaseDao = new BaseDao<>(RentalType.class);
     private  BaseDao<UsageType> usageTypeBaseDao = new BaseDao<>(UsageType.class);
 
+    /**
+     * Mappt die Meitobjekte aus der Datenbank auf den Business Type des Programmes
+     * @return
+     */
     public List<RentalProperty> getAllRentalProperties() {
         return Mapper.getInstance().map(this.rentalPropertyDao.getAll(), new TypeToken<List<RentalProperty>>() {});
     }
 
+    /**
+     * Mappt die Meitobjekte aus der Datenbank auf den Business Type des Programmes
+     * @param rentalProperty
+     */
     public void saveRentalProperty(RentalProperty rentalProperty) {
         this.rentalPropertyDao.save(Mapper.getInstance().map(rentalProperty, de.haubauer.db.entities.RentalProperty.class));
     }
 
+    /**
+     * Mappt die Meitobjekte aus der Datenbank auf den Business Type des Programmes
+     * @param rentalProperty
+     */
     public void updateRentalProperty(RentalProperty rentalProperty) {
         this.rentalPropertyDao.update(Mapper.getInstance().map(rentalProperty, de.haubauer.db.entities.RentalProperty.class));
     }
+
+    /**
+     * Mappt die Meitobjekte aus der Datenbank auf den Business Type des Programmes
+     * @return
+     */
     public List<de.haubauer.business.models.RentalType> getAvailableRentalTypes() {
         return Mapper.getInstance().map(this.rentalTypeBaseDao.getAll(), new TypeToken<List<de.haubauer.business.models.RentalType>>() {});
     }
 
+    /**
+     * Mappt die Meitobjekte aus der Datenbank auf den Business Type des Programmes
+     * @return
+     */
     public List<de.haubauer.business.models.UsageType> getAvailableUsagetypes() {
         return Mapper.getInstance().map(this.usageTypeBaseDao.getAll(), new TypeToken<List<de.haubauer.business.models.UsageType>>() {});
     }

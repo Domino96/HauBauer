@@ -11,19 +11,4 @@ public class RentalPropertyDao extends BaseDao<RentalProperty> {
     public RentalPropertyDao() {
         super(RentalProperty.class);
     }
-
-    public List<RentalProperty> getAllTenants() {
-        final Session session = this.getSessionFactory().getCurrentSession();
-        final Transaction transaction = session.beginTransaction();
-
-        final List<RentalProperty> list = this.queryBuilder(session)
-                .where("role", "= :role")
-                .setParameter("role", "Mieter")
-                .build()
-                .list();
-
-        transaction.commit();
-
-        return list;
-    }
 }

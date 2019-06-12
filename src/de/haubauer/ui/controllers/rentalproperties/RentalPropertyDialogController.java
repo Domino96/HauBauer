@@ -69,6 +69,11 @@ public abstract class RentalPropertyDialogController implements Initializable {
         this.viewModel.setTitle(title);
     }
 
+    /**
+     * Initialisierung der Dialogfenster für die Mietobjekte
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.title.textProperty().bind(this.viewModel.titleProperty());
