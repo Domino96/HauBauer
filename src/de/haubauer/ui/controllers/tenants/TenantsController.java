@@ -91,7 +91,10 @@ public class TenantsController implements Initializable {
             dialog.setTitle("Mietstammdatensatz bearbeiten");
             final Person copiedTenant = new Person(this.viewModel.getSelectedTenants().get(0));
             dialog.setScene(new Scene(FxmlLibrary.getTenantsEditDialog(this.viewModel.getSelectedTenants().get(0)), 500, 700));
-            dialog.setOnCloseRequest(event -> this.viewModel.getSelectedTenants().get(0).copy(copiedTenant));
+            dialog.setOnCloseRequest(event -> {
+                this.viewModel.getSelectedTenants().get(0).roleProperty().unbind();
+                this.viewModel.getSelectedTenants().get(0).copy(copiedTenant);
+            });
             dialog.showAndWait();
         }
     }
