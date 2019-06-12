@@ -1,15 +1,18 @@
 package de.haubauer.business.models;
 
 import de.haubauer.helpers.DatedObject;
+import de.haubauer.helpers.Mapper;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class Person extends DatedObject {
+public class Person extends DatedObject implements Cloneable {
     private int id;
     private StringProperty title = new SimpleStringProperty("");
     private StringProperty firstName = new SimpleStringProperty("");
@@ -22,6 +25,12 @@ public class Person extends DatedObject {
     private ObservableList<RentalProperty> rentalProperties = FXCollections.observableArrayList();
     private ObservableList<Tenancy> tenancies = FXCollections.observableArrayList();
     private ObjectProperty<BankAccount> bankAccount = new SimpleObjectProperty<>();
+
+    public Person() { }
+
+    public Person(Person person) {
+        this.copy(person);
+    }
 
     public int getId() {
         return id;
@@ -172,5 +181,20 @@ public class Person extends DatedObject {
 
     public void setBankAccount(BankAccount bankAccount) {
         this.bankAccount.set(bankAccount);
+    }
+
+    public void copy(final Person person) {
+        this.setId(person.getId());
+        this.setFirstName(person.getFirstName());
+        this.setLastName(person.getLastName());
+        this.setEmail(person.getEmail());
+        this.setBankAccount(person.getBankAccount());
+        this.setAddresses(person.getAddresses());
+        this.setLandline(person.getLandline());
+        this.setMobile(person.getMobile());
+        this.setRentalProperties(person.getRentalProperties());
+        this.setRole(person.getRole());
+        this.setTenancies(person.getTenancies());
+        this.setTitle(person.getTitle());
     }
 }
