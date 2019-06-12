@@ -1,4 +1,4 @@
-package src.de.haubauer.ui.controllers.rentalproperties;
+package de.haubauer.ui.controllers.rentalproperties;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,7 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import src.de.haubauer.enums.PaymentType;
+import de.haubauer.enums.PaymentType;
 
 import java.net.URL;
 import java.util.ResourceBundle;

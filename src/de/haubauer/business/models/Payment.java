@@ -13,6 +13,10 @@ public class Payment extends DatedObject {
     private int id;
     private ObjectProperty<Date> date = new SimpleObjectProperty<>();
     private ObjectProperty<BigDecimal> value = new SimpleObjectProperty<>();
+    private ObjectProperty<BigDecimal> billed = new SimpleObjectProperty<>();
+    private StringProperty comment = new SimpleStringProperty("");
+    private ObjectProperty<Tenancy> tenancy = new SimpleObjectProperty<>();
+    private ObjectProperty<PaymentType> paymentType = new SimpleObjectProperty<>();
 
     public int getId() {
         return id;
@@ -93,11 +97,5 @@ public class Payment extends DatedObject {
     public void setPaymentType(PaymentType paymentType) {
         this.paymentType.set(paymentType);
     }
-
-    private ObjectProperty<BigDecimal> billed = new SimpleObjectProperty<>();
-    private StringProperty comment = new SimpleStringProperty("");
-
-    private ObjectProperty<Tenancy> tenancy = new SimpleObjectProperty<>();
-    private ObjectProperty<PaymentType> paymentType = new SimpleObjectProperty<>();
 
 }

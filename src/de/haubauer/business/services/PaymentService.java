@@ -21,10 +21,10 @@ public class PaymentService {
     }
 
     public void savePayment(Payment payment) {
-        this.baseDao.save(Mapper::map(payment, de.haubauer.db.entities.Payment.class));
+        this.baseDao.save(Mapper.getInstance().map(payment, de.haubauer.db.entities.Payment.class));
     }
 
     public void updatePayment(Payment payment) {
-        this.baseDao.update(Mapper.map(payment, de.haubauer.db.entities.Payment.class));
+        this.baseDao.update(Mapper.getInstance().map(payment, de.haubauer.db.entities.Payment.class));
     }
 }
