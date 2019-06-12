@@ -1,4 +1,4 @@
-package src.de.haubauer.ui.controllers;
+package de.haubauer.ui.controllers;
 
 import de.haubauer.ui.FxmlLibrary;
 import javafx.event.ActionEvent;
