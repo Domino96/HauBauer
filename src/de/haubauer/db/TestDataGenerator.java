@@ -1,7 +1,6 @@
 package de.haubauer.db;
 
 import de.haubauer.db.entities.*;
-import de.haubauer.db.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -44,7 +43,7 @@ public class TestDataGenerator {
 
     /**
      * Erstellt eine angegebene Anzahl von Mietobjekten
-     * @param iterations
+     * @param iterations Die Anzahl der Mietobjekte
      * @return List of Rentalproperties
      */
     public List<RentalProperty> generateRental(int iterations){
@@ -73,7 +72,7 @@ public class TestDataGenerator {
     return rentalProperties;
     };
 
-    public ArrayList<Person> generatePerson(int iterations){
+    public ArrayList<Person> generatePerson(int iterations, UserRole role){
         ArrayList<Person> persons = new ArrayList<Person>();
         for (int i=0;i<iterations;i++){
             Person person = new Person();
@@ -85,7 +84,8 @@ public class TestDataGenerator {
             person.setLastName(this.lastName.get(new Random().nextInt(this.lastName.size())));
             person.setLandline(this.phone.get(new Random().nextInt(this.phone.size())));
             person.setMobile(this.phone.get(new Random().nextInt(this.phone.size())));
-            person.setBankAccount(genrateBankAccount(1).get(0));
+            person.setBankAccount(generateBankAccount(1).get(0));
+            person.setRole(role);
 
             persons.add(person);
         }
@@ -116,7 +116,7 @@ public class TestDataGenerator {
      * @param interations
      * @return
      */
-    public List<BankAccount> genrateBankAccount(int interations){
+    public List<BankAccount> generateBankAccount(int interations){
         ArrayList<BankAccount> bankAccounts = new ArrayList<BankAccount>();
         for (int i = 0; i < interations;i++){
             BankAccount bankAccount = new BankAccount();
