@@ -1,9 +1,11 @@
 package de.haubauer.db;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Ein QueryBuilder für die Entity T.

@@ -31,12 +31,4 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
-    private void generateData(){
-        TestDataGenerator testDataGenerator = new TestDataGenerator();
-
-        BaseDao<RentalProperty> rentalPropertyBaseDao = new BaseDao<>(RentalProperty.class);
-
-        rentalPropertyBaseDao.save(testDataGenerator.generateRental(10));
-    }
 }

@@ -9,6 +9,7 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
+        <property name="hibernate.current_session_context_class">thread</property>
 
         <!-- Mapping files here -->
         <mapping class="de.haubauer.db.entities.User"/>

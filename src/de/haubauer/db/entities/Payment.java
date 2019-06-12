@@ -20,11 +20,11 @@ public class Payment extends DatedObject {
     private BigDecimal billed;
     private String comment;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "tenancyId")
     private Tenancy tenancy;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "paymentTypeId")
     private PaymentType paymentType;
 

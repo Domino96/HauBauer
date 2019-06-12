@@ -4,7 +4,9 @@ import de.haubauer.helpers.DatedObject;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "Tenancy")
@@ -17,13 +19,13 @@ public class Tenancy extends DatedObject {
     private Date endDate;
     private int status;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "personId")
     private Person person;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "paymentId")
-    private List<Payment> payments;
+    private Set<Payment> payments;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "rentalPropertyId")
@@ -69,12 +71,15 @@ public class Tenancy extends DatedObject {
         this.person = person;
     }
 
-    public List<Payment> getPayments() {
+    public Set<Payment> getPayments() {
         return payments;
     }
 
-    public void setPayments(List<Payment> payments) {
+    public void setPayments(Set<Payment> payments) {
         this.payments = payments;
+    }
+    public void setPayments(List<Payment> payments) {
+        this.payments = new HashSet<>(payments);
     }
 
     public RentalProperty getRentalProperty() {

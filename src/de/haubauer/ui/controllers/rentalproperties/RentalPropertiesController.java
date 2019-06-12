@@ -12,7 +12,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import src.de.haubauer.business.services.RentalPropertyService;
 
 import java.io.IOException;
 import java.net.URL;

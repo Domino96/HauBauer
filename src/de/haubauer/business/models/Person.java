@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
 
+import java.util.Collection;
 import java.util.List;
 
 public class Person extends DatedObject {
@@ -130,7 +131,7 @@ public class Person extends DatedObject {
         return addresses;
     }
 
-    public void setAddresses(List<Address> addresses) {
+    public void setAddresses(Collection<Address> addresses) {
         this.addresses.clear();
         this.addresses.addAll(addresses);
     }
@@ -139,7 +140,7 @@ public class Person extends DatedObject {
         return rentalProperties;
     }
 
-    public void setRentalProperties(List<RentalProperty> rentalProperties) {
+    public void setRentalProperties(Collection<RentalProperty> rentalProperties) {
         this.rentalProperties.clear();
         this.rentalProperties.addAll(rentalProperties);
     }
@@ -148,7 +149,7 @@ public class Person extends DatedObject {
         return tenancies;
     }
 
-    public void setTenancies(List<Tenancy> tenancies) {
+    public void setTenancies(Collection<Tenancy> tenancies) {
         this.tenancies.clear();
         this.tenancies.addAll(tenancies);
     }

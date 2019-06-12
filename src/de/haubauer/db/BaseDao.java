@@ -4,7 +4,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import de.haubauer.db.QueryBuilder;
 
 import java.util.List;
 
@@ -14,16 +13,18 @@ import java.util.List;
  */
 public class BaseDao<T> {
     private static SessionFactory sessionFactory;
-    private Session session;
     private Class<T> clazz;
 
     public BaseDao(Class<T> clazz) {
         if (sessionFactory == null) {
             BaseDao.initialize();
         }
-
-        this.session = sessionFactory.openSession();
+        
         this.clazz = clazz;
+    }
+
+    protected SessionFactory getSessionFactory() {
+        return sessionFactory;
     }
 
     public static void initialize() {
@@ -40,14 +41,15 @@ public class BaseDao<T> {
      */
     @SafeVarargs
     public final void save(T... entities) {
-        Transaction transaction = session.beginTransaction();
+        final Session currentSession = sessionFactory.getCurrentSession();
+        final Transaction transaction = currentSession.beginTransaction();
 
         for (int i = 0; i < entities.length; i++) {
-            session.save(entities[i]);
+            currentSession.save(entities[i]);
 
             if (i % 20 == 0) {
-                session.flush();
-                session.clear();
+                currentSession.flush();
+                currentSession.clear();
             }
         }
 
@@ -59,15 +61,16 @@ public class BaseDao<T> {
      * @param entities Eine Liste von Entities.
      */
     public final void save(List<T> entities) {
-        Transaction transaction = session.beginTransaction();
+        final Session currentSession = sessionFactory.getCurrentSession();
+        final Transaction transaction = currentSession.beginTransaction();
 
         for (int i = 0; i < entities.size(); i++) {
-            session.save(entities.get(i));
+            currentSession.save(entities.get(i));
 
             if (i % 20 == 0) {
                 try {
-                    session.flush();
-                    session.clear();
+                    currentSession.flush();
+                    currentSession.clear();
                 }
                 catch (Exception e){
                     System.out.println(e);
@@ -84,14 +87,15 @@ public class BaseDao<T> {
      */
     @SafeVarargs
     public final void update(T... entities) {
-        Transaction transaction = session.beginTransaction();
+        final Session currentSession = sessionFactory.getCurrentSession();
+        final Transaction transaction = currentSession.beginTransaction();
 
         for (int i = 0; i < entities.length; i++) {
-            session.update(entities[i]);
+            currentSession.update(entities[i]);
 
             if (i % 20 == 0) {
-                session.flush();
-                session.clear();
+                currentSession.flush();
+                currentSession.clear();
             }
         }
 
@@ -103,14 +107,15 @@ public class BaseDao<T> {
      * @param entities Eine Liste von Entities.
      */
     public final void update(List<T> entities) {
-        Transaction transaction = session.beginTransaction();
+        final Session currentSession = sessionFactory.getCurrentSession();
+        final Transaction transaction = currentSession.beginTransaction();
 
         for (int i = 0; i < entities.size(); i++) {
-            session.update(entities.get(i));
+            currentSession.update(entities.get(i));
 
             if (i % 20 == 0) {
-                session.flush();
-                session.clear();
+                currentSession.flush();
+                currentSession.clear();
             }
         }
 
@@ -123,14 +128,15 @@ public class BaseDao<T> {
      */
     @SafeVarargs
     public final void delete(T... entities) {
-        Transaction transaction = session.beginTransaction();
+        final Session currentSession = sessionFactory.getCurrentSession();
+        final Transaction transaction = currentSession.beginTransaction();
 
         for (int i = 0; i < entities.length; i++) {
-            session.delete(entities[i]);
+            currentSession.delete(entities[i]);
 
             if (i % 20 == 0) {
-                session.flush();
-                session.clear();
+                currentSession.flush();
+                currentSession.clear();
             }
         }
 
@@ -142,14 +148,15 @@ public class BaseDao<T> {
      * @param entities Eine Liste von Entities.
      */
     public final void delete(List<T> entities) {
-        Transaction transaction = session.beginTransaction();
+        final Session currentSession = sessionFactory.getCurrentSession();
+        final Transaction transaction = currentSession.beginTransaction();
 
         for (int i = 0; i < entities.size(); i++) {
-            session.delete(entities.get(i));
+            currentSession.delete(entities.get(i));
 
             if (i % 20 == 0) {
-                session.flush();
-                session.clear();
+                currentSession.flush();
+                currentSession.clear();
             }
         }
 
@@ -162,7 +169,7 @@ public class BaseDao<T> {
      * @return Die resultierende Entity.
      */
     public final T getById(int id) {
-        return session.get(this.getEntityClass(), id);
+        return sessionFactory.getCurrentSession().get(this.getEntityClass(), id);
     }
 
     /**
@@ -170,7 +177,7 @@ public class BaseDao<T> {
      * @return Eine Liste aller Entities aus der Tabelle T.
      */
     public final List<T> getAll() {
-        return session.createQuery("from " + this.getEntityClass().getSimpleName(), this.getEntityClass()).list();
+        return sessionFactory.getCurrentSession().createQuery("from " + this.getEntityClass().getSimpleName(), this.getEntityClass()).list();
     }
 
     /**
@@ -180,7 +187,7 @@ public class BaseDao<T> {
      * @return Eine Liste aller geholten Entities aus der Tabelle T.
      */
     public final List<T> getAll(int start, int limit) {
-        return session.createQuery("from " + this.getEntityClass().getSimpleName(), this.getEntityClass())
+        return sessionFactory.getCurrentSession().createQuery("from " + this.getEntityClass().getSimpleName(), this.getEntityClass())
                 .setFirstResult(start)
                 .setMaxResults(limit)
                 .list();
@@ -188,18 +195,10 @@ public class BaseDao<T> {
 
     /**
      * Erstellt einen QueryBuilder aus der Entity.
+     * @param session Die momentane Session.
      * @return Ein neuer QueryBuilder.
      */
-    public final QueryBuilder queryBuilder() {
+    public final QueryBuilder queryBuilder(Session session) {
         return new QueryBuilder<>(session, this.getEntityClass());
-    }
-
-    /**
-     * Disposed die session.
-     */
-    public void dispose() {
-        if (session != null) {
-            session.close();
-        }
     }
 }
