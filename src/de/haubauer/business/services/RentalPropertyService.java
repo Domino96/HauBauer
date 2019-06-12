@@ -1,7 +1,7 @@
-package src.de.haubauer.business.services;
+package de.haubauer.business.services;
 
 import de.haubauer.business.models.RentalProperty;
-import src.de.haubauer.db.RentalPropertyDao;
+import de.haubauer.db.RentalPropertyDao;
 import de.haubauer.helpers.Mapper;
 import org.modelmapper.TypeToken;
 

@@ -1,4 +1,4 @@
-package src.de.haubauer.business.models;
+package de.haubauer.business.models;
 
 import de.haubauer.enums.PaymentType;
 import de.haubauer.helpers.DatedObject;
