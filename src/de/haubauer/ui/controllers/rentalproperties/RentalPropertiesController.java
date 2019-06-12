@@ -12,7 +12,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import src.de.haubauer.business.services.RentalPropertyService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +36,9 @@ public class RentalPropertiesController implements Initializable {
     private TableColumn<RentalProperty, String> anschrift;
 
     @FXML
+    private TableColumn<RentalProperty, String> etage;
+
+    @FXML
     private TableColumn<RentalProperty, String> wohnflaeche;
 
     @FXML
@@ -44,6 +46,9 @@ public class RentalPropertiesController implements Initializable {
 
     @FXML
     private TableColumn<RentalProperty, String> nebenkosten;
+
+    @FXML
+    private TableColumn<RentalProperty, String> mieter;
 
     @FXML
     private TableColumn<RentalProperty, String> notiz;
@@ -67,10 +72,15 @@ public class RentalPropertiesController implements Initializable {
         this.typ.setCellValueFactory(new PropertyValueFactory<>("usageType"));
         this.beschreibung.setCellValueFactory(new PropertyValueFactory<>("description"));
         this.anschrift.setCellValueFactory(new PropertyValueFactory<>("address"));
+        this.etage.setCellValueFactory(new PropertyValueFactory<>("floor"));
         this.wohnflaeche.setCellValueFactory(new PropertyValueFactory<>("area"));
         this.qm.setCellValueFactory(new PropertyValueFactory<>("squareMeterPriceCold"));
         this.nebenkosten.setCellValueFactory(new PropertyValueFactory<>("sideCostsMonth"));
+        this.mieter.setCellValueFactory(new PropertyValueFactory<>("currentTenancy"));
         this.notiz.setCellValueFactory(new PropertyValueFactory<>("note"));
+
+        this.tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        this.viewModel.setSelectedRentalPropertys(this.tableView.getSelectionModel().getSelectedItems());
 
         // selecting multiple table view items with SHIFT or STRG
         tableView.setOnMouseClicked(event -> tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE));
@@ -99,9 +109,11 @@ public class RentalPropertiesController implements Initializable {
         addStage.show();
     }
 
-    public void zahlungUbersichtForItem() {
+    public void IntoPayment() {
+        //Parent root = FxmlLibrary.getPayments();
         RentalProperty item = tableView.getSelectionModel().getSelectedItem();
-        tableView.getItems();
+
+        //tableView.getItems();
     }
 
     public void onDashboardClicked(){

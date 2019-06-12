@@ -15,50 +15,18 @@ import java.util.ArrayList;
 
 
 public class RentalPropertyAddController extends RentalPropertyDialogController{
-    @FXML
-    private ComboBox rentalType_cb;
-
-    @FXML
-    private ComboBox usageType_cb;
-
-    @FXML
-    private TextField area_txt;
-
-    @FXML
-    private TextField sqMeterCold_txt;
-
-    @FXML
-    private TextField sidecosts_txt;
-
-    @FXML
-    private ComboBox parent_cb;
-
-    @FXML
-    private TextField street_txt;
-
-    @FXML
-    private TextField houseNo_txt;
-
-    @FXML
-    private TextField zipCode_txt;
-
-    @FXML
-    private TextField town_txt;
-
-    @FXML
-    private TextArea description_txtArea;
-
-    @FXML
-    private TextArea note_txtArea;
-
-    @FXML
-    private Button saveButton;
 
 
     public RentalPropertyAddController() {
         super("Mietobjekt hinzufügen");
     }
     public void save(){
+
+        this.service.saveRentalProperty(this.viewModel.getRentalProperty());
+
+        this.getStage().close();
+
+        /*
         RentalProperty rentalProperty = new RentalProperty();
         de.haubauer.db.BaseDao<RentalProperty> rentalPropertyBaseDao = new BaseDao<RentalProperty>(RentalProperty.class);
 
@@ -79,6 +47,6 @@ public class RentalPropertyAddController extends RentalPropertyDialogController{
         rentalPropertyBaseDao.save(rentalProperty);
 
         Stage stage = (Stage) saveButton.getScene().getWindow();
-        stage.close();
+        stage.close();*/
     }
 }

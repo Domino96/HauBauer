@@ -9,11 +9,7 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="400.0" prefWidth="633.0" style="-fx-background-color: #d3d3d3;"
-      xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="de.haubauer.ui.controllers.rentalproperties.RentalPropertiesController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="633.0" style="-fx-background-color: #d3d3d3;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.haubauer.ui.controllers.rentalproperties.RentalPropertiesController">
     <children>
         <fx:include fx:id="navigationToolbar" source="../navigation-toolbar.fxml" />
 
@@ -37,47 +33,57 @@
         <columns>
           <TableColumn fx:id="nummer" prefWidth="63.0" text="Nummer">
             <cellValueFactory>
-                <PropertyValueFactory property="rentalPropertyId"/>
+                <PropertyValueFactory property="rentalPropertyId" />
             </cellValueFactory>
             </TableColumn>
             <TableColumn fx:id="typ" prefWidth="49.0" text="Typ">
             <cellValueFactory>
-                <PropertyValueFactory property="rentalType"/>
+                <PropertyValueFactory property="rentalType" />
             </cellValueFactory>
             </TableColumn>
             <TableColumn fx:id="beschreibung" prefWidth="68.0" text="Beschreibung">
             <cellValueFactory>
-                <PropertyValueFactory property="description"/>
+                <PropertyValueFactory property="description" />
             </cellValueFactory>
             </TableColumn>
             <TableColumn fx:id="anschrift" prefWidth="75.0" text="Anschrift">
                 <cellValueFactory>
-                    <PropertyValueFactory property="address"/>
+                    <PropertyValueFactory property="address" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="etage" prefWidth="75.0" text="Etage">
+                <cellValueFactory>
+                    <PropertyValueFactory property="floor" />
                 </cellValueFactory>
             </TableColumn>
             <TableColumn fx:id="wohnflaeche" prefWidth="75.0" text="Wohnfläche">
                 <cellValueFactory>
-                    <PropertyValueFactory property="area"/>
+                    <PropertyValueFactory property="area" />
                 </cellValueFactory>
             </TableColumn>
             <TableColumn fx:id="qm" prefWidth="123.0" text="Quadratmeterpreis kalt">
                 <cellValueFactory>
-                    <PropertyValueFactory property="squareMeterPriceCold"/>
+                    <PropertyValueFactory property="squareMeterPriceCold" />
                 </cellValueFactory>
             </TableColumn>
             <TableColumn fx:id="nebenkosten" prefWidth="112.0" text="Nebenkosten gesamt">
                 <cellValueFactory>
-                    <PropertyValueFactory property="sideCostsMonth"/>
+                    <PropertyValueFactory property="sideCostsMonth" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="mieter" prefWidth="112.0" text="Aktueller Mieter">
+                <cellValueFactory>
+                    <PropertyValueFactory property="currentTenancy" />
                 </cellValueFactory>
             </TableColumn>
             <TableColumn fx:id="notiz" prefWidth="67.0" text="Notizfeld">
                 <cellValueFactory>
-                    <PropertyValueFactory property="node"/>
+                    <PropertyValueFactory property="node" />
                 </cellValueFactory>
             </TableColumn>
         </columns>
       </TableView>
       <Button layoutX="498.0" layoutY="67.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" text="Reports generieren" />
-      <Button layoutX="369.0" layoutY="67.0" mnemonicParsing="false" onAction="#zahlungUbersichtForItem" onZoomFinished="#zahlungUbersichtForItem" prefHeight="50.0" prefWidth="121.0" text="Zahlungsübersicht" />
+      <Button layoutX="369.0" layoutY="67.0" mnemonicParsing="false" onAction="#IntoPayment" prefHeight="50.0" prefWidth="121.0" text="Zahlungsübersicht" />
     </children>
 </Pane>

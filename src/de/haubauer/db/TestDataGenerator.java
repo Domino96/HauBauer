@@ -1,6 +1,7 @@
 package de.haubauer.db;
 
 import de.haubauer.db.entities.*;
+import org.jboss.jandex.TypeTarget;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -85,7 +86,7 @@ public class TestDataGenerator {
             person.setLandline(this.phone.get(new Random().nextInt(this.phone.size())));
             person.setMobile(this.phone.get(new Random().nextInt(this.phone.size())));
             person.setBankAccount(generateBankAccount(1).get(0));
-            person.setRole(role);
+            //person.setRole(role);
 
             persons.add(person);
         }
@@ -229,6 +230,33 @@ public class TestDataGenerator {
         int month = createRandomIntBetween(1, 12);
         int year = createRandomIntBetween(startYear, endYear);
         return LocalDate.of(year, month, day);
+    }
+
+    public List<UsageType> generateUsageType(){
+
+        ArrayList<UsageType> usageTypes = new ArrayList<>();
+
+        for (int i = 0;i<this.usageType.size();i++){
+            UsageType usageType = new UsageType();
+
+            usageType.setName(this.usageType.get(i));
+
+            usageTypes.add(usageType);
+        }
+        return usageTypes;
+    }
+
+    public List<RentalType> generateRentalTypes(){
+        ArrayList<RentalType> rentalTypes = new ArrayList<>();
+
+        for (int i = 0;i<this.objectType.size();i++){
+            RentalType rentalType = new RentalType();
+
+            rentalType.setName(this.objectType.get(i));
+
+            rentalTypes.add(rentalType);
+        }
+        return rentalTypes;
     }
 
 }
