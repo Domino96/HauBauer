@@ -12,7 +12,6 @@ import javafx.util.converter.BigDecimalStringConverter;
 import javafx.util.converter.DateStringConverter;
 
 import java.net.URL;
-import java.text.NumberFormat;
 import java.util.ResourceBundle;
 
 public abstract class PaymentsDialogController implements Initializable {
@@ -22,19 +21,19 @@ public abstract class PaymentsDialogController implements Initializable {
 
     //TextFields
     @FXML
-    private TextField payETenantTextField;
+    private TextField tenantTextField;
 
     @FXML
-    private TextField payEDateTextField;
+    private TextField dateTextField;
 
     @FXML
-    private TextField payEAmountTextField;
+    private TextField valueTextField;
 
     @FXML
-    private TextField payENoteTextField;
+    private TextField commentTextField;
 
     @FXML
-    private ComboBox<PaymentType> payEPaymentTypeComboBox;
+    private ComboBox<PaymentType> paymentTypeComboBox;
 
     public PaymentsDialogController(final Payment payment) {
         this.viewModel.setPayment(payment);
@@ -44,11 +43,17 @@ public abstract class PaymentsDialogController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         this.viewModel.getAvailablePaymentTypes().addAll(this.service.getPaymentTypes());
 
-        payEPaymentTypeComboBox.setItems(this.viewModel.getAvailablePaymentTypes());
-        this.payETenantTextField.setText(this.viewModel.getPayment().getTenancy().getPerson().getFullName());
-        this.payEAmountTextField.textProperty().bindBidirectional(this.viewModel.getPayment().valueProperty(), new BigDecimalStringConverter());
-        this.payEDateTextField.textProperty().bindBidirectional(this.viewModel.getPayment().dateProperty(), new DateStringConverter());
-        this.payENoteTextField.textProperty().bindBidirectional(this.viewModel.getPayment().commentProperty());
+        this.paymentTypeComboBox.setItems(this.viewModel.getAvailablePaymentTypes());
+        // The tenant text field should ideally auto-complete possible tenants, but this functionality is not implemented,
+        // so it just displays the current tenant's name, if it exists. Any changes to the field are disregarded.
+
+        if (this.viewModel.getPayment().getTenancy() != null && this.viewModel.getPayment().getTenancy().getPerson() != null) {
+            this.tenantTextField.setText(this.viewModel.getPayment().getTenancy().getPerson().getFullName());
+        }
+
+        this.valueTextField.textProperty().bindBidirectional(this.viewModel.getPayment().valueProperty(), new BigDecimalStringConverter());
+        this.dateTextField.textProperty().bindBidirectional(this.viewModel.getPayment().dateProperty(), new DateStringConverter());
+        this.commentTextField.textProperty().bindBidirectional(this.viewModel.getPayment().commentProperty());
     }
 
     @FXML
