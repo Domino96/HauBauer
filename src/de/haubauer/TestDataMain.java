@@ -3,9 +3,7 @@ package de.haubauer;
 import de.haubauer.db.BaseDao;
 import de.haubauer.db.PersonDao;
 import de.haubauer.db.TestDataGenerator;
-import de.haubauer.db.entities.Person;
-import de.haubauer.db.entities.RentalProperty;
-import de.haubauer.db.entities.UserRole;
+import de.haubauer.db.entities.*;
 
 public class TestDataMain {
     public static void main(String[] args) {
@@ -13,11 +11,15 @@ public class TestDataMain {
 
         BaseDao<RentalProperty> rentalPropertyBaseDao = new BaseDao<>(RentalProperty.class);
         BaseDao<Person> personDao = new BaseDao<>(Person.class);
+        BaseDao<Tenancy> tenanciesDao = new BaseDao<>(Tenancy.class);
+        BaseDao<Payment> paymentDao = new BaseDao<>(Payment.class);
 
         TestDataGenerator testDataGenerator = new TestDataGenerator();
 
         rentalPropertyBaseDao.save(testDataGenerator.generateRental(100));
         personDao.save(testDataGenerator.generatePerson(100, tenantRole));
+        // tenanciesDao.save(testDataGenerator.generateTenancy(100));
+        // paymentDao.save(testDataGenerator.generatePayment(500));
     }
 
     /**

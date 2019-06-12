@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -69,6 +70,7 @@ public class RentalPropertiesController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         this.service.getAllRentalProperties().forEach(p -> this.viewModel.getRentalProperties().add(p));
+        this.viewModel.setSelectedRentalProperties(this.tableView.getSelectionModel().getSelectedItems());
 
         this.tableView.setItems(this.viewModel.getRentalProperties());
 
@@ -120,13 +122,17 @@ public class RentalPropertiesController implements Initializable {
         addStage.show();
     }
 
-    /**
-     * Aufruf der Zahlungsübersicht
-     */
-    public void IntoPayment() {
-        //Parent root = FxmlLibrary.getPayments();
-        RentalProperty item = tableView.getSelectionModel().getSelectedItem();
+    public void showPaymentsOverview() throws IOException {
+        if (this.viewModel.getSelectedRentalProperties().size() == 1) {
+            final Stage newStage = new Stage();
+            newStage.initModality(Modality.APPLICATION_MODAL);
+            newStage.setTitle("Zahlungsübersicht");
+            newStage.setScene(new Scene(FxmlLibrary.getPayments(this.viewModel.getSelectedRentalProperties().get(0)), 800, 450));
+            newStage.showAndWait();
+        }
+    }
 
-        //tableView.getItems();
+    public void onDashboardClicked(){
+
     }
 }

@@ -55,15 +55,17 @@ public class TenantsController implements Initializable {
 
     @FXML
     public void deleteItems() {
-        final Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Sind Sie sicher?");
-        alert.setHeaderText("Löschen");
-        alert.setContentText("Sind Sie sicher, dass Sie die ausgewählten Mieter unwiderruflich löschen möchen?");
+        if (!this.viewModel.getSelectedTenants().isEmpty()) {
+            final Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Sind Sie sicher?");
+            alert.setHeaderText("Löschen");
+            alert.setContentText("Sind Sie sicher, dass Sie die ausgewählten Mieter unwiderruflich löschen möchen?");
 
-        Optional<ButtonType> result = alert.showAndWait();
+            Optional<ButtonType> result = alert.showAndWait();
 
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            this.viewModel.getTenants().removeAll(this.viewModel.getSelectedTenants());
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                this.viewModel.getTenants().removeAll(this.viewModel.getSelectedTenants());
+            }
         }
     }
 

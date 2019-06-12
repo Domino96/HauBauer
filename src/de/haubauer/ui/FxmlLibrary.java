@@ -1,5 +1,11 @@
 package de.haubauer.ui;
 
+import de.haubauer.business.Payments;
+import de.haubauer.business.models.Payment;
+import de.haubauer.business.models.RentalProperty;
+import de.haubauer.ui.controllers.payments.PaymentsAddController;
+import de.haubauer.ui.controllers.payments.PaymentsController;
+import de.haubauer.ui.controllers.payments.PaymentsEditController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import de.haubauer.business.models.Person;
@@ -67,6 +73,27 @@ public class FxmlLibrary {
     public static Parent getRentalPropertyAdd() throws IOException {
         FXMLLoader loader = new FXMLLoader(FxmlLibrary.class.getResource("fxml/rentalproperties/add.fxml"));
         loader.setController(new RentalPropertyAddController());
+
+        return loader.load();
+    }
+
+    public static Parent getPayments(final RentalProperty rentalProperty) throws IOException {
+        FXMLLoader loader = new FXMLLoader(FxmlLibrary.class.getResource("fxml/payments/payments.fxml"));
+        loader.setController(new PaymentsController(rentalProperty));
+
+        return loader.load();
+    }
+
+    public static Parent getPaymentEditDialog(final Payment payment) throws IOException {
+        FXMLLoader loader = new FXMLLoader(FxmlLibrary.class.getResource("fxml/payments/edit.fxml"));
+        loader.setController(new PaymentsEditController(payment));
+
+        return loader.load();
+    }
+
+    public static Parent getPaymentAddDialog(final Payment payment) throws IOException {
+        FXMLLoader loader = new FXMLLoader(FxmlLibrary.class.getResource("fxml/payments/add.fxml"));
+        loader.setController(new PaymentsAddController(payment));
 
         return loader.load();
     }
