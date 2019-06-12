@@ -4,6 +4,7 @@ import de.haubauer.business.models.Payment;
 import de.haubauer.business.models.PaymentType;
 import de.haubauer.business.models.Person;
 import de.haubauer.business.models.RentalProperty;
+import de.haubauer.ui.FxmlLibrary;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PaymentsController extends Stage implements Initializable {
 
@@ -60,51 +62,50 @@ public class PaymentsController extends Stage implements Initializable {
 
 
     @FXML
-    public void editPayments(ActionEvent event) throws Exception
-    {
-        //
-        Parent payments;
-        try {
-            payments = FXMLLoader.load(getClass().getResource("../../fxml/payments/edit.fxml"));
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);     //Form dahinter nichtmehr anklickbar
-            stage.setTitle("Zahlungen bearbeiten");
-            stage.setScene(new Scene(payments, 450, 450));
-            stage.show();
-        }catch(IOException e)
-        {
-            e.printStackTrace();
+    public void editPayments(ActionEvent event) throws IOException {
+        if (this.viewModel.getSelectedPayments().size() == 1) {
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.setTitle("Zahlungssatz bearbeiten");
+            //final Payment copiedPayment = new Payment(this.viewModel.getSelectedPayments().get(0));
+            dialog.setScene(new Scene(FxmlLibrary.getPaymentEditDialog(this.viewModel.getSelectedPayments().get(0)), 500, 700));
+            dialog.setOnCloseRequest(e -> {
+                // this.viewModel.getSelectedPayments().get(0).copy(copiedPayment);
+            });
+            dialog.showAndWait();
         }
     }
 
     @FXML
-    public void newPayments(ActionEvent event) throws Exception {
-        Parent payments;
-        try {
-            payments = FXMLLoader.load(getClass().getResource("../../fxml/payments/add.fxml"));
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Zahlungen hinzufügen");
-            stage.setScene(new Scene(payments, 450, 450));
-            stage.show();
-        }catch(IOException e)
-        {
-            e.printStackTrace();
+    public void newPayments(ActionEvent event) throws IOException {
+        final Stage dialog = new Stage();
+        AtomicBoolean cancelledAdd = new AtomicBoolean(false);
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.setTitle("Zahlungssatz hinzufügen");
+        Payment paymentToAdd = new Payment();
+        dialog.setScene(new Scene(FxmlLibrary.getPaymentAddDialog(paymentToAdd), 500, 700));
+        dialog.setOnCloseRequest(e -> cancelledAdd.set(true));
+        dialog.showAndWait();
+
+        if (!cancelledAdd.get()) {
+            this.viewModel.getPayments().add(paymentToAdd);
         }
     }
 
     @FXML
     public void deletePayments(ActionEvent event) throws Exception
     {
-        final Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Sind Sie sicher?");
-        alert.setHeaderText("Löschen");
-        alert.setContentText("Sind Sie sicher, dass Sie den/die ausgewählten Datensatz/Datensätze unwiderruflich löschen möchten?");
+        if (!this.viewModel.getSelectedPayments().isEmpty()) {
+            final Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Sind Sie sicher?");
+            alert.setHeaderText("Löschen");
+            alert.setContentText("Sind Sie sicher, dass Sie den/die ausgewählten Datensatz/Datensätze unwiderruflich löschen möchten?");
 
-        Optional<ButtonType> result = alert.showAndWait();
+            Optional<ButtonType> result = alert.showAndWait();
 
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            this.viewModel.getPayments().removeAll(this.viewModel.getSelectedPayments());
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                this.viewModel.getPayments().removeAll(this.viewModel.getSelectedPayments());
+            }
         }
     }
 
