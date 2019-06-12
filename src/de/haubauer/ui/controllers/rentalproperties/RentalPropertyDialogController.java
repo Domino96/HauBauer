@@ -79,7 +79,7 @@ public abstract class RentalPropertyDialogController implements Initializable {
         this.area_txt.textProperty().bindBidirectional(rentalProperty.areaProperty(), NumberFormat.getNumberInstance());
         this.sqMeterCold_txt.textProperty().bindBidirectional(rentalProperty.squareMeterPriceColdProperty(), new BigDecimalStringConverter());
         this.sidecosts_txt.textProperty().bindBidirectional(rentalProperty.sideCostsMonthProperty(), new BigDecimalStringConverter());
-        this.parent_cb.selectionModelProperty().bindBidirectional(rentalProperty.parentProperty());
+        rentalProperty.parentProperty().bind(this.parent_cb.getSelectionModel().selectedItemProperty());
         this.note_txtArea.textProperty().bindBidirectional(rentalProperty.noteProperty());
 
 
@@ -93,11 +93,11 @@ public abstract class RentalPropertyDialogController implements Initializable {
 
 
         this.viewModel.usageTypes.addAll(this.service.getAvailableUsagetypes());
-        this.rentalType_cb.setItems(this.viewModel.usageTypes);
-        this.rentalType_cb.setConverter(new UsageType.StringConverter());
+        this.usageType_cb.setItems(this.viewModel.usageTypes);
+        this.usageType_cb.setConverter(new UsageType.StringConverter());
 
         if (this.viewModel.getRentalProperty().getUsageTypes() != null) {
-            this.rentalType_cb.getSelectionModel().select(this.viewModel.getRentalProperty().getUsageTypes());
+            this.usageType_cb.getSelectionModel().select(this.viewModel.getRentalProperty().getUsageTypes());
         }
 
 
