@@ -42,4 +42,18 @@ public class RentalType extends DatedObject {
     public void setRentalProperties(List<RentalProperty> rentalProperties) {
         this.rentalProperties = rentalProperties;
     }
+
+    public static class StringConverter extends javafx.util.StringConverter<RentalType> {
+        @Override
+        public String toString(RentalType object) {
+            return object.getName();
+        }
+
+        @Override
+        public RentalType fromString(String string) {
+            RentalType newRentalType = new RentalType();
+            newRentalType.setName(string);
+            return newRentalType;
+        }
+    }
 }

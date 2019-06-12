@@ -2,6 +2,8 @@ package de.haubauer.ui.controllers.rentalproperties;
 
 import de.haubauer.business.models.Address;
 import de.haubauer.business.models.RentalProperty;
+import de.haubauer.business.models.RentalType;
+import de.haubauer.business.models.UsageType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -74,13 +76,30 @@ public abstract class RentalPropertyDialogController implements Initializable {
 
         final RentalProperty rentalProperty = this.viewModel.getRentalProperty();
         this.description_txtArea.textProperty().bindBidirectional(rentalProperty.descriptionProperty());
-        this.rentalType_cb.selectionModelProperty().bindBidirectional(rentalProperty.getRentalTypes());
-        this.usageType_cb.selectionModelProperty().bindBidirectional(rentalProperty.getUsageTypes());
         this.area_txt.textProperty().bindBidirectional(rentalProperty.areaProperty(), NumberFormat.getNumberInstance());
         this.sqMeterCold_txt.textProperty().bindBidirectional(rentalProperty.squareMeterPriceColdProperty(), new BigDecimalStringConverter());
         this.sidecosts_txt.textProperty().bindBidirectional(rentalProperty.sideCostsMonthProperty(), new BigDecimalStringConverter());
         this.parent_cb.selectionModelProperty().bindBidirectional(rentalProperty.parentProperty());
         this.note_txtArea.textProperty().bindBidirectional(rentalProperty.noteProperty());
+
+
+        this.viewModel.rentalTypes.addAll(this.service.getAvailableRentalTypes());
+        this.rentalType_cb.setItems(this.viewModel.rentalTypes);
+        this.rentalType_cb.setConverter(new RentalType.StringConverter());
+
+        if (this.viewModel.getRentalProperty().getRentalTypes() != null) {
+            this.rentalType_cb.getSelectionModel().select(this.viewModel.getRentalProperty().getRentalTypes());
+        }
+
+
+        this.viewModel.usageTypes.addAll(this.service.getAvailableUsagetypes());
+        this.rentalType_cb.setItems(this.viewModel.usageTypes);
+        this.rentalType_cb.setConverter(new UsageType.StringConverter());
+
+        if (this.viewModel.getRentalProperty().getUsageTypes() != null) {
+            this.rentalType_cb.getSelectionModel().select(this.viewModel.getRentalProperty().getUsageTypes());
+        }
+
 
 
         final List<Address> sortedAddresses = rentalProperty.getAddresses();

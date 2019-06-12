@@ -41,4 +41,18 @@ public class UsageType extends DatedObject {
     public void setRentalProperties(List<RentalProperty> rentalProperties) {
         this.rentalProperties = rentalProperties;
     }
+
+    public static class StringConverter extends javafx.util.StringConverter<UsageType> {
+        @Override
+        public String toString(UsageType object) {
+            return object.getName();
+        }
+
+        @Override
+        public UsageType fromString(String string) {
+            UsageType newUsageType = new UsageType();
+            newUsageType.setName(string);
+            return newUsageType;
+        }
+    }
 }
