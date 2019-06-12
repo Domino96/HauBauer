@@ -1,10 +1,12 @@
 package de.haubauer.helpers;
 
+import javax.persistence.MappedSuperclass;
 import java.util.Date;
 
 /**
  * Repräsentiert ein mit Erstelldatum datiertes Objekt.
  */
+@MappedSuperclass
 public abstract class DatedObject implements Comparable<DatedObject> {
     private Date dateCreated;
 

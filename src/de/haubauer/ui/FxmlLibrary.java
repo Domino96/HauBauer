@@ -4,6 +4,7 @@ import de.haubauer.business.Payments;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import de.haubauer.business.models.Person;
+import de.haubauer.ui.controllers.rentalproperties.RentalPropertyAddController;
 import de.haubauer.ui.controllers.tenants.TenantsAddController;
 import de.haubauer.ui.controllers.tenants.TenantsEditController;
 
@@ -53,9 +54,20 @@ public class FxmlLibrary {
      * Holt sich die "Mieterstammdatensatz anlegen"-View.
      * @return Der Container der Anlegungssicht.
      */
-    public static Parent getTenantsAddDialog() throws IOException {
+    public static Parent getTenantsAddDialog(final Person tenant) throws IOException {
         FXMLLoader loader = new FXMLLoader(FxmlLibrary.class.getResource("fxml/tenants/edit.fxml"));
-        loader.setController(new TenantsAddController());
+        loader.setController(new TenantsAddController(tenant));
+
+        return loader.load();
+    }
+
+    public static Parent getRentalPropertiesList() throws IOException {
+        return FXMLLoader.load(FxmlLibrary.class.getResource("fxml/rentalproperties/rental-properties.fxml"));
+    }
+
+    public static Parent getRentalPropertyAdd() throws IOException {
+        FXMLLoader loader = new FXMLLoader(FxmlLibrary.class.getResource("fxml/rentalproperties/add.fxml"));
+        loader.setController(new RentalPropertyAddController());
 
         return loader.load();
     }

@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TenantsController implements Initializable {
     private TenantsViewModel viewModel = new TenantsViewModel();
@@ -26,6 +27,9 @@ public class TenantsController implements Initializable {
 
     @FXML
     private TableColumn<Person, String> bankAccountColumn;
+
+    @FXML
+    private TableColumn<Person, String> roleColumn;
 
     @FXML
     private TableView<Person> tableView;
@@ -40,6 +44,13 @@ public class TenantsController implements Initializable {
         // create bindings from getters
         this.addressColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getAddressString(), cell.getValue().getAddresses()));
         this.bankAccountColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getBankAccountString(), cell.getValue().getBankAccount().bicProperty()));
+        this.roleColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> {
+            if (cell.getValue().getRole() != null) {
+                return cell.getValue().getRole().getName();
+            }
+
+            return "";
+        }, cell.getValue().roleProperty()));
     }
 
     @FXML
@@ -59,10 +70,17 @@ public class TenantsController implements Initializable {
     @FXML
     public void addItem() throws IOException {
         final Stage dialog = new Stage();
+        AtomicBoolean cancelledAdd = new AtomicBoolean(false);
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.setTitle("Mietstammdatensatz hinzufügen");
-        dialog.setScene(new Scene(FxmlLibrary.getTenantsAddDialog(), 500, 700));
-        dialog.show();
+        Person tenantToAdd = new Person();
+        dialog.setScene(new Scene(FxmlLibrary.getTenantsAddDialog(tenantToAdd), 500, 700));
+        dialog.setOnCloseRequest(event -> cancelledAdd.set(true));
+        dialog.showAndWait();
+
+        if (!cancelledAdd.get()) {
+            this.viewModel.getTenants().add(tenantToAdd);
+        }
     }
 
     @FXML
@@ -71,8 +89,13 @@ public class TenantsController implements Initializable {
             final Stage dialog = new Stage();
             dialog.initModality(Modality.APPLICATION_MODAL);
             dialog.setTitle("Mietstammdatensatz bearbeiten");
+            final Person copiedTenant = new Person(this.viewModel.getSelectedTenants().get(0));
             dialog.setScene(new Scene(FxmlLibrary.getTenantsEditDialog(this.viewModel.getSelectedTenants().get(0)), 500, 700));
-            dialog.show();
+            dialog.setOnCloseRequest(event -> {
+                this.viewModel.getSelectedTenants().get(0).roleProperty().unbind();
+                this.viewModel.getSelectedTenants().get(0).copy(copiedTenant);
+            });
+            dialog.showAndWait();
         }
     }
 }

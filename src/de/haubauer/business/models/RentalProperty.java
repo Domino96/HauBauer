@@ -9,7 +9,7 @@ import java.util.List;
 public class RentalProperty {
     private int id;
     private String description;
-    private String address;
+    private Address address;
     private int zipCode;
     private String town;
     private double area;
@@ -41,11 +41,11 @@ public class RentalProperty {
         this.description = description;
     }
 
-    public String getAddress() {
+    public de.haubauer.business.models.Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(de.haubauer.business.models.Address address) {
         this.address = address;
     }
 
@@ -97,19 +97,19 @@ public class RentalProperty {
         this.note = note;
     }
 
-    public Tenancy getCurrentTenancy() {
+    public de.haubauer.business.models.Tenancy getCurrentTenancy() {
         return currentTenancy;
     }
 
-    public void setCurrentTenancy(Tenancy currentTenancy) {
+    public void setCurrentTenancy(de.haubauer.business.models.Tenancy currentTenancy) {
         this.currentTenancy = currentTenancy;
     }
 
-    public List<Tenancy> getPastTenancy() {
+    public List<de.haubauer.business.models.Tenancy> getPastTenancy() {
         return pastTenancy;
     }
 
-    public void setPastTenancy(List<Tenancy> pastTenancy) {
+    public void setPastTenancy(List<de.haubauer.business.models.Tenancy> pastTenancy) {
         this.pastTenancy = pastTenancy;
     }
 
@@ -119,14 +119,6 @@ public class RentalProperty {
 
     public void setParent(RentalProperty parent) {
         this.parent = parent;
-    }
-
-    public UsageType getUsageType() {
-        return usageType;
-    }
-
-    public void setUsageType(UsageType usageType) {
-        this.usageType = usageType;
     }
 
     public int getFloor() {

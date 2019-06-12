@@ -1,71 +1,82 @@
 package de.haubauer.ui.controllers.rentalproperties;
 
-import javafx.collections.FXCollections;
+import de.haubauer.business.models.RentalProperty;
+import de.haubauer.business.services.RentalPropertyService;
+import de.haubauer.ui.FxmlLibrary;
+import de.haubauer.ui.viewmodels.RentalPropertyViewModel;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class RentalPropertiesController implements Initializable {
 
-    @FXML
-    private TableColumn<TableInit, String> nummer;
+    private RentalPropertyViewModel viewModel = new RentalPropertyViewModel();
+    private RentalPropertyService service = new RentalPropertyService();
 
     @FXML
-    private TableColumn<TableInit, String> typ;
+    private TableColumn<RentalProperty, String> nummer;
 
     @FXML
-    private TableColumn<TableInit, String> beschreibung;
+    private TableColumn<RentalProperty, String> typ;
 
     @FXML
-    private TableColumn<TableInit, String> anschrift;
+    private TableColumn<RentalProperty, String> beschreibung;
 
     @FXML
-    private TableColumn<TableInit, String> wohnflaeche;
+    private TableColumn<RentalProperty, String> anschrift;
 
     @FXML
-    private TableColumn<TableInit, String> qm;
+    private TableColumn<RentalProperty, String> wohnflaeche;
 
     @FXML
-    private TableColumn<TableInit, String> nebenkosten;
+    private TableColumn<RentalProperty, String> qm;
 
     @FXML
-    private TableColumn<TableInit, String> notiz;
+    private TableColumn<RentalProperty, String> nebenkosten;
 
     @FXML
-    private TableView<TableInit> tableView;
+    private TableColumn<RentalProperty, String> notiz;
 
-    ObservableList<TableInit> list = FXCollections.observableArrayList();
+    @FXML
+    private TableView<RentalProperty> tableView;
+
+    @FXML
+    private Button addBtn;
+
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        list.add(new TableInit("16577", "Garage", "Testing", "Am Hackenbruch 51", "3m", "60qm", "180", "dump"));
-        list.add(new TableInit("16577", "Haus", "Testing", "Kettwiger 51", "5m", "80qm", "300", "hello world"));
-        list.add(new TableInit("16577", "Garage", "Testing", "Am Hackenbruch 51", "3m", "60qm", "180", "dump"));
-        list.add(new TableInit("16577", "Haus", "Testing", "Kettwiger 51", "5m", "80qm", "300", "hello world"));
 
-        this.tableView.setItems(list);
-        this.nummer.setCellValueFactory(new PropertyValueFactory<>("nummer"));
-        this.typ.setCellValueFactory(new PropertyValueFactory<>("typ"));
-        this.beschreibung.setCellValueFactory(new PropertyValueFactory<>("beschreibung"));
-        this.anschrift.setCellValueFactory(new PropertyValueFactory<>("anschrift"));
-        this.wohnflaeche.setCellValueFactory(new PropertyValueFactory<>("wohnflaeche"));
-        this.qm.setCellValueFactory(new PropertyValueFactory<>("qm"));
-        this.nebenkosten.setCellValueFactory(new PropertyValueFactory<>("nebenkosten"));
-        this.notiz.setCellValueFactory(new PropertyValueFactory<>("notiz"));
+        this.service.getAllRentalProperties().forEach(p -> this.viewModel.getRentalProperties().add(p));
+
+        this.tableView.setItems(this.viewModel.getRentalProperties());
+
+        this.nummer.setCellValueFactory(new PropertyValueFactory<>("id"));
+        this.typ.setCellValueFactory(new PropertyValueFactory<>("usageType"));
+        this.beschreibung.setCellValueFactory(new PropertyValueFactory<>("description"));
+        this.anschrift.setCellValueFactory(new PropertyValueFactory<>("address"));
+        this.wohnflaeche.setCellValueFactory(new PropertyValueFactory<>("area"));
+        this.qm.setCellValueFactory(new PropertyValueFactory<>("squareMeterPriceCold"));
+        this.nebenkosten.setCellValueFactory(new PropertyValueFactory<>("sideCostsMonth"));
+        this.notiz.setCellValueFactory(new PropertyValueFactory<>("note"));
 
         // selecting multiple table view items with SHIFT or STRG
         tableView.setOnMouseClicked(event -> tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE));
     }
 
     public void deleteItems() {
-        ObservableList<TableInit> list = tableView.getSelectionModel().getSelectedItems();
+        ObservableList<RentalProperty> list = tableView.getSelectionModel().getSelectedItems();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText("Delete");
@@ -77,8 +88,22 @@ public class RentalPropertiesController implements Initializable {
         }
     }
 
+    public void addItem() throws IOException {
+        Stage addStage = new Stage();
+
+
+        Parent root = FxmlLibrary.getRentalPropertyAdd();
+
+        addStage.setScene(new Scene(root, 600, 480));
+        addStage.show();
+    }
+
     public void zahlungUbersichtForItem() {
-        TableInit item = tableView.getSelectionModel().getSelectedItem();
+        RentalProperty item = tableView.getSelectionModel().getSelectedItem();
         tableView.getItems();
+    }
+
+    public void onDashboardClicked(){
+
     }
 }

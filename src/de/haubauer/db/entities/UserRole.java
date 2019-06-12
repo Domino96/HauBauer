@@ -3,7 +3,9 @@ package de.haubauer.db.entities;
 import de.haubauer.helpers.DatedObject;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "UserRole")
@@ -14,9 +16,9 @@ public class UserRole extends DatedObject {
 
     private String name;
     private String description;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
-    private List<User> users;
+    private Set<User> users;
 
     public int getUserRoleId() {
         return userRoleId;
@@ -42,11 +44,14 @@ public class UserRole extends DatedObject {
         this.description = description;
     }
 
-    public List<User> getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
 
-    public void setUsers(List<User> Users) {
-        this.users = Users;
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+    public void setUsers(List<User> users) {
+        this.users = new HashSet<>(users);
     }
 }

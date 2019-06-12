@@ -1,12 +1,18 @@
 package de.haubauer.business.models;
 
 import de.haubauer.helpers.DatedObject;
+import de.haubauer.helpers.Mapper;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
 
-public class Person extends DatedObject {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Person extends DatedObject implements Cloneable {
     private int id;
     private StringProperty title = new SimpleStringProperty("");
     private StringProperty firstName = new SimpleStringProperty("");
@@ -19,6 +25,12 @@ public class Person extends DatedObject {
     private ObservableList<RentalProperty> rentalProperties = FXCollections.observableArrayList();
     private ObservableList<Tenancy> tenancies = FXCollections.observableArrayList();
     private ObjectProperty<BankAccount> bankAccount = new SimpleObjectProperty<>();
+
+    public Person() { }
+
+    public Person(Person person) {
+        this.copy(person);
+    }
 
     public int getId() {
         return id;
@@ -128,24 +140,27 @@ public class Person extends DatedObject {
         return addresses;
     }
 
-    public void setAddresses(ObservableList<Address> addresses) {
-        this.addresses = addresses;
+    public void setAddresses(Collection<Address> addresses) {
+        this.addresses.clear();
+        this.addresses.addAll(addresses);
     }
 
     public ObservableList<RentalProperty> getRentalProperties() {
         return rentalProperties;
     }
 
-    public void setRentalProperties(ObservableList<RentalProperty> rentalProperties) {
-        this.rentalProperties = rentalProperties;
+    public void setRentalProperties(Collection<RentalProperty> rentalProperties) {
+        this.rentalProperties.clear();
+        this.rentalProperties.addAll(rentalProperties);
     }
 
     public ObservableList<Tenancy> getTenancies() {
         return tenancies;
     }
 
-    public void setTenancies(ObservableList<Tenancy> tenancies) {
-        this.tenancies = tenancies;
+    public void setTenancies(Collection<Tenancy> tenancies) {
+        this.tenancies.clear();
+        this.tenancies.addAll(tenancies);
     }
 
     public String getBankAccountString() {
@@ -166,5 +181,20 @@ public class Person extends DatedObject {
 
     public void setBankAccount(BankAccount bankAccount) {
         this.bankAccount.set(bankAccount);
+    }
+
+    public void copy(final Person person) {
+        this.setId(person.getId());
+        this.setFirstName(person.getFirstName());
+        this.setLastName(person.getLastName());
+        this.setEmail(person.getEmail());
+        this.setBankAccount(person.getBankAccount());
+        this.setAddresses(person.getAddresses());
+        this.setLandline(person.getLandline());
+        this.setMobile(person.getMobile());
+        this.setRentalProperties(person.getRentalProperties());
+        this.setRole(person.getRole());
+        this.setTenancies(person.getTenancies());
+        this.setTitle(person.getTitle());
     }
 }

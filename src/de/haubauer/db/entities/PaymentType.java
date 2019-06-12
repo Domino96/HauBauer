@@ -3,7 +3,9 @@ package de.haubauer.db.entities;
 import de.haubauer.helpers.DatedObject;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "PaymentType")
@@ -15,9 +17,9 @@ public class PaymentType extends DatedObject {
     private String name;
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "paymentId")
-    private List<Payment> Payments;
+    private Set<Payment> Payments;
 
     public int getPaymentTypeId() {
         return paymentTypeId;
@@ -43,11 +45,14 @@ public class PaymentType extends DatedObject {
         this.description = description;
     }
 
-    public List<Payment> getPayments() {
+    public Set<Payment> getPayments() {
         return Payments;
     }
 
-    public void setPayments(List<Payment> payments) {
+    public void setPayments(Set<Payment> payments) {
         Payments = payments;
+    }
+    public void setPayments(List<Payment> payments) {
+        this.Payments = new HashSet<>(payments);
     }
 }

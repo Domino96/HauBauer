@@ -1,6 +1,9 @@
 package de.haubauer;
 
 import de.haubauer.db.BaseDao;
+import de.haubauer.db.RentalPropertyDao;
+import de.haubauer.db.TestDataGenerator;
+import de.haubauer.db.entities.RentalProperty;
 import de.haubauer.ui.FxmlLibrary;
 import de.haubauer.ui.controllers.SceneController;
 import javafx.application.Application;
@@ -19,6 +22,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+        //generateData();
         Scene scene = new Scene(FxmlLibrary.getRoot(), 1200, 750);
 
         SceneController.getInstance().setScene(scene);

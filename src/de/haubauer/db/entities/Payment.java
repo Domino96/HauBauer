@@ -1,6 +1,8 @@
 package de.haubauer.db.entities;
 
 import de.haubauer.helpers.DatedObject;
+import de.haubauer.db.entities.PaymentType;
+import de.haubauer.db.entities.Tenancy;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -18,11 +20,11 @@ public class Payment extends DatedObject {
     private BigDecimal billed;
     private String comment;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "tenancyId")
     private Tenancy tenancy;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "paymentTypeId")
     private PaymentType paymentType;
 

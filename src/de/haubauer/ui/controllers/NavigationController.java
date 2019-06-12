@@ -3,6 +3,7 @@ package de.haubauer.ui.controllers;
 import de.haubauer.ui.FxmlLibrary;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import de.haubauer.ui.controllers.SceneController;
 
 import java.io.IOException;
 
@@ -14,7 +15,7 @@ public class NavigationController {
 
     @FXML
     private void onRentalPropertiesListClicked(ActionEvent event) throws IOException {
-        // SceneController.getInstance().activate("Mietobjekt");
+        SceneController.getInstance().activate(FxmlLibrary.getRentalPropertiesList());
     }
 
     @FXML

@@ -103,14 +103,6 @@ public class Payments {
         this.billed = billed;
     }
 
-    public PaymentType getType() {
-        return type;
-    }
-
-    public void setType(PaymentType type) {
-        this.type = type;
-    }
-
     public String getComment() {
         return comment;
     }
