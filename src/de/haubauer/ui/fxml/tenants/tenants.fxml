@@ -4,78 +4,82 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="633.0" style="-fx-background-color: #d3d3d3;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.de.haubauer.ui.controllers.tenants.TenantsController">
-    <children>
-        <ToolBar prefHeight="64.0" prefWidth="141.0">
-            <items>
-                <Button mnemonicParsing="false" onAction="#onDashboardClicked" prefHeight="50.0" prefWidth="121.0" text="Dashboard" />
-            </items>
-        </ToolBar>
-        <Button layoutX="14.0" layoutY="64.0" mnemonicParsing="false" onAction="#addItem" prefHeight="50.0" prefWidth="57.0">
-            <font>
-                <Font size="26.0" />
-            </font></Button>
-        <Button layoutX="77.0" layoutY="64.0" mnemonicParsing="false" onAction="#editItem" prefHeight="56.0" prefWidth="57.0" style="-fx-background-image: url('mockUps/src/stammdaten/stammdaten.edit.png');" />
-        <Button layoutX="141.0" layoutY="64.0" mnemonicParsing="false" onAction="#deleteItems" prefHeight="56.0" prefWidth="57.0" style="-fx-background-color: #b5b5b5;" />
-        <SVGPath content="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" layoutX="94.0" layoutY="80.0" />
-        <SVGPath content="M15 16h4v2h-4zm0-8h7v2h-7zm0 4h6v2h-6zM3 18c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V8H3v10zM14 5h-3l-1-1H6L5 5H2v2h12z" layoutX="158.0" layoutY="80.0" />
-        <SVGPath content="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" layoutX="31.0" layoutY="80.0" />
-        <Separator layoutX="-5.0" layoutY="123.0" prefHeight="7.0" prefWidth="637.0" />
-      <TableView fx:id="tableView" editable="true" layoutX="-1.0" layoutY="127.0" prefHeight="272.0" prefWidth="633.0">
-        <columns>
-            <TableColumn fx:id="titleColumn" prefWidth="59.0" text="Anrede">
-                <cellValueFactory>
-                    <PropertyValueFactory property="title" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="firstNameColumn" prefWidth="93.0" text="Vorname">
-                <cellValueFactory>
-                    <PropertyValueFactory property="firstName" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="lastNameColumn" prefWidth="95.0" text="Nachname">
-                <cellValueFactory>
-                    <PropertyValueFactory property="lastName" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="addressColumn" prefWidth="87.0" text="Anschrift">
-                <cellValueFactory>
-                    <PropertyValueFactory property="address" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="landlineColumn" prefWidth="110.0" text="Festnetz">
-                <cellValueFactory>
-                    <PropertyValueFactory property="landline" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="mobileColumn" prefWidth="110.0" text="Mobil">
-                <cellValueFactory>
-                    <PropertyValueFactory property="mobile" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="emailColumn" prefWidth="78.0" text="E-Mail">
-                <cellValueFactory>
-                    <PropertyValueFactory property="email" />
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="bankAccountColumn" prefWidth="110.0" text="Kontoverbindung">
-                <cellValueFactory>
-                    <PropertyValueFactory property="bankAccount" />
-                </cellValueFactory>
-            </TableColumn>
-        </columns>
-      </TableView>
-      <Button layoutX="498.0" layoutY="67.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0" text="Reports generieren" />
-        <ToolBar layoutX="135.0" layoutY="-4.0" prefHeight="72.0" prefWidth="492.0">
-            <items>
-                <fx:include fx:id="navigationToolbar" source="../Navigation_toolbar.fxml" />
-            </items>
-        </ToolBar>
-    </children>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="633.0" style="-fx-background-color: #d3d3d3;" xmlns="http://javafx.com/javafx/8.0.121"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.haubauer.ui.controllers.tenants.TenantsController">
+    <fx:include fx:id="navigationToolbar" source="../navigation-toolbar.fxml"/>
+    <Button layoutX="14.0" layoutY="64.0" mnemonicParsing="false" onAction="#addItem" prefHeight="50.0"
+            prefWidth="57.0">
+        <font>
+            <Font size="26.0"/>
+        </font>
+    </Button>
+    <Button layoutX="77.0" layoutY="64.0" mnemonicParsing="false" onAction="#editItem" prefHeight="56.0"
+            prefWidth="57.0" style="-fx-background-image: url('mockUps/src/stammdaten/stammdaten.edit.png');"/>
+    <Button layoutX="141.0" layoutY="64.0" mnemonicParsing="false" onAction="#deleteItems" prefHeight="56.0"
+            prefWidth="57.0" />
+    <SVGPath
+            content="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+            layoutX="94.0" layoutY="80.0"/>
+    <SVGPath
+            content="M15 16h4v2h-4zm0-8h7v2h-7zm0 4h6v2h-6zM3 18c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V8H3v10zM14 5h-3l-1-1H6L5 5H2v2h12z"
+            layoutX="158.0" layoutY="80.0"/>
+    <SVGPath content="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" layoutX="31.0" layoutY="80.0"/>
+    <Separator layoutX="-5.0" layoutY="123.0" prefHeight="7.0" prefWidth="637.0"/>
+    <TableView fx:id="tableView" editable="true" layoutX="-1.0" layoutY="127.0" prefHeight="272.0" prefWidth="633.0">
+      <columns>
+          <TableColumn fx:id="roleColumn" prefWidth="59.0" text="Rolle">
+              <cellValueFactory>
+                  <PropertyValueFactory property="role"/>
+              </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="titleColumn" prefWidth="59.0" text="Anrede">
+              <cellValueFactory>
+                  <PropertyValueFactory property="title"/>
+              </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="firstNameColumn" prefWidth="93.0" text="Vorname">
+              <cellValueFactory>
+                  <PropertyValueFactory property="firstName"/>
+              </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="lastNameColumn" prefWidth="95.0" text="Nachname">
+              <cellValueFactory>
+                  <PropertyValueFactory property="lastName"/>
+              </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="addressColumn" prefWidth="87.0" text="Anschrift">
+              <cellValueFactory>
+                  <PropertyValueFactory property="address"/>
+              </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="landlineColumn" prefWidth="110.0" text="Festnetz">
+              <cellValueFactory>
+                  <PropertyValueFactory property="landline"/>
+              </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="mobileColumn" prefWidth="110.0" text="Mobil">
+              <cellValueFactory>
+                  <PropertyValueFactory property="mobile"/>
+              </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="emailColumn" prefWidth="78.0" text="E-Mail">
+              <cellValueFactory>
+                  <PropertyValueFactory property="email"/>
+              </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="bankAccountColumn" prefWidth="110.0" text="Kontoverbindung">
+              <cellValueFactory>
+                  <PropertyValueFactory property="bankAccount"/>
+              </cellValueFactory>
+          </TableColumn>
+      </columns>
+    </TableView>
+    <Button layoutX="498.0" layoutY="67.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="121.0"
+            text="Reports generieren"/>
 </Pane>

@@ -1,7 +1,4 @@
-package src.de.haubauer.business.models;
-
-import src.de.haubauer.db.BaseDao;
-
+package de.haubauer.business.models;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -10,53 +7,28 @@ import java.util.List;
  *
  */
 public class RentalProperty {
-   private String description;
-   private String address;
-   private int zipCode;
-   private String town;
-   private double area;
-   private BigDecimal squareMeterPriceCold;
-   private BigDecimal sideCostsMonth;
-   private String note;
-   private Tenancy currentTenancy;
-   private List<Tenancy> pastTenancy;
-   private RentalProperty parent;
-   private UsageType usageType;
-   private int floor;
+    private int id;
+    private String description;
+    private Address address;
+    private int zipCode;
+    private String town;
+    private double area;
+    private BigDecimal squareMeterPriceCold;
+    private BigDecimal sideCostsMonth;
+    private String note;
+    private Tenancy currentTenancy;
+    private List<Tenancy> pastTenancy;
+    private RentalProperty parent;
+    private UsageType usageType;
+    private int floor;
 
-   BaseDao<RentalProperty> rentalDao = new BaseDao<>(RentalProperty.class);
+    public int getId() {
+        return id;
+    }
 
-    /**
-     * Fügt ein Mietobjekt in die Datenbank hinzu
-     * @param instance
-     */
-   public void add(RentalProperty instance){
-       rentalDao.save();
-   }
-
-    /**
-     * Editiert den übergebenen Datensatz in der Datenbank
-     * @param instance
-     */
-   public void edit( RentalProperty instance){
-       rentalDao.update(instance);
-   }
-
-    /**
-     * Löscht den übergebenen Datensatz in der Datenbank
-     * @param instance
-     */
-   public void delete(RentalProperty instance){
-       rentalDao.delete(instance);
-   }
-
-   public void addObjecttype(){
-
-    };
-
-   public void addUsageType(){
-
-    };
+    public void setId(int id) {
+        this.id = id;
+    }
 
 
    /*GETTER     AND     SETTER*/
@@ -69,11 +41,11 @@ public class RentalProperty {
         this.description = description;
     }
 
-    public String getAddress() {
+    public de.haubauer.business.models.Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(de.haubauer.business.models.Address address) {
         this.address = address;
     }
 
@@ -125,19 +97,19 @@ public class RentalProperty {
         this.note = note;
     }
 
-    public Tenancy getCurrentTenancy() {
+    public de.haubauer.business.models.Tenancy getCurrentTenancy() {
         return currentTenancy;
     }
 
-    public void setCurrentTenancy(Tenancy currentTenancy) {
+    public void setCurrentTenancy(de.haubauer.business.models.Tenancy currentTenancy) {
         this.currentTenancy = currentTenancy;
     }
 
-    public List<Tenancy> getPastTenancy() {
+    public List<de.haubauer.business.models.Tenancy> getPastTenancy() {
         return pastTenancy;
     }
 
-    public void setPastTenancy(List<Tenancy> pastTenancy) {
+    public void setPastTenancy(List<de.haubauer.business.models.Tenancy> pastTenancy) {
         this.pastTenancy = pastTenancy;
     }
 
@@ -147,14 +119,6 @@ public class RentalProperty {
 
     public void setParent(RentalProperty parent) {
         this.parent = parent;
-    }
-
-    public UsageType getUsageType() {
-        return usageType;
-    }
-
-    public void setUsageType(UsageType usageType) {
-        this.usageType = usageType;
     }
 
     public int getFloor() {

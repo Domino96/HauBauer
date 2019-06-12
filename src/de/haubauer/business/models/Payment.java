@@ -1,7 +1,7 @@
-package src.de.haubauer.business.models;
+package de.haubauer.business.models;
 
-import src.de.haubauer.enums.PaymentType;
-import src.de.haubauer.helpers.DatedObject;
+import de.haubauer.enums.PaymentType;
+import de.haubauer.helpers.DatedObject;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -13,11 +13,15 @@ public class Payment extends DatedObject {
     private BigDecimal value;
     private BigDecimal billed;
     private String comment;
-    private Tenancy tenancy;
+    private de.haubauer.business.models.Tenancy tenancy;
     private PaymentType paymentType;
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Date getDate() {
@@ -60,11 +64,11 @@ public class Payment extends DatedObject {
         this.comment = comment;
     }
 
-    public Tenancy getTenancy() {
+    public de.haubauer.business.models.Tenancy getTenancy() {
         return tenancy;
     }
 
-    public void setTenancy(Tenancy tenancy) {
+    public void setTenancy(de.haubauer.business.models.Tenancy tenancy) {
         this.tenancy = tenancy;
     }
 

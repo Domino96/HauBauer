@@ -1,15 +1,18 @@
-package src.de.haubauer.business.models;
+package de.haubauer.business.models;
 
+import de.haubauer.helpers.DatedObject;
+import de.haubauer.helpers.Mapper;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import src.de.haubauer.db.entities.RentalProperty;
-import src.de.haubauer.db.entities.Tenancy;
-import src.de.haubauer.enums.AddressStatus;
+import javafx.collections.transformation.SortedList;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class Person {
+public class Person extends DatedObject implements Cloneable {
     private int id;
     private StringProperty title = new SimpleStringProperty("");
     private StringProperty firstName = new SimpleStringProperty("");
@@ -22,6 +25,20 @@ public class Person {
     private ObservableList<RentalProperty> rentalProperties = FXCollections.observableArrayList();
     private ObservableList<Tenancy> tenancies = FXCollections.observableArrayList();
     private ObjectProperty<BankAccount> bankAccount = new SimpleObjectProperty<>();
+
+    public Person() { }
+
+    public Person(Person person) {
+        this.copy(person);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title.get();
@@ -108,37 +125,42 @@ public class Person {
     }
 
     public String getAddressString() {
-        Optional<Address> address = this.getAddresses().filtered(x -> x.getStatus() == AddressStatus.Primary).stream().findFirst();
+        final SortedList<Address> sortedAddresses = this.getAddresses().sorted();
 
-        if (address.isPresent()) {
-            return address.get().getReadableAddress();
+        if (sortedAddresses.isEmpty()) {
+            return "";
         }
 
-        return "";
+        final Address lastAddress = sortedAddresses.get(sortedAddresses.size() - 1).clone();
+
+        return lastAddress.getReadableAddress();
     }
 
     public ObservableList<Address> getAddresses() {
         return addresses;
     }
 
-    public void setAddresses(ObservableList<Address> addresses) {
-        this.addresses = addresses;
+    public void setAddresses(Collection<Address> addresses) {
+        this.addresses.clear();
+        this.addresses.addAll(addresses);
     }
 
     public ObservableList<RentalProperty> getRentalProperties() {
         return rentalProperties;
     }
 
-    public void setRentalProperties(ObservableList<RentalProperty> rentalProperties) {
-        this.rentalProperties = rentalProperties;
+    public void setRentalProperties(Collection<RentalProperty> rentalProperties) {
+        this.rentalProperties.clear();
+        this.rentalProperties.addAll(rentalProperties);
     }
 
     public ObservableList<Tenancy> getTenancies() {
         return tenancies;
     }
 
-    public void setTenancies(ObservableList<Tenancy> tenancies) {
-        this.tenancies = tenancies;
+    public void setTenancies(Collection<Tenancy> tenancies) {
+        this.tenancies.clear();
+        this.tenancies.addAll(tenancies);
     }
 
     public String getBankAccountString() {
@@ -159,5 +181,20 @@ public class Person {
 
     public void setBankAccount(BankAccount bankAccount) {
         this.bankAccount.set(bankAccount);
+    }
+
+    public void copy(final Person person) {
+        this.setId(person.getId());
+        this.setFirstName(person.getFirstName());
+        this.setLastName(person.getLastName());
+        this.setEmail(person.getEmail());
+        this.setBankAccount(person.getBankAccount());
+        this.setAddresses(person.getAddresses());
+        this.setLandline(person.getLandline());
+        this.setMobile(person.getMobile());
+        this.setRentalProperties(person.getRentalProperties());
+        this.setRole(person.getRole());
+        this.setTenancies(person.getTenancies());
+        this.setTitle(person.getTitle());
     }
 }

@@ -1,6 +1,7 @@
-package src.de.haubauer.business.models;
+package de.haubauer.business.models;
 
-import src.de.haubauer.helpers.DatedObject;
+import de.haubauer.helpers.DatedObject;
+import javafx.util.StringConverter;
 
 import java.util.List;
 
@@ -13,6 +14,10 @@ public class UserRole extends DatedObject {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -37,5 +42,19 @@ public class UserRole extends DatedObject {
 
     public void setUsers(List<User> Users) {
         this.users = Users;
+    }
+
+    public static class StringConverter extends javafx.util.StringConverter<UserRole> {
+        @Override
+        public String toString(UserRole object) {
+            return object.getName();
+        }
+
+        @Override
+        public UserRole fromString(String string) {
+            UserRole newUserRole = new UserRole();
+            newUserRole.setName(string);
+            return newUserRole;
+        }
     }
 }

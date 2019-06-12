@@ -1,12 +1,14 @@
-package src.de.haubauer.db.entities;
+package de.haubauer.db.entities;
 
 
-import src.de.haubauer.helpers.DatedObject;
+import de.haubauer.helpers.DatedObject;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "RentalProperty")
@@ -20,39 +22,43 @@ public class RentalProperty extends DatedObject {
     private BigDecimal squareMeterPriceCold;
     private BigDecimal sideCostsMonth;
     private String note;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "parent")
-    private List<RentalProperty> children = new ArrayList<RentalProperty>();
-    @ManyToOne
+    private Set<RentalProperty> children;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private RentalProperty parent;
     private int floor;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "addressId")
     private Address address;
 
-    @ManyToMany(mappedBy = "rentalProperties")
-    private List<Person> people;
+    @ManyToMany(mappedBy = "rentalProperties", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Person> people;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "tenancyId")
-    private List<Tenancy> tenancy;
+    private Set<Tenancy> tenancies;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "usageTypeId")
     private UsageType usageType;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "rentalTypeId")
     private RentalType rentalType;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "rentalRoleId")
     private RentalRole rentalRole;
 
 
     public int getRentalPropertyId() {
         return rentalPropertyId;
+    }
+
+    public void setRentalPropertyId(int rentalPropertyId) {
+        this.rentalPropertyId = rentalPropertyId;
     }
 
     public String getDescription() {
@@ -95,12 +101,15 @@ public class RentalProperty extends DatedObject {
         this.note = note;
     }
 
-    public List<RentalProperty> getChildren() {
+    public Set<RentalProperty> getChildren() {
         return children;
     }
 
-    public void setChildren(List<RentalProperty> children) {
+    public void setChildren(Set<RentalProperty> children) {
         this.children = children;
+    }
+    public void setChildren(List<RentalProperty> children) {
+        this.children = new HashSet<>(children);
     }
 
     public RentalProperty getParent() {
@@ -127,20 +136,26 @@ public class RentalProperty extends DatedObject {
         this.address = address;
     }
 
-    public List<Person> getPeople() {
+    public Set<Person> getPeople() {
         return people;
     }
 
-    public void setPeople(List<Person> people) {
+    public void setPeople(Set<Person> people) {
         this.people = people;
     }
-
-    public List<Tenancy> getTenancy() {
-        return tenancy;
+    public void setPeople(List<Person> people) {
+        this.people = new HashSet<>(people);
     }
 
-    public void setTenancy(List<Tenancy> tenancy) {
-        this.tenancy = tenancy;
+    public Set<Tenancy> getTenancies() {
+        return tenancies;
+    }
+
+    public void setTenancies(Set<Tenancy> tenancies) {
+        this.tenancies = tenancies;
+    }
+    public void setTenancy(List<Tenancy> tenancies) {
+        this.tenancies = new HashSet<>(tenancies);
     }
 
     public UsageType getUsageType() {

@@ -1,10 +1,12 @@
-package src.de.haubauer.db.entities;
+package de.haubauer.db.entities;
 
 
-import src.de.haubauer.helpers.DatedObject;
+import de.haubauer.helpers.DatedObject;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "Person")
@@ -20,28 +22,36 @@ public class Person extends DatedObject {
     private String mobile;
     private String email;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "AddressPerson",
                 joinColumns = {@JoinColumn(name = "personId")},
                 inverseJoinColumns = {@JoinColumn(name = "addressId")})
-    private List<Address> addresses;
+    private Set<Address> addresses;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "RentalPropertyPerson",
             joinColumns = {@JoinColumn(name = "personId")},
             inverseJoinColumns = {@JoinColumn(name = "RentalPropertyId")})
-    private List<RentalProperty> rentalProperties;
+    private Set<RentalProperty> rentalProperties;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "tenancyId")
-    private List<Tenancy> tenancies;
+    private Set<Tenancy> tenancies;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "roleId")
+    private UserRole role;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "bankAccountId")
     private BankAccount bankAccount;
     
     public int getPersonId() {
         return personId;
+    }
+
+    public void setPersonId(int personId) {
+        this.personId = personId;
     }
 
     public String getTitle() {
@@ -92,28 +102,37 @@ public class Person extends DatedObject {
         this.email = email;
     }
 
-    public List<Address> getAddresses() {
+    public Set<Address> getAddresses() {
         return addresses;
     }
 
-    public void setAddresses(List<Address> addresses) {
+    public void setAddresses(Set<Address> addresses) {
         this.addresses = addresses;
     }
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = new HashSet<>(addresses);
+    }
 
-    public List<RentalProperty> getRentalPropertys() {
+    public Set<RentalProperty> getRentalProperties() {
         return rentalProperties;
     }
 
-    public void setRentalPropertys(List<RentalProperty> rentalPropertys) {
-        this.rentalProperties = rentalPropertys;
+    public void setRentalProperties(Set<RentalProperty> rentalProperties) {
+        this.rentalProperties = rentalProperties;
+    }
+    public void setRentalProperties(List<RentalProperty> rentalProperties) {
+        this.rentalProperties = new HashSet<>(rentalProperties);
     }
 
-    public List<Tenancy> getTenancy() {
+    public Set<Tenancy> getTenancies() {
         return this.tenancies;
     }
 
-    public void setTenancy(List<Tenancy> tenancy) {
-        this.tenancies = tenancy;
+    public void setTenancies(Set<Tenancy> tenancies) {
+        this.tenancies = tenancies;
+    }
+    public void setTenancies(List<Tenancy> tenancies) {
+        this.tenancies = new HashSet<>(tenancies);
     }
 
     public BankAccount getBankAccount() {
@@ -122,5 +141,13 @@ public class Person extends DatedObject {
 
     public void setBankAccount(BankAccount bankAccount) {
         this.bankAccount = bankAccount;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 }

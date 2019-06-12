@@ -1,24 +1,22 @@
-package src.de.haubauer.ui.controllers.tenants;
+package de.haubauer.ui.controllers.tenants;
 
+import de.haubauer.business.models.Person;
+import de.haubauer.business.services.PersonService;
+import de.haubauer.ui.FxmlLibrary;
+import de.haubauer.ui.viewmodels.TenantsViewModel;
 import javafx.beans.binding.Bindings;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import src.de.haubauer.business.models.Person;
-import src.de.haubauer.business.services.PersonService;
-import src.de.haubauer.ui.FxmlLibrary;
-import src.de.haubauer.ui.controllers.SceneController;
-import src.de.haubauer.ui.viewmodels.TenantsViewModel;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TenantsController implements Initializable {
     private TenantsViewModel viewModel = new TenantsViewModel();
@@ -29,6 +27,9 @@ public class TenantsController implements Initializable {
 
     @FXML
     private TableColumn<Person, String> bankAccountColumn;
+
+    @FXML
+    private TableColumn<Person, String> roleColumn;
 
     @FXML
     private TableView<Person> tableView;
@@ -42,9 +43,17 @@ public class TenantsController implements Initializable {
 
         // create bindings from getters
         this.addressColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getAddressString(), cell.getValue().getAddresses()));
-        this.bankAccountColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getBankAccountString(), cell.getValue().bankAccountProperty()));
+        this.bankAccountColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> cell.getValue().getBankAccountString(), cell.getValue().getBankAccount().bicProperty()));
+        this.roleColumn.setCellValueFactory(cell -> Bindings.createStringBinding(() -> {
+            if (cell.getValue().getRole() != null) {
+                return cell.getValue().getRole().getName();
+            }
+
+            return "";
+        }, cell.getValue().roleProperty()));
     }
 
+    @FXML
     public void deleteItems() {
         final Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Sind Sie sicher?");
@@ -58,25 +67,35 @@ public class TenantsController implements Initializable {
         }
     }
 
+    @FXML
     public void addItem() throws IOException {
         final Stage dialog = new Stage();
+        AtomicBoolean cancelledAdd = new AtomicBoolean(false);
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.setTitle("Mietstammdatensatz hinzufügen");
-        dialog.setScene(new Scene(FxmlLibrary.getTenantsAddDialog(), 500, 700));
-        dialog.show();
+        Person tenantToAdd = new Person();
+        dialog.setScene(new Scene(FxmlLibrary.getTenantsAddDialog(tenantToAdd), 500, 700));
+        dialog.setOnCloseRequest(event -> cancelledAdd.set(true));
+        dialog.showAndWait();
+
+        if (!cancelledAdd.get()) {
+            this.viewModel.getTenants().add(tenantToAdd);
+        }
     }
 
+    @FXML
     public void editItem() throws IOException {
         if (this.viewModel.getSelectedTenants().size() == 1) {
             final Stage dialog = new Stage();
             dialog.initModality(Modality.APPLICATION_MODAL);
             dialog.setTitle("Mietstammdatensatz bearbeiten");
+            final Person copiedTenant = new Person(this.viewModel.getSelectedTenants().get(0));
             dialog.setScene(new Scene(FxmlLibrary.getTenantsEditDialog(this.viewModel.getSelectedTenants().get(0)), 500, 700));
-            dialog.show();
+            dialog.setOnCloseRequest(event -> {
+                this.viewModel.getSelectedTenants().get(0).roleProperty().unbind();
+                this.viewModel.getSelectedTenants().get(0).copy(copiedTenant);
+            });
+            dialog.showAndWait();
         }
-    }
-
-    public void onDashboardClicked(ActionEvent actionEvent) {
-        SceneController.getInstance().activate("Dashboard");
     }
 }

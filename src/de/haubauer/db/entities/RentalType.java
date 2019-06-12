@@ -1,9 +1,11 @@
-package src.de.haubauer.db.entities;
+package de.haubauer.db.entities;
 
-import src.de.haubauer.helpers.DatedObject;
+import de.haubauer.helpers.DatedObject;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "RentalType")
@@ -15,12 +17,16 @@ public class RentalType extends DatedObject {
     private String name;
     private String description;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "rentalPropertyId")
-    private List<RentalProperty> rentalProperties;
+    private Set<RentalProperty> rentalProperties;
 
     public int getRentalTypeId() {
         return rentalTypeId;
+    }
+
+    public void setRentalTypeId(int rentalTypeId) {
+        this.rentalTypeId = rentalTypeId;
     }
 
     public String getName() {
@@ -39,11 +45,14 @@ public class RentalType extends DatedObject {
         this.description = description;
     }
 
-    public List<src.de.haubauer.db.entities.RentalProperty> getRentalProperties() {
+    public Set<RentalProperty> getRentalProperties() {
         return rentalProperties;
     }
 
-    public void setRentalProperties(List<src.de.haubauer.db.entities.RentalProperty> rentalProperties) {
+    public void setRentalProperties(Set<RentalProperty> rentalProperties) {
         this.rentalProperties = rentalProperties;
+    }
+    public void setRentalProperties(List<RentalProperty> rentalProperties) {
+        this.rentalProperties = new HashSet<>(rentalProperties);
     }
 }
