@@ -92,6 +92,7 @@ FROM t_fahrer
 			<property name="com.jaspersoft.studio.field.label" value="hersteller"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="t_rennwagen"/>
 		</field>
+		<field name="OFFENE_BETRÄGE" class="java.lang.Double"/>
 	</subDataset>
 	<subDataset name="Einnahmeübersicht" uuid="9a454d37-b8ac-4d09-a765-f3ddeb5d94f8">
 		<property name="com.jaspersoft.studio.data.sql.tables" value="dF9mYWhyZXIgLDIwLDQ2LDE0MWVhNGIzLWE4OTYtNDAxZC05NzM4LTRhZDRkNDZkMDA0Njt0X3Jl&#xA;bm53YWdlbiAsMTQyLDIwLDg1YzY4YmI4LTkzNjQtNDE5MC04NWJkLWU3Y2E3ZTU1ZGMxOTs=&#xA;"/>
@@ -111,6 +112,12 @@ FROM t_fahrer
 	INNER JOIN t_rennwagen ON 
 	 t_fahrer.id = t_rennwagen.id]]>
 		</queryString>
+		<field name="MONAT" class="java.lang.String"/>
+		<field name="DATUM" class="java.sql.Date"/>
+		<field name="WARMMIETE" class="java.lang.Double"/>
+		<field name="STELLPLATZ" class="java.lang.Double"/>
+		<field name="GELEISTET" class="java.lang.Double"/>
+		<field name="OFFEN" class="java.lang.Double"/>
 		<field name="vorname" class="java.lang.Object">
 			<property name="com.jaspersoft.studio.field.label" value="vorname"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="t_fahrer"/>
@@ -164,30 +171,17 @@ FROM t_fahrer
 	inner join t_rennwagen ON 
 	 t_fahrer.id = t_rennwagen.id]]>
 	</queryString>
-	<field name="id" class="java.lang.Object">
-		<property name="com.jaspersoft.studio.field.label" value="id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="t_rennwagen"/>
-	</field>
-	<field name="modell" class="java.lang.Object">
-		<property name="com.jaspersoft.studio.field.label" value="modell"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="t_rennwagen"/>
-	</field>
-	<field name="hersteller" class="java.lang.Object">
-		<property name="com.jaspersoft.studio.field.label" value="hersteller"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="t_rennwagen"/>
-	</field>
-	<field name="nachname" class="java.lang.Object">
-		<property name="com.jaspersoft.studio.field.label" value="nachname"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="t_fahrer"/>
-	</field>
-	<field name="vorname" class="java.lang.Object">
-		<property name="com.jaspersoft.studio.field.label" value="vorname"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="t_fahrer"/>
-	</field>
-	<field name="gehalt" class="java.lang.Object">
-		<property name="com.jaspersoft.studio.field.label" value="gehalt"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="t_fahrer"/>
-	</field>
+	<field name="ZEITRAUM" class="java.util.Date"/>
+	<field name="OBJEKTNUMMER" class="java.lang.String"/>
+	<field name="ANSCHRIFT" class="java.lang.String"/>
+	<field name="MIETER" class="java.lang.String"/>
+	<field name="OFFENE_BEITRÄGE" class="java.lang.String"/>
+	<field name="MONAT" class="java.lang.String"/>
+	<field name="DATUM" class="java.lang.String"/>
+	<field name="WARMMIETE" class="java.lang.String"/>
+	<field name="STELLPLÄTZE" class="java.lang.String"/>
+	<field name="GELEISTET" class="java.lang.String"/>
+	<field name="OFFEN" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -198,7 +192,7 @@ FROM t_fahrer
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="102" splitType="Stretch">
+		<band height="100" splitType="Stretch">
 			<staticText>
 				<reportElement x="-14" y="-139" width="101" height="60" uuid="0f10971a-467a-4df2-ba64-713c0fbaea8d"/>
 				<text><![CDATA[HausBau GbR
@@ -220,13 +214,13 @@ Tel. 0123-5555563]]></text>
 				</textElement>
 				<text><![CDATA[EINNAHMEN]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="89" y="-49" width="160" height="27" forecolor="#337CB8" uuid="66de61b9-e201-40a8-9d71-62890bccff61"/>
+			<textField>
+				<reportElement x="90" y="-49" width="160" height="27" forecolor="#337CB8" uuid="f1ba1d0c-7a0b-4d18-946b-8d971b78041e"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
-				<text><![CDATA[[ausgewählter Zeitraum]]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$F{ZEITRAUM}]]></textFieldExpression>
+			</textField>
 			<rectangle>
 				<reportElement x="-20" y="-9" width="595" height="21" forecolor="rgba(0, 0, 0, 0.0)" backcolor="#337CB8" uuid="3a9c5f8b-4569-4799-924b-c4104538139d"/>
 			</rectangle>
@@ -248,21 +242,13 @@ Tel. 0123-5555563]]></text>
 				<reportElement x="180" y="25" width="100" height="30" uuid="88f9f0ae-5686-402b-8513-ec73d8a2b5ba"/>
 				<text><![CDATA[GEBÄUDE]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="380" y="25" width="100" height="30" uuid="93cf2b2b-616a-4ebe-b413-81c883058a35"/>
-				<text><![CDATA[ERSTELLT VON]]></text>
-			</staticText>
 			<textField>
 				<reportElement x="1" y="44" width="130" height="16" uuid="bf2e5b35-0303-49f3-b2bd-5c4e81d1034c"/>
-				<textFieldExpression><![CDATA[$F{modell}.toString()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{OBJEKTNUMMER}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="181" y="42" width="150" height="16" uuid="0258661a-4889-436d-883c-63894fa8f165"/>
-				<textFieldExpression><![CDATA[$F{hersteller}.toString()]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="381" y="44" width="150" height="16" uuid="93887ed2-f3ca-4536-9083-1379e0232bc2"/>
-				<textFieldExpression><![CDATA[$F{nachname}.toString()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ANSCHRIFT}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="80" width="40" height="20" uuid="54ee6aa8-baad-4318-b813-1a784b91f17a"/>
@@ -270,7 +256,7 @@ Tel. 0123-5555563]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="40" y="80" width="110" height="20" uuid="f3746dea-33fa-42c7-bbce-fb0af69d3e93"/>
-				<textFieldExpression><![CDATA[$F{vorname}.toString()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{MIETER}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>
@@ -312,20 +298,20 @@ Tel. 0123-5555563]]></text>
 						</jr:tableHeader>
 						<jr:detailCell style="Table 1_TD" height="30">
 							<box>
-								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 								<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 							</box>
 							<textField pattern="#,##0.###;(#,##0.###-)">
-								<reportElement x="0" y="0" width="130" height="30" uuid="75d6c7af-1041-41fd-a6f8-84b0f02892e3"/>
+								<reportElement x="0" y="0" width="130" height="30" uuid="a1add4e3-e53f-4e5b-93b5-5159e8450c75"/>
 								<box>
 									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 								</box>
-								<textFieldExpression><![CDATA[$F{gehalt} + " Euro"]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{OFFENE_BETRÄGE}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -335,7 +321,7 @@ Tel. 0123-5555563]]></text>
 							<box>
 								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 							</box>
 							<staticText>
@@ -347,21 +333,11 @@ Tel. 0123-5555563]]></text>
 						<jr:detailCell style="Table 1_TD" height="30">
 							<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 							<box>
-								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 								<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 							</box>
-							<textField>
-								<reportElement x="0" y="1" width="413" height="26" uuid="26d4174c-06d8-44dd-86d4-de90589d5da1"/>
-								<box>
-									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								</box>
-								<textFieldExpression><![CDATA[$F{vorname}.toString()+" " + $F{nachname}.toString() + ", " + $F{hersteller}.toString() + " " + $F{modell}.toString()]]></textFieldExpression>
-							</textField>
 						</jr:detailCell>
 					</jr:column>
 				</jr:table>
@@ -416,7 +392,7 @@ Tel. 0123-5555563]]></text>
 							</box>
 							<textField>
 								<reportElement x="0" y="0" width="100" height="30" uuid="af6715ea-5d9b-41c2-add6-c9f2c5df871a"/>
-								<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{MONAT}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -452,7 +428,7 @@ Tel. 0123-5555563]]></text>
 							</box>
 							<textField>
 								<reportElement x="0" y="0" width="70" height="30" uuid="3fe840e3-0a57-4ce1-b963-08f99e0c5833"/>
-								<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{DATUM}.toString()]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -488,7 +464,7 @@ Tel. 0123-5555563]]></text>
 							</box>
 							<textField>
 								<reportElement x="0" y="0" width="70" height="30" uuid="58dcb5ff-0686-432f-93ba-cfd14f3b87dc"/>
-								<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{WARMMIETE}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -524,7 +500,7 @@ Tel. 0123-5555563]]></text>
 							</box>
 							<textField>
 								<reportElement x="0" y="0" width="70" height="30" uuid="c48bd3db-e55a-4023-8d9b-672f7e50d382"/>
-								<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{STELLPLATZ}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -560,7 +536,7 @@ Tel. 0123-5555563]]></text>
 							</box>
 							<textField>
 								<reportElement x="0" y="0" width="70" height="30" uuid="bd5d8dd1-0bb9-4ab2-8c85-7a485755a99c"/>
-								<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{GELEISTET}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -596,7 +572,7 @@ Tel. 0123-5555563]]></text>
 							</box>
 							<textField>
 								<reportElement x="0" y="0" width="70" height="30" uuid="dcc15abd-09dd-4cdf-8eed-cd2e3b285731"/>
-								<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{OFFEN}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -648,20 +624,20 @@ Tel. 0123-5555563]]></text>
 			<textField>
 				<reportElement x="374" y="33" width="100" height="30" uuid="a7d625b3-1e95-408f-8066-2f8c93b1482b"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Seite " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement x="474" y="33" width="100" height="30" uuid="2a200ecc-4f43-480f-9120-c11d4356f2b6"/>
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" von " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="-14" y="34" width="60" height="30" uuid="704c0cff-9dfd-4bb6-947a-c68ac797fd2d"/>
+				<reportElement x="0" y="34" width="60" height="30" uuid="704c0cff-9dfd-4bb6-947a-c68ac797fd2d"/>
 				<text><![CDATA[Erstellt am:]]></text>
 			</staticText>
 			<textField pattern="MMMMM dd, yyyy">
-				<reportElement x="40" y="34" width="100" height="30" uuid="b3807b74-52ee-4cb6-bb28-0fe1d726a732"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				<reportElement x="54" y="34" width="100" height="30" uuid="b3807b74-52ee-4cb6-bb28-0fe1d726a732"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd.MM.yyyy").format(new java.util.Date( ))]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
